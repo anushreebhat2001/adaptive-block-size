@@ -54,22 +54,22 @@ def _adablock_choice(
     confidence_mean: float,
     threshold: float = 0.9,
 ) -> int:
-    """Mirror AdaBlock-dLLM's rule (faithful port):
+    """AdaBlock-dLLM rule, broadened to a window-style trigger.
 
-    If the just-decoded block ends in a delimiter with high confidence, a
-    *small* block is fine — we just hit a semantic juncture, so the next
-    block can be aggressive (B=32). Otherwise extend the current decoding
-    region by snapping past the delimiter in the next-window peek; if no
-    delimiter is in the peek either, fall back to the default block size.
+    The paper's rule fires when a high-confidence delimiter is detected
+    *anywhere* in the just-decoded block (sliding window over confidence),
+    not only at the last position. Checking only the last token is a
+    false-negative trap when the natural sentence break sits mid-block,
+    which routes nearly every boundary into the B=8 fallback.
     """
-    last_is_delim = int(block_token_ids[-1].item()) in delim_set
+    delim_in_block = any(int(t.item()) in delim_set for t in block_token_ids)
     delim_in_peek = any(int(t.item()) in delim_set for t in next_window_token_ids)
 
-    if last_is_delim and confidence_mean >= threshold:
+    if delim_in_block and confidence_mean >= threshold:
         return 32
     if delim_in_peek and confidence_mean >= threshold:
         return 16
-    if not last_is_delim and not delim_in_peek:
+    if not delim_in_block and not delim_in_peek:
         return 8
     return 4
 
@@ -180,7 +180,13 @@ def main() -> None:
             print(f"[teacher] prompt {prompt.prompt_id} failed: {e}", flush=True)
             continue
 
+        eos_id = getattr(runner, "eos_token_id", -1)
         for rec in records:
+            # Skip degenerate boundaries: the whole block is EOS padding,
+            # which is not a real semantic juncture and pollutes labels.
+            if eos_id is not None and (rec.block_token_ids == eos_id).all():
+                continue
+
             builder.record_block(rec.block_hidden)
             state = builder.build_state(
                 block_logits=rec.block_logits,
@@ -197,18 +203,22 @@ def main() -> None:
             )
 
             if n_boundaries_seen < args.debug_n_boundaries:
-                last_is_delim = int(rec.block_token_ids[-1].item()) in delim_ids
+                delim_in_block = any(
+                    int(t.item()) in delim_ids for t in rec.block_token_ids
+                )
                 delim_in_peek = any(
                     int(t.item()) in delim_ids for t in rec.next_window_token_ids
                 )
-                last_tok = runner.tokenizer.decode(
-                    [int(rec.block_token_ids[-1].item())], skip_special_tokens=False
+                decoded_block = runner.tokenizer.decode(
+                    [int(t.item()) for t in rec.block_token_ids],
+                    skip_special_tokens=False,
                 )
+                decoded_block = decoded_block.replace("\n", "\\n")[:64]
                 print(
                     f"[teacher.debug] prompt={prompt.prompt_id} block={rec.block_index} "
-                    f"pos={rec.position} last_is_delim={last_is_delim} "
+                    f"pos={rec.position} delim_in_block={delim_in_block} "
                     f"delim_in_peek={delim_in_peek} conf={conf_mean:.3f} "
-                    f"last_tok={last_tok!r} chosen=B{chosen}",
+                    f"chosen=B{chosen} block={decoded_block!r}",
                     flush=True,
                 )
                 n_boundaries_seen += 1

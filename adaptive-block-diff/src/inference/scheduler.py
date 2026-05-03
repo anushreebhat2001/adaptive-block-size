@@ -66,15 +66,15 @@ class AdaBlockScheduler:
         pass
 
     def next_block_size(self, x: SchedulerInput) -> int:
-        last_is_delim = int(x.block_token_ids[-1].item()) in self.delim
+        delim_in_block = any(int(t.item()) in self.delim for t in x.block_token_ids)
         delim_in_peek = any(int(t.item()) in self.delim for t in x.next_window_token_ids)
         probs = torch.softmax(x.block_logits.to(torch.float32), dim=-1)
         conf = probs.max(dim=-1).values.mean().item()
-        if last_is_delim and conf >= self.threshold:
+        if delim_in_block and conf >= self.threshold:
             return 32
         if delim_in_peek and conf >= self.threshold:
             return 16
-        if not last_is_delim and not delim_in_peek:
+        if not delim_in_block and not delim_in_peek:
             return 8
         return 4
 

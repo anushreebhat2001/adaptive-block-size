@@ -59,7 +59,15 @@ class DiffusionRunner:
         raise NotImplementedError
 
     def encode_prompt(self, prompt: str) -> torch.Tensor:
-        ids = self.tokenizer(prompt, return_tensors="pt").input_ids.to(self.device)
+        msg = [{"role": "user", "content": prompt}]
+        try:
+            text = self.tokenizer.apply_chat_template(
+                msg, add_generation_prompt=True, tokenize=False
+            )
+        except Exception:
+            # Tokenizer ships without a chat template; fall back to raw text.
+            text = prompt
+        ids = self.tokenizer(text, return_tensors="pt").input_ids.to(self.device)
         return ids[0]
 
     def rollout(
@@ -174,11 +182,20 @@ def _semi_ar_sample(
             )
         )
 
-        # Early stop if EOS produced.
-        if (block_tokens_final == eos_id).any():
+        # Early stop only if the block is dominated by EOS — a single inline
+        # EOS doesn't end generation, but a block of mostly-EOS does.
+        if (block_tokens_final == eos_id).sum().item() > block_len // 2:
             break
 
     generated = seq[0, prompt_ids.shape[0] :].detach().cpu()
+    # Trim trailing EOS so callers see real generation length.
+    if generated.numel() > 0:
+        non_eos_mask = generated != eos_id
+        if non_eos_mask.any():
+            last_non_eos = int(non_eos_mask.nonzero()[-1].item())
+            generated = generated[: last_non_eos + 1]
+        else:
+            generated = generated[:0]
     return generated, records
 
 
