@@ -10,7 +10,7 @@ set -euo pipefail
 : "${EAI_LABEL_DIR:=/scratch/$USER/labels}"
 : "${EAI_CKPT_DIR:=/scratch/$USER/ckpts/predictor}"
 : "${EAI_RESULT_DIR:=/scratch/$USER/results}"
-: "${EAI_SLURM_LOGS:=/scratch/$USER/slurm_logs}"
+: "${EAI_SLURM_LOGS:=/scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/logs}"
 
 mkdir -p "$EAI_LABEL_DIR" "$EAI_CKPT_DIR" "$EAI_RESULT_DIR" "$EAI_SLURM_LOGS"
 

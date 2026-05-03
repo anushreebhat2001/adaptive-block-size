@@ -6,13 +6,13 @@
 #SBATCH --time=08:00:00
 #SBATCH --requeue
 #SBATCH --signal=B:USR1@120
-#SBATCH --output=/scratch/%u/slurm_logs/%x_%A_%a.out
-#SBATCH --error=/scratch/%u/slurm_logs/%x_%A_%a.err
+#SBATCH --output=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.out
+#SBATCH --error=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.err
 #SBATCH --array=0-7%4
 
 # Same (model, benchmark) array layout as 01_build_teacher_labels.sbatch.
 
-source "$(dirname "$0")/_common.sh"
+source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
 PAIRS=(
   "llada gsm8k"

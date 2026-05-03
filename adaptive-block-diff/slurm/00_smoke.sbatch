@@ -4,13 +4,13 @@
 #SBATCH --partition=c12m85-a100-1
 #SBATCH --gres=gpu:1
 #SBATCH --time=01:00:00
-#SBATCH --output=/scratch/%u/slurm_logs/%x_%j.out
-#SBATCH --error=/scratch/%u/slurm_logs/%x_%j.err
+#SBATCH --output=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%j.out
+#SBATCH --error=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%j.err
 
 # Verification gate 1 ("Pipeline smoke") from README.md.
 # Runs end-to-end on 100 GSM8K prompts in ~25 min on a single A100.
 
-source "$(dirname "$0")/_common.sh"
+source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
 SMOKE_DIR=/scratch/$USER/smoke
 mkdir -p "${SMOKE_DIR}/labels" "${SMOKE_DIR}/ckpt" "${SMOKE_DIR}/results"

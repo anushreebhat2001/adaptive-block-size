@@ -6,8 +6,8 @@
 #SBATCH --time=08:00:00
 #SBATCH --requeue
 #SBATCH --signal=B:USR1@120
-#SBATCH --output=/scratch/%u/slurm_logs/%x_%A_%a.out
-#SBATCH --error=/scratch/%u/slurm_logs/%x_%A_%a.err
+#SBATCH --output=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.out
+#SBATCH --error=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.err
 #SBATCH --array=0-69%6
 
 # Array index decomposes into:
@@ -19,7 +19,7 @@
 # Re-submit with a different --array range to sweep lambda for ours-* or
 # threshold for adablock.
 
-source "$(dirname "$0")/_common.sh"
+source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
 MODELS=(llada dream)
 BENCHMARKS=(gsm8k math humaneval mbpp ifeval)
