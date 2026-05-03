@@ -187,14 +187,19 @@ _DELIM_CHARS = (".", "\n", "?", "!", ";", ":")
 
 
 def _scan_vocab_for_delimiters(tokenizer) -> List[int]:
-    """Scan the tokenizer's vocabulary for any token whose *decoded* string
-    contains one of our delimiter characters.
+    """Scan the tokenizer's vocabulary for tokens that are *purely* delimiter
+    characters (after stripping leading/trailing whitespace).
 
-    Earlier versions used ``tokenizer.encode(".")`` which only catches one
-    variant and misses leading-space, trailing-newline, and BPE-merged forms
-    (e.g. ``" ."``, ``".\\n"``, ``". "``). Scanning the vocab and decoding
-    each token catches every variant the model is likely to emit.
+    A previous version kept any token whose decoded form merely *contained*
+    a delimiter character. That swept in regular words like ``"hello."`` or
+    ``"world,"`` and produced ~3000 ids on LLaDA's tokenizer, making the
+    "delimiter present" feature fire on almost every block.
+
+    The corrected rule keeps tokens like ``"."``, ``" ."``, ``"\\n"``,
+    ``"\\n\\n"``, ``".\\n"``, ``"!"``, ``":"`` -- the ones that actually
+    mark sentence/clause boundaries -- and drops the rest.
     """
+    delim_chars = set(_DELIM_CHARS)
     ids: List[int] = []
     vocab = tokenizer.get_vocab() if hasattr(tokenizer, "get_vocab") else {}
     for _tok, tok_id in vocab.items():
@@ -204,7 +209,10 @@ def _scan_vocab_for_delimiters(tokenizer) -> List[int]:
             continue
         if not decoded:
             continue
-        if any(c in decoded for c in _DELIM_CHARS):
+        stripped = decoded.strip()
+        if not stripped:
+            continue
+        if all(c in delim_chars for c in stripped):
             ids.append(int(tok_id))
     return sorted(set(ids))
 

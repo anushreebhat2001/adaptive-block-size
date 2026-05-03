@@ -21,15 +21,29 @@ class Prompt:
 
 
 def _format_gsm8k(question: str) -> str:
-    return f"Solve the following problem step by step.\n\nProblem: {question}\n\nAnswer:"
+    # No "Answer:" suffix: with chat-template models that puts the assistant
+    # in a forced-continuation mode and tends to produce 1-2 token replies.
+    # Asking for step-by-step reasoning gives multi-paragraph generations.
+    return f"{question}\n\nThink step by step, then give the final numeric answer."
 
 
 def _format_math(problem: str) -> str:
-    return f"Solve the math problem.\n\nProblem: {problem}\n\nSolution:"
+    return (
+        f"{problem}\n\n"
+        f"Show your reasoning, then give the final answer in \\boxed{{}}."
+    )
 
 
 def _format_mbpp(prompt: str, test: str) -> str:
-    return f"{prompt}\n\nWrite a Python function. Use this test:\n{test}\n\n```python\n"
+    # Do NOT pre-open a ```python fence. The chat-templated assistant turn
+    # would otherwise just close the fence and emit <|eot_id|>, ending
+    # generation after a single short block.
+    return (
+        f"{prompt}\n\n"
+        f"Your function must pass this test:\n{test}\n\n"
+        f"First explain your approach in 2-3 sentences, "
+        f"then write the complete Python implementation."
+    )
 
 
 def _format_humaneval(prompt: str) -> str:
