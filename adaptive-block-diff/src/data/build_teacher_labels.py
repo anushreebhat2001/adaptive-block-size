@@ -90,6 +90,13 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--dtype", default="bf16", choices=["bf16", "fp16", "fp32"])
     p.add_argument("--threshold", type=float, default=0.9, help="AdaBlock confidence threshold")
     p.add_argument("--shard_prefix", default="teacher")
+    p.add_argument(
+        "--debug_n_boundaries",
+        type=int,
+        default=0,
+        help="print (last_is_delim, delim_in_peek, conf_mean, chosen_B) for the "
+             "first N boundaries to help diagnose label collapse",
+    )
     return p.parse_args()
 
 
@@ -128,6 +135,7 @@ def main() -> None:
         delim_ids = set(llada_default_delimiters(runner.tokenizer))
     else:
         delim_ids = set(dream_default_delimiters(runner.tokenizer))
+    print(f"[teacher] delimiter token-id set size: {len(delim_ids)}", flush=True)
 
     out_dir = os.path.join(args.out_dir, args.model, args.benchmark)
     os.makedirs(out_dir, exist_ok=True)
@@ -145,6 +153,7 @@ def main() -> None:
     buf = {"scalars": [], "hidden_pool": [], "labels": [], "prompt_ids": []}
     shard_idx = 0
     n_done = 0
+    n_boundaries_seen = 0
     t0 = time.time()
 
     prompts = iter_prompts(args.benchmark, split=args.split, limit=args.prompt_offset + args.n_prompts)
@@ -186,6 +195,24 @@ def main() -> None:
                 confidence_mean=conf_mean,
                 threshold=args.threshold,
             )
+
+            if n_boundaries_seen < args.debug_n_boundaries:
+                last_is_delim = int(rec.block_token_ids[-1].item()) in delim_ids
+                delim_in_peek = any(
+                    int(t.item()) in delim_ids for t in rec.next_window_token_ids
+                )
+                last_tok = runner.tokenizer.decode(
+                    [int(rec.block_token_ids[-1].item())], skip_special_tokens=False
+                )
+                print(
+                    f"[teacher.debug] prompt={prompt.prompt_id} block={rec.block_index} "
+                    f"pos={rec.position} last_is_delim={last_is_delim} "
+                    f"delim_in_peek={delim_in_peek} conf={conf_mean:.3f} "
+                    f"last_tok={last_tok!r} chosen=B{chosen}",
+                    flush=True,
+                )
+                n_boundaries_seen += 1
+
             buf["scalars"].append(state.scalars)
             buf["hidden_pool"].append(state.hidden_pool)
             buf["labels"].append(candidate_index(chosen))
