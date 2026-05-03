@@ -12,7 +12,7 @@
 
 source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
-SMOKE_DIR=/scratch/$USER/smoke
+SMOKE_DIR=${EAI_SMOKE_DIR}
 mkdir -p "${SMOKE_DIR}/labels" "${SMOKE_DIR}/ckpt" "${SMOKE_DIR}/results"
 
 run_in_singularity "

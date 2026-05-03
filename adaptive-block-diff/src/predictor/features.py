@@ -183,19 +183,37 @@ def candidate_from_index(idx: int) -> int:
     return CANDIDATE_BLOCK_SIZES[idx]
 
 
-def llada_default_delimiters(tokenizer) -> List[int]:
-    """Token ids that count as semantic delimiters for LLaDA's tokenizer."""
-    candidates = [".", "\n", "\n\n", ".\n", "?", "!", ";"]
+_DELIM_CHARS = (".", "\n", "?", "!", ";", ":")
+
+
+def _scan_vocab_for_delimiters(tokenizer) -> List[int]:
+    """Scan the tokenizer's vocabulary for any token whose *decoded* string
+    contains one of our delimiter characters.
+
+    Earlier versions used ``tokenizer.encode(".")`` which only catches one
+    variant and misses leading-space, trailing-newline, and BPE-merged forms
+    (e.g. ``" ."``, ``".\\n"``, ``". "``). Scanning the vocab and decoding
+    each token catches every variant the model is likely to emit.
+    """
     ids: List[int] = []
-    for s in candidates:
+    vocab = tokenizer.get_vocab() if hasattr(tokenizer, "get_vocab") else {}
+    for _tok, tok_id in vocab.items():
         try:
-            toks = tokenizer.encode(s, add_special_tokens=False)
-            ids.extend(toks)
+            decoded = tokenizer.decode([tok_id], skip_special_tokens=False)
         except Exception:
             continue
+        if not decoded:
+            continue
+        if any(c in decoded for c in _DELIM_CHARS):
+            ids.append(int(tok_id))
     return sorted(set(ids))
 
 
+def llada_default_delimiters(tokenizer) -> List[int]:
+    """Token ids that count as semantic delimiters for LLaDA's tokenizer."""
+    return _scan_vocab_for_delimiters(tokenizer)
+
+
 def dream_default_delimiters(tokenizer) -> List[int]:
-    """Same set; Dream uses Qwen tokenizer."""
-    return llada_default_delimiters(tokenizer)
+    """Same scan; Dream uses the Qwen tokenizer."""
+    return _scan_vocab_for_delimiters(tokenizer)
