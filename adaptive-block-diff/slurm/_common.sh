@@ -2,10 +2,10 @@
 
 set -euo pipefail
 
-: "${EAI_REPO:=/scratch/$USER/adaptive-block-diff}"
+: "${EAI_REPO:=/scratch/$USER/Efficient-AI/adaptive-block-diff}"
 : "${EAI_OVERLAY:=/scratch/$USER/overlay-50G-10M.ext3}"
 : "${EAI_SIF:=/share/apps/images/cuda12.1.1-cudnn8.9.0-devel-ubuntu22.04.2.sif}"
-: "${EAI_CONDA_ENV:=adaptive-block-diff}"
+: "${EAI_CONDA_ENV:=bd3lm}"
 : "${EAI_HF_HOME:=/scratch/$USER/hf_cache}"
 : "${EAI_LABEL_DIR:=/scratch/$USER/labels}"
 : "${EAI_CKPT_DIR:=/scratch/$USER/ckpts/predictor}"

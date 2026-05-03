@@ -29,28 +29,26 @@ The four sbatch jobs in `slurm/` correspond to the four pipeline stages.
 04_eval_benchmarks.sbatch         array 0..69                      ~120h total
 ```
 
-Override paths via env vars before sbatch (defaults match `_common.sh`):
+Defaults in `_common.sh` (override via env vars before sbatch if needed):
 
 ```
-export EAI_REPO=/scratch/$USER/adaptive-block-diff
-export EAI_OVERLAY=/scratch/$USER/overlay-50G-10M.ext3
-export EAI_CONDA_ENV=adaptive-block-diff
-sbatch slurm/01_build_teacher_labels.sbatch
+EAI_REPO=/scratch/$USER/Efficient-AI/adaptive-block-diff
+EAI_OVERLAY=/scratch/$USER/overlay-50G-10M.ext3
+EAI_CONDA_ENV=bd3lm
+EAI_SIF=/share/apps/images/cuda12.1.1-cudnn8.9.0-devel-ubuntu22.04.2.sif
 ```
 
 ## Local setup (one-time, on HPC login node)
 
 ```
-mkdir -p /scratch/$USER && cd /scratch/$USER
-git clone <this-repo> adaptive-block-diff
-cd adaptive-block-diff
-# create overlay + conda env once
+cd /scratch/$USER
+git clone https://github.com/anushreebhat2001/Efficient-AI.git
+# install deps into your existing bd3lm env
 singularity exec --overlay /scratch/$USER/overlay-50G-10M.ext3:rw \
   /share/apps/images/cuda12.1.1-cudnn8.9.0-devel-ubuntu22.04.2.sif \
-  /bin/bash -c "source /ext3/miniconda3/bin/activate && \
-    conda create -n adaptive-block-diff python=3.10 -y && \
-    conda activate adaptive-block-diff && \
-    pip install -r requirements.txt"
+  /bin/bash -c "source /ext3/miniconda3/etc/profile.d/conda.sh && \
+    conda activate bd3lm && \
+    pip install -r /scratch/\$USER/Efficient-AI/adaptive-block-diff/requirements.txt"
 ```
 
 ## Optional: AdaBlock-dLLM fork
@@ -68,15 +66,7 @@ submodule is missing; the rest of the pipeline runs against
 
 ## Verification gates (run in order)
 
-1. **Pipeline smoke** — 100-prompt teacher-label run + 1-epoch train + 50-prompt eval. Predictor's chosen block sizes should match AdaBlock's choices within ~5%.
-   ```
-   python -m src.data.build_teacher_labels --model llada --benchmark gsm8k --n_prompts 100 \
-       --out_dir /tmp/labels --shard_size 100 --max_new_tokens 128
-   python -m src.predictor.train --shard_glob '/tmp/labels/teacher/llada/gsm8k/*.pt' \
-       --out_ckpt /tmp/ckpt.pt --label_source teacher --model llada --hidden_dim 4096 --epochs 1
-   python -m src.eval.run_benchmarks --model llada --benchmark gsm8k --scheduler ours-teacher \
-       --predictor /tmp/ckpt.pt --n_prompts 50 --max_new_tokens 128 --out /tmp/smoke.json
-   ```
+1. **Pipeline smoke** — `sbatch slurm/00_smoke.sbatch` (100-prompt teacher labels + 1-epoch train + 50-prompt ours-vs-adablock eval, ~25 min). Predictor's chosen block-size histogram should match AdaBlock's within ~5%.
 2. **Oracle sanity** — oracle-label predictor val-loss ≤ teacher-label predictor val-loss.
 3. **End-to-end** — full GSM8K eval (200 prompts) at our scheduler ≥ AdaBlock accuracy at ≥ AdaBlock throughput on at least one λ.
 4. **Cost claim** — sum of GPU-hours for label gen + SL train < 50% of CtrlDiff's reported PPO budget.
