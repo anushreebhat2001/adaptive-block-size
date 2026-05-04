@@ -70,12 +70,19 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
-def evaluate(model: BlockSizePredictor, loader: DataLoader, device: str) -> Dict[str, float]:
+def evaluate(
+    model: BlockSizePredictor,
+    loader: DataLoader,
+    device: str,
+    n_classes: int,
+) -> Dict[str, float]:
     model.eval()
     total = 0
     correct = 0
     off_by_one_correct = 0
     loss_sum = 0.0
+    label_counts = [0] * n_classes
+    pred_counts = [0] * n_classes
     with torch.no_grad():
         for scalars, hidden, labels in loader:
             scalars = scalars.to(device, non_blocking=True)
@@ -88,12 +95,26 @@ def evaluate(model: BlockSizePredictor, loader: DataLoader, device: str) -> Dict
             correct += (preds == labels).sum().item()
             off_by_one_correct += ((preds - labels).abs() <= 1).sum().item()
             loss_sum += loss.item()
+            for c in range(n_classes):
+                label_counts[c] += int((labels == c).sum().item())
+                pred_counts[c] += int((preds == c).sum().item())
     if total == 0:
-        return {"val_loss": float("nan"), "val_acc": float("nan"), "val_off1": float("nan")}
+        return {
+            "val_loss": float("nan"),
+            "val_acc": float("nan"),
+            "val_off1": float("nan"),
+            "val_majority_acc": float("nan"),
+            "val_label_dist": label_counts,
+            "val_pred_dist": pred_counts,
+        }
+    majority_count = max(label_counts) if label_counts else 0
     return {
         "val_loss": loss_sum / total,
         "val_acc": correct / total,
         "val_off1": off_by_one_correct / total,
+        "val_majority_acc": majority_count / total,
+        "val_label_dist": label_counts,
+        "val_pred_dist": pred_counts,
     }
 
 
@@ -185,7 +206,7 @@ def main() -> None:
                 print(f"[train] saved checkpoint to {args.out_ckpt} after SIGUSR1", flush=True)
                 sys.exit(0)
 
-        metrics = evaluate(model, val_loader, args.device)
+        metrics = evaluate(model, val_loader, args.device, n_classes)
         with open(log_path, "a") as f:
             f.write(
                 json.dumps(
@@ -193,9 +214,16 @@ def main() -> None:
                 )
                 + "\n"
             )
+        gain = metrics["val_acc"] - metrics["val_majority_acc"]
         print(
             f"[train] epoch={epoch} step={step} val_loss={metrics['val_loss']:.4f} "
-            f"val_acc={metrics['val_acc']:.4f} val_off1={metrics['val_off1']:.4f}",
+            f"val_acc={metrics['val_acc']:.4f} val_off1={metrics['val_off1']:.4f} "
+            f"majority={metrics['val_majority_acc']:.4f} gain_over_majority={gain:+.4f}",
+            flush=True,
+        )
+        print(
+            f"[train]   val label_dist={metrics['val_label_dist']} "
+            f"pred_dist={metrics['val_pred_dist']}",
             flush=True,
         )
         if metrics["val_loss"] < best_val:
