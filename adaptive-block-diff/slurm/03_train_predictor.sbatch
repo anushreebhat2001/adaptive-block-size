@@ -30,10 +30,11 @@ run_in_singularity "
     --label_source ${LABEL_SOURCE} \
     --model ${MODEL} \
     --hidden_dim ${HIDDEN_DIM} \
-    --epochs 8 \
+    --epochs 16 \
     --batch_size 512 \
     --lr 3e-4 \
     --weight_decay 1e-2 \
     --val_frac 0.1 \
-    --resume
+    --class_weight_mode none \
+    --label_smoothing 0.1
 "

@@ -67,6 +67,21 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--log_every", type=int, default=50)
+    p.add_argument(
+        "--class_weight_mode",
+        choices=["inverse", "sqrt_inverse", "none"],
+        default="inverse",
+        help="How to weight cross-entropy: 'inverse' (current default, may "
+             "overcorrect on imbalanced data), 'sqrt_inverse' (softer "
+             "correction), or 'none' (no class weights, trust the prior).",
+    )
+    p.add_argument(
+        "--label_smoothing",
+        type=float,
+        default=0.0,
+        help="Label smoothing epsilon for cross-entropy. Useful when labels "
+             "are noisy (e.g., oracle PPL-based labels at small block sizes).",
+    )
     return p.parse_args()
 
 
@@ -137,7 +152,16 @@ def main() -> None:
     )
 
     n_classes = len(CANDIDATE_BLOCK_SIZES)
-    cw = class_weights(train_ds, n_classes).to(args.device)
+    if args.class_weight_mode == "none":
+        cw = None
+        print("[train] class_weight_mode=none: using uniform CE", flush=True)
+    elif args.class_weight_mode == "sqrt_inverse":
+        raw = class_weights(train_ds, n_classes)
+        cw = raw.sqrt().to(args.device)
+        print(f"[train] class_weight_mode=sqrt_inverse: weights={cw.tolist()}", flush=True)
+    else:  # "inverse"
+        cw = class_weights(train_ds, n_classes).to(args.device)
+        print(f"[train] class_weight_mode=inverse: weights={cw.tolist()}", flush=True)
 
     if args.resume and os.path.exists(args.out_ckpt):
         print(f"[train] resuming from {args.out_ckpt}", flush=True)
@@ -178,7 +202,12 @@ def main() -> None:
             labels = labels.to(args.device, non_blocking=True)
 
             logits, _ = model(scalars, hidden)
-            loss = F.cross_entropy(logits, labels, weight=cw)
+            loss = F.cross_entropy(
+                logits,
+                labels,
+                weight=cw,
+                label_smoothing=args.label_smoothing,
+            )
             optim.zero_grad()
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
