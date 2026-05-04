@@ -20,11 +20,26 @@ class Prompt:
     reference: Optional[str] = None  # gold answer / canonical solution if any
 
 
+_GSM8K_FEW_SHOT = """Solve each problem by showing your work step by step.
+
+Problem: Janet's ducks lay 16 eggs per day. She eats three for breakfast and bakes muffins with four. She sells the rest at $2 per egg. How much does she make daily?
+Solution: Janet has 16 eggs per day. She eats 3 and uses 4 for muffins, leaving 16 - 3 - 4 = 9 eggs. She sells these 9 eggs at $2 each, making 9 * 2 = 18 dollars per day. The answer is 18.
+
+Problem: A robe takes 2 bolts of blue fiber and half that much white fiber. How many bolts total does it take?
+Solution: The robe takes 2 bolts of blue fiber. White fiber is half of that, so 2 / 2 = 1 bolt of white fiber. The total is 2 + 1 = 3 bolts. The answer is 3.
+
+Problem: {question}
+Solution:"""
+
+
 def _format_gsm8k(question: str) -> str:
-    # No "Answer:" suffix: with chat-template models that puts the assistant
-    # in a forced-continuation mode and tends to produce 1-2 token replies.
-    # Asking for step-by-step reasoning gives multi-paragraph generations.
-    return f"{question}\n\nThink step by step, then give the final numeric answer."
+    # Few-shot CoT. Without exemplars, LLaDA-Instruct outputs a one-line
+    # bottom-line answer and ends the turn -- giving us only 1 boundary
+    # per prompt and rendering the scheduler invisible. With 2 worked
+    # examples the model continues the pattern and produces multi-step
+    # reasoning (~100-200 tokens), exercising the scheduler at 6-12
+    # boundaries per prompt.
+    return _GSM8K_FEW_SHOT.format(question=question)
 
 
 def _format_math(problem: str) -> str:
@@ -34,16 +49,37 @@ def _format_math(problem: str) -> str:
     )
 
 
+_MBPP_FEW_SHOT = '''You will be given a Python programming problem and a test it must pass. Briefly explain your approach, then write the implementation.
+
+Problem: Write a function to find the shared elements from the given two lists.
+Test: assert similar_elements((3, 4, 5, 6),(5, 7, 4, 10)) == (4, 5)
+Approach: Convert both inputs to sets and intersect, then return the result as a tuple.
+Implementation:
+def similar_elements(a, b):
+    return tuple(set(a) & set(b))
+
+Problem: Write a function to identify non-prime numbers.
+Test: assert is_not_prime(2) == False
+Approach: Numbers less than 2 are not prime. Otherwise, check divisibility from 2 to sqrt(n).
+Implementation:
+import math
+def is_not_prime(n):
+    if n < 2:
+        return True
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return True
+    return False
+
+Problem: {prompt}
+Test: {test}
+Approach:'''
+
+
 def _format_mbpp(prompt: str, test: str) -> str:
-    # Do NOT pre-open a ```python fence. The chat-templated assistant turn
-    # would otherwise just close the fence and emit <|eot_id|>, ending
-    # generation after a single short block.
-    return (
-        f"{prompt}\n\n"
-        f"Your function must pass this test:\n{test}\n\n"
-        f"First explain your approach in 2-3 sentences, "
-        f"then write the complete Python implementation."
-    )
+    # Few-shot exemplars so LLaDA continues the "Approach: ... Implementation: ..."
+    # pattern instead of emitting a 1-line stub and ending the turn.
+    return _MBPP_FEW_SHOT.format(prompt=prompt, test=test)
 
 
 def _format_humaneval(prompt: str) -> str:

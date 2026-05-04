@@ -23,14 +23,14 @@ import os
 import signal
 import sys
 import time
-from typing import Dict, Optional
+from typing import Dict
 
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 from .dataset import PredictorDataset, class_weights
-from .features import CANDIDATE_BLOCK_SIZES, n_scalar_features
+from .features import CANDIDATE_BLOCK_SIZES
 from .model import BlockSizePredictor, load_predictor, save_predictor
 
 
@@ -38,7 +38,7 @@ _SHOULD_CHECKPOINT_AND_EXIT = False
 
 
 def _install_usr1_handler() -> None:
-    def handler(signum, frame):
+    def handler(_signum, _frame):
         global _SHOULD_CHECKPOINT_AND_EXIT
         _SHOULD_CHECKPOINT_AND_EXIT = True
         print("[train] received SIGUSR1; will checkpoint after current step", flush=True)
