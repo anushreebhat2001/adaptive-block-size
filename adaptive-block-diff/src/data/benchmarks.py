@@ -151,7 +151,33 @@ def iter_prompts(benchmark: str, split: str = "train", limit: Optional[int] = No
                 messages=_gsm8k_messages(ex["question"]),
             )
     elif bm == "math":
-        ds = load_dataset("hendrycks/competition_math", split=split)
+        # The original `hendrycks/competition_math` was pulled from the Hub.
+        # Try several known re-hosts in order. All preserve the
+        # {problem, solution} schema we need.
+        candidates = [
+            # (path, config_or_None)
+            ("qwedsacf/competition_math", None),
+            ("EleutherAI/hendrycks_math", "all"),
+            ("nlile/hendrycks-MATH-benchmark", None),
+            ("hendrycks/competition_math", None),
+        ]
+        ds = None
+        last_err: Optional[Exception] = None
+        for path, config in candidates:
+            try:
+                ds = (
+                    load_dataset(path, config, split=split)
+                    if config is not None
+                    else load_dataset(path, split=split)
+                )
+                break
+            except Exception as e:
+                last_err = e
+                continue
+        if ds is None:
+            raise RuntimeError(
+                f"could not load MATH dataset from any known mirror: {last_err}"
+            )
         for i, ex in enumerate(ds):
             if limit is not None and i >= limit:
                 break
