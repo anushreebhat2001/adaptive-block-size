@@ -352,7 +352,11 @@ class DreamRunner(DiffusionRunner):
 
     def load(self) -> None:
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_id, trust_remote_code=True)
-        self.model = AutoModelForCausalLM.from_pretrained(
+        # Dream's DreamConfig is not registered with AutoModelForCausalLM
+        # (it's a custom diffusion architecture, same situation as LLaDA).
+        # AutoModel + trust_remote_code lets the custom modeling_dream.py
+        # provide the right class.
+        self.model = AutoModel.from_pretrained(
             self.model_id, trust_remote_code=True, torch_dtype=self.dtype
         ).to(self.device).eval()
         self.hidden_dim = self.model.config.hidden_size
@@ -365,8 +369,12 @@ class DreamRunner(DiffusionRunner):
     def _forward(self, input_ids: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         with torch.no_grad():
             out = self.model(input_ids=input_ids, output_hidden_states=True, return_dict=True)
-        logits = out.logits
-        hidden = out.hidden_states[-1]
+        logits = out.logits if hasattr(out, "logits") else out["logits"]
+        hidden = (
+            out.hidden_states[-1]
+            if hasattr(out, "hidden_states")
+            else out["hidden_states"][-1]
+        )
         return logits, hidden
 
     def rollout(

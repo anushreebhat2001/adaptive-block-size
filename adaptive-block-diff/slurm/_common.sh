@@ -12,13 +12,20 @@ set -euo pipefail
 : "${EAI_RESULT_DIR:=/scratch/$USER/Efficient-AI/results}"
 : "${EAI_SLURM_LOGS:=/scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/logs}"
 : "${EAI_SMOKE_DIR:=/scratch/$USER/Efficient-AI/smoke}"
+# :ro lets multiple array tasks mount the same overlay simultaneously.
+# NYU HPC blocks concurrent :rw mounts of one overlay, so :rw would
+# serialize the whole job array. Our pipeline reads the conda env from
+# the overlay but writes only to bind-mounted /scratch dirs, so :ro is
+# correct. Override to :rw via EAI_OVERLAY_MODE only when you need to
+# install packages or modify the env mid-job (e.g. interactively).
+: "${EAI_OVERLAY_MODE:=ro}"
 
 mkdir -p "$EAI_LABEL_DIR" "$EAI_CKPT_DIR" "$EAI_RESULT_DIR" "$EAI_SLURM_LOGS"
 
 run_in_singularity() {
   local cmd="$1"
   singularity exec --nv \
-    --overlay "${EAI_OVERLAY}:rw" \
+    --overlay "${EAI_OVERLAY}:${EAI_OVERLAY_MODE}" \
     "$EAI_SIF" \
     /bin/bash -c "
       source /ext3/miniconda3/bin/activate ${EAI_CONDA_ENV}
