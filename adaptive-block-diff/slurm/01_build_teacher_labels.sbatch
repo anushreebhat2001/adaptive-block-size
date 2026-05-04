@@ -8,7 +8,7 @@
 #SBATCH --signal=B:USR1@120
 #SBATCH --output=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.out
 #SBATCH --error=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.err
-#SBATCH --array=0-7%4
+#SBATCH --array=0-3%4
 
 # Job array index -> (model, benchmark) pair.
 # 0..3: llada x {gsm8k, math, mbpp, owt}
@@ -16,26 +16,22 @@
 
 source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
-# (model, model_id, benchmark). LLaDA uses Base (no chat template, naturally
-# long generation); Dream stays Instruct (no Base release). min_new_tokens
-# is a backstop for the chat-tuned Dream path.
+# LLaDA-Instruct on (gsm8k, math, mbpp, owt). Validated configuration:
+# 4-class oracle labels, gain_over_majority=+0.22 on the smoke. Dream-
+# Instruct is empirically worse (oracle labels collapse to 2 classes),
+# so we don't include Dream pairs.
 PAIRS=(
-  "llada GSAI-ML/LLaDA-8B gsm8k"
-  "llada GSAI-ML/LLaDA-8B math"
-  "llada GSAI-ML/LLaDA-8B mbpp"
-  "llada GSAI-ML/LLaDA-8B owt"
-  "dream Dream-org/Dream-v0-Instruct-7B gsm8k"
-  "dream Dream-org/Dream-v0-Instruct-7B math"
-  "dream Dream-org/Dream-v0-Instruct-7B mbpp"
-  "dream Dream-org/Dream-v0-Instruct-7B owt"
+  "llada gsm8k"
+  "llada math"
+  "llada mbpp"
+  "llada owt"
 )
 
-IFS=' ' read -r MODEL MODEL_ID BENCHMARK <<< "${PAIRS[$SLURM_ARRAY_TASK_ID]}"
+IFS=' ' read -r MODEL BENCHMARK <<< "${PAIRS[$SLURM_ARRAY_TASK_ID]}"
 
 run_in_singularity "
   python -u -m src.data.build_teacher_labels \
     --model ${MODEL} \
-    --model_id ${MODEL_ID} \
     --benchmark ${BENCHMARK} \
     --split train \
     --n_prompts 5000 \
@@ -44,6 +40,5 @@ run_in_singularity "
     --max_new_tokens 384 \
     --default_block_size 16 \
     --n_denoise_steps 32 \
-    --min_new_tokens 128 \
     --dtype bf16
 "

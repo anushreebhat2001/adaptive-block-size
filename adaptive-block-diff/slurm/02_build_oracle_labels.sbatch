@@ -8,31 +8,28 @@
 #SBATCH --signal=B:USR1@120
 #SBATCH --output=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.out
 #SBATCH --error=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.err
-#SBATCH --array=0-7%4
+#SBATCH --array=0-3%4
 
 # Same (model, benchmark) array layout as 01_build_teacher_labels.sbatch.
 
 source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
+# LLaDA-Instruct only. Dream pairs dropped (oracle labels collapsed to 2
+# classes on the Dream smoke).
 PAIRS=(
-  "llada GSAI-ML/LLaDA-8B gsm8k"
-  "llada GSAI-ML/LLaDA-8B math"
-  "llada GSAI-ML/LLaDA-8B mbpp"
-  "llada GSAI-ML/LLaDA-8B owt"
-  "dream Dream-org/Dream-v0-Instruct-7B gsm8k"
-  "dream Dream-org/Dream-v0-Instruct-7B math"
-  "dream Dream-org/Dream-v0-Instruct-7B mbpp"
-  "dream Dream-org/Dream-v0-Instruct-7B owt"
+  "llada gsm8k"
+  "llada math"
+  "llada mbpp"
+  "llada owt"
 )
 
-IFS=' ' read -r MODEL MODEL_ID BENCHMARK <<< "${PAIRS[$SLURM_ARRAY_TASK_ID]}"
+IFS=' ' read -r MODEL BENCHMARK <<< "${PAIRS[$SLURM_ARRAY_TASK_ID]}"
 
 # Oracle is K-rollout (K=4): ~4x cost of teacher. Reduce n_prompts to keep
 # the per-job runtime under 8h and rely on requeue if it overruns.
 run_in_singularity "
   python -u -m src.data.build_oracle_labels \
     --model ${MODEL} \
-    --model_id ${MODEL_ID} \
     --benchmark ${BENCHMARK} \
     --split train \
     --n_prompts 1500 \
@@ -41,7 +38,6 @@ run_in_singularity "
     --max_new_tokens 384 \
     --default_block_size 16 \
     --n_denoise_steps 32 \
-    --min_new_tokens 128 \
     --lam 0.05 \
     --dtype bf16
 "

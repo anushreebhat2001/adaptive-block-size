@@ -26,7 +26,7 @@ from typing import Callable, List, Optional, Set, Tuple
 
 import torch
 import torch.nn.functional as F
-from transformers import AutoModel, AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModel, AutoTokenizer
 
 
 def _collect_eos_token_ids(tokenizer) -> Set[int]:
