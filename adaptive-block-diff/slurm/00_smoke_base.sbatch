@@ -27,7 +27,7 @@ run_in_singularity "
 
   echo '[smoke-base] step 1/3: build_teacher_labels (LLaDA-Base, GSM8K, debug first 30 boundaries)'
   python -u -m src.data.build_teacher_labels \
-    --model llada --model_id GSAI-ML/LLaDA-8B \
+    --model llada --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark gsm8k \
     --split train --n_prompts 100 \
     --out_dir ${SMOKE_DIR}/labels \
@@ -49,7 +49,7 @@ run_in_singularity "
 
   echo '[smoke-base] step 3/3: eval ours-teacher vs adablock on 50 GSM8K prompts'
   python -u -m src.eval.run_benchmarks \
-    --model llada --model_id GSAI-ML/LLaDA-8B \
+    --model llada --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark gsm8k \
     --split test --n_prompts 50 \
     --max_new_tokens 384 --n_denoise_steps 32 \
@@ -61,7 +61,7 @@ run_in_singularity "
     --dtype bf16
 
   python -u -m src.eval.run_benchmarks \
-    --model llada --model_id GSAI-ML/LLaDA-8B \
+    --model llada --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark gsm8k \
     --split test --n_prompts 50 \
     --max_new_tokens 384 --n_denoise_steps 32 \

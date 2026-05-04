@@ -24,7 +24,7 @@ run_in_singularity "
 
   echo '[oracle-smoke-base] step 1/3: build_oracle_labels (LLaDA-Base, 50 GSM8K prompts x K=4 rollouts)'
   python -u -m src.data.build_oracle_labels \
-    --model llada --model_id GSAI-ML/LLaDA-8B \
+    --model llada --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark gsm8k \
     --split train --n_prompts 50 \
     --out_dir ${SMOKE_DIR}/labels \
@@ -47,7 +47,7 @@ run_in_singularity "
 
   echo '[oracle-smoke-base] step 3/3: eval ours-oracle vs adablock on 50 GSM8K prompts'
   python -u -m src.eval.run_benchmarks \
-    --model llada --model_id GSAI-ML/LLaDA-8B \
+    --model llada --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark gsm8k \
     --split test --n_prompts 50 \
     --max_new_tokens 384 --n_denoise_steps 32 \
@@ -59,7 +59,7 @@ run_in_singularity "
     --dtype bf16
 
   python -u -m src.eval.run_benchmarks \
-    --model llada --model_id GSAI-ML/LLaDA-8B \
+    --model llada --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark gsm8k \
     --split test --n_prompts 50 \
     --max_new_tokens 384 --n_denoise_steps 32 \
