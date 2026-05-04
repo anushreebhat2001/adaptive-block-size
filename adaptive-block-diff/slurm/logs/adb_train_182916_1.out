@@ -1,0 +1,23 @@
+[train] loading shards from /scratch/ab13091/Efficient-AI/labels/oracle/llada/*/*.pt
+[train] train=8610 val=1054 class_balance={0: 1838, 2: 4971, 3: 757, 1: 1044}
+[train] epoch=0 step=17 val_loss=0.7308 val_acc=0.6888 val_off1=0.8956 majority=0.5806 gain_over_majority=+0.1082
+[train]   val label_dist=[237, 122, 612, 83] pred_dist=[157, 281, 537, 79]
+[train] saved new best to /scratch/ab13091/Efficient-AI/ckpts/predictor/llada_oracle.pt
+[train] epoch=1 step=34 val_loss=0.7114 val_acc=0.6717 val_off1=0.8349 majority=0.5806 gain_over_majority=+0.0911
+[train]   val label_dist=[237, 122, 612, 83] pred_dist=[74, 192, 536, 252]
+[train] saved new best to /scratch/ab13091/Efficient-AI/ckpts/predictor/llada_oracle.pt
+[train] epoch=2 step=51 val_loss=0.6930 val_acc=0.7059 val_off1=0.8596 majority=0.5806 gain_over_majority=+0.1252
+[train]   val label_dist=[237, 122, 612, 83] pred_dist=[152, 171, 537, 194]
+[train] saved new best to /scratch/ab13091/Efficient-AI/ckpts/predictor/llada_oracle.pt
+[train] epoch=3 step=68 val_loss=0.6957 val_acc=0.7097 val_off1=0.8966 majority=0.5806 gain_over_majority=+0.1290
+[train]   val label_dist=[237, 122, 612, 83] pred_dist=[144, 274, 537, 99]
+[train] epoch=4 step=85 val_loss=0.6755 val_acc=0.7201 val_off1=0.8738 majority=0.5806 gain_over_majority=+0.1395
+[train]   val label_dist=[237, 122, 612, 83] pred_dist=[186, 191, 537, 140]
+[train] saved new best to /scratch/ab13091/Efficient-AI/ckpts/predictor/llada_oracle.pt
+[train] epoch=5 step=102 val_loss=0.6843 val_acc=0.7106 val_off1=0.8729 majority=0.5806 gain_over_majority=+0.1300
+[train]   val label_dist=[237, 122, 612, 83] pred_dist=[173, 198, 537, 146]
+[train] epoch=6 step=119 val_loss=0.6835 val_acc=0.7163 val_off1=0.8710 majority=0.5806 gain_over_majority=+0.1357
+[train]   val label_dist=[237, 122, 612, 83] pred_dist=[181, 191, 537, 145]
+[train] epoch=7 step=136 val_loss=0.6837 val_acc=0.7163 val_off1=0.8719 majority=0.5806 gain_over_majority=+0.1357
+[train]   val label_dist=[237, 122, 612, 83] pred_dist=[181, 192, 537, 144]
+[train] done. best_val_loss=0.6755

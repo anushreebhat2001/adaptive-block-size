@@ -1,0 +1,9 @@
+[eval] llada/ifeval/fixed-4 25 acc=1.000 toks/s=16.9
+[eval] llada/ifeval/fixed-4 50 acc=1.000 toks/s=17.8
+[eval] llada/ifeval/fixed-4 75 acc=1.000 toks/s=18.1
+[eval] llada/ifeval/fixed-4 100 acc=1.000 toks/s=18.3
+[eval] llada/ifeval/fixed-4 125 acc=1.000 toks/s=18.3
+[eval] llada/ifeval/fixed-4 150 acc=1.000 toks/s=18.4
+[eval] llada/ifeval/fixed-4 175 acc=1.000 toks/s=18.5
+[eval] llada/ifeval/fixed-4 200 acc=1.000 toks/s=18.5
+[eval] wrote /scratch/ab13091/Efficient-AI/results/llada_ifeval_fixed-4.json

@@ -1,0 +1,18 @@
+[teacher] loaded llada; hidden_dim=4096
+[teacher] delimiter token-id set size: 76
+[teacher] llada/mbpp prompts=25 buf=25 elapsed=45s
+[teacher] llada/mbpp prompts=50 buf=50 elapsed=85s
+[teacher] llada/mbpp prompts=75 buf=75 elapsed=126s
+[teacher] llada/mbpp prompts=100 buf=100 elapsed=167s
+[teacher] llada/mbpp prompts=125 buf=125 elapsed=207s
+[teacher] llada/mbpp prompts=150 buf=150 elapsed=248s
+[teacher] llada/mbpp prompts=175 buf=175 elapsed=288s
+[teacher] llada/mbpp prompts=200 buf=200 elapsed=328s
+[teacher] llada/mbpp prompts=225 buf=225 elapsed=368s
+[teacher] llada/mbpp prompts=250 buf=250 elapsed=408s
+[teacher] llada/mbpp prompts=275 buf=275 elapsed=448s
+[teacher] llada/mbpp prompts=300 buf=300 elapsed=489s
+[teacher] llada/mbpp prompts=325 buf=325 elapsed=529s
+[teacher] llada/mbpp prompts=350 buf=350 elapsed=569s
+[teacher] wrote final shard /scratch/ab13091/Efficient-AI/labels/teacher/llada/mbpp/teacher_000000.pt (374 examples)
+[teacher] done. total prompts=374

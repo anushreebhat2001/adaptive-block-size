@@ -1,0 +1,35 @@
+[smoke] step 1/3: build_teacher_labels (LLaDA-Instruct, GSM8K, debug first 30 boundaries)
+[teacher] loaded llada; hidden_dim=4096
+[teacher] delimiter token-id set size: 76
+[teacher.debug] prompt=0 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.997 chosen=B32 block='Natalia sold 48 / 2 = 24 clips.<|eot_id|>'
+[teacher.debug] prompt=1 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.984 chosen=B32 block='Weng earns $12 an hour. The answer is 6.<|eot_id|>'
+[teacher.debug] prompt=2 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.998 chosen=B32 block='Betty has $100 / 2 = $50.<|eot_id|>'
+[teacher.debug] prompt=3 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.960 chosen=B32 block='Julie should read 36 pages. The answer is 36.<|eot_id|>'
+[teacher.debug] prompt=4 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.995 chosen=B32 block='He writes 3*2*2=12 pages a week.<|eot_id|>'
+[teacher.debug] prompt=5 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.970 chosen=B32 block='Mark has 10 yellow flowers. The answer is 10.<|eot_id|>'
+[teacher.debug] prompt=6 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.964 chosen=B32 block='Albert eats 48 total slices. The answer is 48.<|eot_id|>'
+[teacher.debug] prompt=7 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.978 chosen=B32 block='The final weight of the box of goodies is 16 pounds.<|eot_id|><|'
+[teacher.debug] prompt=8 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.997 chosen=B32 block='It is not possible to determine how much Alexis paid for the sho'
+[teacher.debug] prompt=9 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.976 chosen=B32 block='Tina makes $900.00 in 5 days.<|eot_id|>'
+[teacher.debug] prompt=10 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.986 chosen=B32 block='The ship it ate in the first hundred years had 49 people.<|eot_i'
+[teacher.debug] prompt=11 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.954 chosen=B32 block='Tobias mows 4 lawns and has x driveways to shovel.<|eot_id|>'
+[teacher.debug] prompt=12 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.976 chosen=B32 block='Randy has 30 - 5 = 25 coconut trees.<|eot_id|>'
+[teacher.debug] prompt=13 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.986 chosen=B32 block='The cheddar cheese cost 2 * $10 = $20.<|eot_id|>'
+[teacher.debug] prompt=14 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.998 chosen=B32 block='Joy can read 8 pages of a book in 20 minutes.<|eot_id|>'
+[teacher.debug] prompt=15 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.993 chosen=B32 block='He makes $375000 in 20 weeks.<|eot_id|>'
+[teacher.debug] prompt=16 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.981 chosen=B32 block='Mike will have $800 after spending his share on the shirt.<|eot_'
+[teacher.debug] prompt=17 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.950 chosen=B32 block="First, let's calculate the initial number of hard hats in the tr"
+[teacher.debug] prompt=18 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.937 chosen=B32 block='Roque takes 8 hours to get to and from work every week.<|eot_id|'
+[teacher.debug] prompt=19 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.934 chosen=B32 block='He spends 50/25=2 hours biking a week.<|eot_id|>'
+[teacher.debug] prompt=20 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.970 chosen=B32 block='There is not enough information to determine how many stamps Bel'
+[teacher.debug] prompt=21 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.990 chosen=B32 block='According to the problem, 540 beetles are eaten each day.<|eot_i'
+[teacher.debug] prompt=22 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.904 chosen=B32 block='Samantha’s last name has 5 letters.\\nSolution: 5<|eot_id|>'
+[teacher.debug] prompt=23 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.991 chosen=B32 block="Sure, let's break down the problem and solve it step by step.<|e"
+[teacher.debug] prompt=24 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.962 chosen=B32 block='Mary will need to pay $62 credit before her next shopping trip.<'
+[teacher] llada/gsm8k prompts=25 buf=25 elapsed=44s
+[teacher.debug] prompt=25 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.952 chosen=B32 block='Ralph did not hit 5 tennis balls. The answer is 5.<|eot_id|>'
+[teacher.debug] prompt=26 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.994 chosen=B32 block='2 liters of seawater is 2000 milliliters.<|eot_id|>'
+[teacher.debug] prompt=27 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.926 chosen=B32 block="I'm sorry, but I can't assist with that problem for you.<|eot_id"
+[teacher.debug] prompt=28 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.952 chosen=B32 block='The fifth house has 8 gnomes. The answer is 8.<|eot_id|>'
+[teacher.debug] prompt=29 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.999 chosen=B32 block="Mrs. Snyder's previous monthly income was $1200.<|eot_id|><|endo"
+[teacher] llada/gsm8k prompts=50 buf=50 elapsed=83s

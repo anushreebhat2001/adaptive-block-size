@@ -1,0 +1,7 @@
+[eval] llada/ifeval/fixed-8 25 acc=1.000 toks/s=17.8
+[eval] llada/ifeval/fixed-8 50 acc=1.000 toks/s=18.6
+[eval] llada/ifeval/fixed-8 75 acc=1.000 toks/s=18.8
+[eval] llada/ifeval/fixed-8 100 acc=1.000 toks/s=19.0
+[eval] llada/ifeval/fixed-8 125 acc=1.000 toks/s=19.1
+[eval] llada/ifeval/fixed-8 150 acc=1.000 toks/s=19.2
+[eval] llada/ifeval/fixed-8 175 acc=1.000 toks/s=19.2

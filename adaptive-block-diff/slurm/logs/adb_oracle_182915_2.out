@@ -1,0 +1,41 @@
+[oracle] loaded llada; hidden_dim=4096
+[oracle] llada/mbpp prompts=10 buf=20 elapsed=64s
+[oracle] llada/mbpp prompts=20 buf=40 elapsed=126s
+[oracle] llada/mbpp prompts=30 buf=60 elapsed=187s
+[oracle] llada/mbpp prompts=40 buf=80 elapsed=247s
+[oracle] llada/mbpp prompts=50 buf=100 elapsed=308s
+[oracle] llada/mbpp prompts=60 buf=120 elapsed=369s
+[oracle] llada/mbpp prompts=70 buf=140 elapsed=429s
+[oracle] llada/mbpp prompts=80 buf=160 elapsed=487s
+[oracle] llada/mbpp prompts=90 buf=180 elapsed=547s
+[oracle] llada/mbpp prompts=100 buf=200 elapsed=609s
+[oracle] llada/mbpp prompts=110 buf=220 elapsed=671s
+[oracle] llada/mbpp prompts=120 buf=240 elapsed=731s
+[oracle] llada/mbpp prompts=130 buf=260 elapsed=792s
+[oracle] llada/mbpp prompts=140 buf=280 elapsed=852s
+[oracle] llada/mbpp prompts=150 buf=300 elapsed=913s
+[oracle] llada/mbpp prompts=160 buf=320 elapsed=973s
+[oracle] llada/mbpp prompts=170 buf=340 elapsed=1032s
+[oracle] llada/mbpp prompts=180 buf=360 elapsed=1093s
+[oracle] llada/mbpp prompts=190 buf=380 elapsed=1150s
+[oracle] llada/mbpp prompts=200 buf=400 elapsed=1209s
+[oracle] llada/mbpp prompts=210 buf=420 elapsed=1266s
+[oracle] llada/mbpp prompts=220 buf=440 elapsed=1325s
+[oracle] llada/mbpp prompts=230 buf=460 elapsed=1383s
+[oracle] llada/mbpp prompts=240 buf=480 elapsed=1441s
+[oracle] llada/mbpp prompts=250 buf=500 elapsed=1499s
+[oracle] wrote shard /scratch/ab13091/Efficient-AI/labels/oracle/llada/mbpp/oracle_000000.pt (512 examples)
+[oracle] llada/mbpp prompts=260 buf=8 elapsed=1559s
+[oracle] llada/mbpp prompts=270 buf=28 elapsed=1618s
+[oracle] llada/mbpp prompts=280 buf=48 elapsed=1675s
+[oracle] llada/mbpp prompts=290 buf=68 elapsed=1735s
+[oracle] llada/mbpp prompts=300 buf=88 elapsed=1793s
+[oracle] llada/mbpp prompts=310 buf=108 elapsed=1851s
+[oracle] llada/mbpp prompts=320 buf=128 elapsed=1909s
+[oracle] llada/mbpp prompts=330 buf=148 elapsed=1967s
+[oracle] llada/mbpp prompts=340 buf=168 elapsed=2026s
+[oracle] llada/mbpp prompts=350 buf=188 elapsed=2085s
+[oracle] llada/mbpp prompts=360 buf=208 elapsed=2142s
+[oracle] llada/mbpp prompts=370 buf=228 elapsed=2199s
+[oracle] wrote final shard /scratch/ab13091/Efficient-AI/labels/oracle/llada/mbpp/oracle_000001.pt (236 examples)
+[oracle] done. total prompts=374

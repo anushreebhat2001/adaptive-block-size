@@ -1,0 +1,7 @@
+[eval] llada/humaneval/fixed-16 25 acc=0.960 toks/s=18.8
+[eval] llada/humaneval/fixed-16 50 acc=0.920 toks/s=19.5
+[eval] llada/humaneval/fixed-16 75 acc=0.853 toks/s=19.8
+[eval] llada/humaneval/fixed-16 100 acc=0.820 toks/s=19.9
+[eval] llada/humaneval/fixed-16 125 acc=0.776 toks/s=20.0
+[eval] llada/humaneval/fixed-16 150 acc=0.747 toks/s=20.1
+[eval] wrote /scratch/ab13091/Efficient-AI/results/llada_humaneval_fixed-16.json

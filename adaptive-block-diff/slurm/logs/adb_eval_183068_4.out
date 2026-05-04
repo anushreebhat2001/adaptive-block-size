@@ -1,0 +1,9 @@
+[eval] llada/gsm8k/adablock 25 acc=0.360 toks/s=20.3
+[eval] llada/gsm8k/adablock 50 acc=0.380 toks/s=20.8
+[eval] llada/gsm8k/adablock 75 acc=0.373 toks/s=21.0
+[eval] llada/gsm8k/adablock 100 acc=0.340 toks/s=21.1
+[eval] llada/gsm8k/adablock 125 acc=0.344 toks/s=21.2
+[eval] llada/gsm8k/adablock 150 acc=0.320 toks/s=21.2
+[eval] llada/gsm8k/adablock 175 acc=0.297 toks/s=21.2
+[eval] llada/gsm8k/adablock 200 acc=0.280 toks/s=21.2
+[eval] wrote /scratch/ab13091/Efficient-AI/results/llada_gsm8k_adablock.json

@@ -1,0 +1,9 @@
+[eval] llada/mbpp/ours-teacher 25 acc=0.000 toks/s=19.9
+[eval] llada/mbpp/ours-teacher 50 acc=0.020 toks/s=20.4
+[eval] llada/mbpp/ours-teacher 75 acc=0.040 toks/s=20.5
+[eval] llada/mbpp/ours-teacher 100 acc=0.050 toks/s=20.5
+[eval] llada/mbpp/ours-teacher 125 acc=0.040 toks/s=20.6
+[eval] llada/mbpp/ours-teacher 150 acc=0.033 toks/s=20.6
+[eval] llada/mbpp/ours-teacher 175 acc=0.029 toks/s=20.7
+[eval] llada/mbpp/ours-teacher 200 acc=0.035 toks/s=20.7
+[eval] wrote /scratch/ab13091/Efficient-AI/results/llada_mbpp_ours-teacher.json

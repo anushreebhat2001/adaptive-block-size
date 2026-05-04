@@ -1,0 +1,21 @@
+Loading checkpoint shards:   0%|                                                                   | 0/6 [00:00<?, ?it/s]Loading checkpoint shards:  17%|█████████▊                                                 | 1/6 [00:00<00:01,  3.96it/s]Loading checkpoint shards:  33%|███████████████████▋                                       | 2/6 [00:00<00:00,  4.51it/s]Loading checkpoint shards:  50%|█████████████████████████████▌                             | 3/6 [00:00<00:00,  3.51it/s]Loading checkpoint shards:  67%|███████████████████████████████████████▎                   | 4/6 [00:01<00:00,  3.14it/s]Loading checkpoint shards:  83%|█████████████████████████████████████████████████▏         | 5/6 [00:01<00:00,  3.50it/s]Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  3.90it/s]Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  3.73it/s]
+Traceback (most recent call last):
+  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/scratch/ab13091/Efficient-AI/adaptive-block-diff/src/data/build_oracle_labels.py", line 264, in <module>
+    main()
+  File "/scratch/ab13091/Efficient-AI/adaptive-block-diff/src/data/build_oracle_labels.py", line 178, in main
+    for prompt in prompts:
+  File "/scratch/ab13091/Efficient-AI/adaptive-block-diff/src/data/benchmarks.py", line 154, in iter_prompts
+    ds = load_dataset("hendrycks/competition_math", split=split)
+  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/site-packages/datasets/load.py", line 1688, in load_dataset
+    builder_instance = load_dataset_builder(
+  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/site-packages/datasets/load.py", line 1315, in load_dataset_builder
+    dataset_module = dataset_module_factory(
+  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/site-packages/datasets/load.py", line 1201, in dataset_module_factory
+    raise e1 from None
+  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/site-packages/datasets/load.py", line 1158, in dataset_module_factory
+    raise DatasetNotFoundError(f"Dataset '{path}' doesn't exist on the Hub or cannot be accessed.") from e
+datasets.exceptions.DatasetNotFoundError: Dataset 'hendrycks/competition_math' doesn't exist on the Hub or cannot be accessed.

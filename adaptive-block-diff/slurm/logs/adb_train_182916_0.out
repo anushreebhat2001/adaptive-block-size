@@ -1,0 +1,23 @@
+[train] loading shards from /scratch/ab13091/Efficient-AI/labels/teacher/llada/*/*.pt
+[train] train=13801 val=1573 class_balance={3: 9496, 1: 4078, 0: 227}
+[train] epoch=0 step=27 val_loss=0.4156 val_acc=0.8360 val_off1=0.8392 majority=0.6834 gain_over_majority=+0.1526
+[train]   val label_dist=[17, 481, 0, 1075] pred_dist=[205, 496, 0, 872]
+[train] saved new best to /scratch/ab13091/Efficient-AI/ckpts/predictor/llada_teacher.pt
+[train] epoch=1 step=54 val_loss=0.4280 val_acc=0.8258 val_off1=0.8290 majority=0.6834 gain_over_majority=+0.1424
+[train]   val label_dist=[17, 481, 0, 1075] pred_dist=[234, 491, 0, 848]
+[train] epoch=2 step=81 val_loss=0.2700 val_acc=0.8881 val_off1=0.8894 majority=0.6834 gain_over_majority=+0.2047
+[train]   val label_dist=[17, 481, 0, 1075] pred_dist=[137, 487, 0, 949]
+[train] saved new best to /scratch/ab13091/Efficient-AI/ckpts/predictor/llada_teacher.pt
+[train] epoch=3 step=108 val_loss=0.3642 val_acc=0.8684 val_off1=0.8709 majority=0.6834 gain_over_majority=+0.1850
+[train]   val label_dist=[17, 481, 0, 1075] pred_dist=[172, 491, 0, 910]
+[train] epoch=4 step=135 val_loss=0.2286 val_acc=0.9129 val_off1=0.9142 majority=0.6834 gain_over_majority=+0.2295
+[train]   val label_dist=[17, 481, 0, 1075] pred_dist=[87, 504, 0, 982]
+[train] saved new best to /scratch/ab13091/Efficient-AI/ckpts/predictor/llada_teacher.pt
+[train] epoch=5 step=162 val_loss=0.2433 val_acc=0.9116 val_off1=0.9135 majority=0.6834 gain_over_majority=+0.2282
+[train]   val label_dist=[17, 481, 0, 1075] pred_dist=[102, 490, 0, 981]
+[train] epoch=6 step=189 val_loss=0.2059 val_acc=0.9250 val_off1=0.9263 majority=0.6834 gain_over_majority=+0.2416
+[train]   val label_dist=[17, 481, 0, 1075] pred_dist=[72, 490, 0, 1011]
+[train] saved new best to /scratch/ab13091/Efficient-AI/ckpts/predictor/llada_teacher.pt
+[train] epoch=7 step=216 val_loss=0.2098 val_acc=0.9237 val_off1=0.9250 majority=0.6834 gain_over_majority=+0.2403
+[train]   val label_dist=[17, 481, 0, 1075] pred_dist=[76, 490, 0, 1007]
+[train] done. best_val_loss=0.2059

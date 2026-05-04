@@ -1,0 +1,9 @@
+[eval] llada/mbpp/fixed-32 25 acc=0.000 toks/s=20.3
+[eval] llada/mbpp/fixed-32 50 acc=0.020 toks/s=20.7
+[eval] llada/mbpp/fixed-32 75 acc=0.040 toks/s=20.9
+[eval] llada/mbpp/fixed-32 100 acc=0.050 toks/s=20.9
+[eval] llada/mbpp/fixed-32 125 acc=0.040 toks/s=21.0
+[eval] llada/mbpp/fixed-32 150 acc=0.033 toks/s=21.0
+[eval] llada/mbpp/fixed-32 175 acc=0.029 toks/s=21.0
+[eval] llada/mbpp/fixed-32 200 acc=0.035 toks/s=21.1
+[eval] wrote /scratch/ab13091/Efficient-AI/results/llada_mbpp_fixed-32.json
