@@ -6,8 +6,8 @@ prompts across teacher and oracle label generation, and across eval runs.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Iterator, List, Optional
+from dataclasses import dataclass, field
+from typing import Dict, Iterator, List, Optional
 
 from datasets import load_dataset
 
@@ -18,28 +18,54 @@ class Prompt:
     benchmark: str
     text: str
     reference: Optional[str] = None  # gold answer / canonical solution if any
+    # Multi-turn chat history for few-shot. When set, the runner applies the
+    # chat template over this list directly so each demonstration is its own
+    # user/assistant turn rather than being bundled into one user message
+    # (which chat-tuned models tend to see through).
+    messages: Optional[List[Dict[str, str]]] = None
 
 
-_GSM8K_FEW_SHOT = """Solve each problem by showing your work step by step.
+_GSM8K_SYSTEM = (
+    "You are a careful math tutor. For every problem, show your work "
+    "step by step before giving the final numeric answer."
+)
 
-Problem: Janet's ducks lay 16 eggs per day. She eats three for breakfast and bakes muffins with four. She sells the rest at $2 per egg. How much does she make daily?
-Solution: Janet has 16 eggs per day. She eats 3 and uses 4 for muffins, leaving 16 - 3 - 4 = 9 eggs. She sells these 9 eggs at $2 each, making 9 * 2 = 18 dollars per day. The answer is 18.
+_GSM8K_SHOTS = [
+    (
+        "Janet's ducks lay 16 eggs per day. She eats three for breakfast "
+        "and bakes muffins with four. She sells the rest at $2 per egg. "
+        "How much does she make daily?",
+        "Janet has 16 eggs per day. She eats 3 and uses 4 for muffins, "
+        "leaving 16 - 3 - 4 = 9 eggs. She sells those 9 eggs at $2 each, "
+        "making 9 * 2 = 18 dollars per day. The answer is 18.",
+    ),
+    (
+        "A robe takes 2 bolts of blue fiber and half that much white fiber. "
+        "How many bolts total does it take?",
+        "The robe takes 2 bolts of blue fiber. White fiber is half of that, "
+        "so 2 / 2 = 1 bolt of white fiber. The total is 2 + 1 = 3 bolts. "
+        "The answer is 3.",
+    ),
+]
 
-Problem: A robe takes 2 bolts of blue fiber and half that much white fiber. How many bolts total does it take?
-Solution: The robe takes 2 bolts of blue fiber. White fiber is half of that, so 2 / 2 = 1 bolt of white fiber. The total is 2 + 1 = 3 bolts. The answer is 3.
 
-Problem: {question}
-Solution:"""
+def _gsm8k_messages(question: str) -> List[Dict[str, str]]:
+    msgs: List[Dict[str, str]] = [{"role": "system", "content": _GSM8K_SYSTEM}]
+    for q, a in _GSM8K_SHOTS:
+        msgs.append({"role": "user", "content": q})
+        msgs.append({"role": "assistant", "content": a})
+    msgs.append({"role": "user", "content": question})
+    return msgs
 
 
 def _format_gsm8k(question: str) -> str:
-    # Few-shot CoT. Without exemplars, LLaDA-Instruct outputs a one-line
-    # bottom-line answer and ends the turn -- giving us only 1 boundary
-    # per prompt and rendering the scheduler invisible. With 2 worked
-    # examples the model continues the pattern and produces multi-step
-    # reasoning (~100-200 tokens), exercising the scheduler at 6-12
-    # boundaries per prompt.
-    return _GSM8K_FEW_SHOT.format(question=question)
+    # Plaintext fallback when the runner cannot apply a chat template.
+    # The real prompting goes through Prompt.messages.
+    rendered = f"{_GSM8K_SYSTEM}\n\n"
+    for q, a in _GSM8K_SHOTS:
+        rendered += f"Problem: {q}\nSolution: {a}\n\n"
+    rendered += f"Problem: {question}\nSolution:"
+    return rendered
 
 
 def _format_math(problem: str) -> str:
@@ -49,37 +75,57 @@ def _format_math(problem: str) -> str:
     )
 
 
-_MBPP_FEW_SHOT = '''You will be given a Python programming problem and a test it must pass. Briefly explain your approach, then write the implementation.
+_MBPP_SYSTEM = (
+    "You are a Python coding assistant. For each problem, briefly explain "
+    "your approach, then provide a complete implementation that passes the "
+    "given test."
+)
 
-Problem: Write a function to find the shared elements from the given two lists.
-Test: assert similar_elements((3, 4, 5, 6),(5, 7, 4, 10)) == (4, 5)
-Approach: Convert both inputs to sets and intersect, then return the result as a tuple.
-Implementation:
-def similar_elements(a, b):
-    return tuple(set(a) & set(b))
+_MBPP_SHOTS = [
+    (
+        "Write a function to find the shared elements from the given two lists.\n"
+        "Test: assert similar_elements((3, 4, 5, 6),(5, 7, 4, 10)) == (4, 5)",
+        "Approach: Convert both inputs to sets and take their intersection, "
+        "then return as a tuple.\n\n"
+        "```python\n"
+        "def similar_elements(a, b):\n"
+        "    return tuple(set(a) & set(b))\n"
+        "```",
+    ),
+    (
+        "Write a function to identify non-prime numbers.\n"
+        "Test: assert is_not_prime(2) == False",
+        "Approach: Numbers less than 2 are not prime. Otherwise, check "
+        "divisibility from 2 up to sqrt(n).\n\n"
+        "```python\n"
+        "import math\n"
+        "def is_not_prime(n):\n"
+        "    if n < 2:\n"
+        "        return True\n"
+        "    for i in range(2, int(math.sqrt(n)) + 1):\n"
+        "        if n % i == 0:\n"
+        "            return True\n"
+        "    return False\n"
+        "```",
+    ),
+]
 
-Problem: Write a function to identify non-prime numbers.
-Test: assert is_not_prime(2) == False
-Approach: Numbers less than 2 are not prime. Otherwise, check divisibility from 2 to sqrt(n).
-Implementation:
-import math
-def is_not_prime(n):
-    if n < 2:
-        return True
-    for i in range(2, int(math.sqrt(n)) + 1):
-        if n % i == 0:
-            return True
-    return False
 
-Problem: {prompt}
-Test: {test}
-Approach:'''
+def _mbpp_messages(prompt: str, test: str) -> List[Dict[str, str]]:
+    msgs: List[Dict[str, str]] = [{"role": "system", "content": _MBPP_SYSTEM}]
+    for q, a in _MBPP_SHOTS:
+        msgs.append({"role": "user", "content": q})
+        msgs.append({"role": "assistant", "content": a})
+    msgs.append({"role": "user", "content": f"{prompt}\nTest: {test}"})
+    return msgs
 
 
 def _format_mbpp(prompt: str, test: str) -> str:
-    # Few-shot exemplars so LLaDA continues the "Approach: ... Implementation: ..."
-    # pattern instead of emitting a 1-line stub and ending the turn.
-    return _MBPP_FEW_SHOT.format(prompt=prompt, test=test)
+    rendered = f"{_MBPP_SYSTEM}\n\n"
+    for q, a in _MBPP_SHOTS:
+        rendered += f"{q}\n{a}\n\n"
+    rendered += f"{prompt}\nTest: {test}"
+    return rendered
 
 
 def _format_humaneval(prompt: str) -> str:
@@ -97,7 +143,13 @@ def iter_prompts(benchmark: str, split: str = "train", limit: Optional[int] = No
         for i, ex in enumerate(ds):
             if limit is not None and i >= limit:
                 break
-            yield Prompt(prompt_id=i, benchmark="gsm8k", text=_format_gsm8k(ex["question"]), reference=ex.get("answer"))
+            yield Prompt(
+                prompt_id=i,
+                benchmark="gsm8k",
+                text=_format_gsm8k(ex["question"]),
+                reference=ex.get("answer"),
+                messages=_gsm8k_messages(ex["question"]),
+            )
     elif bm == "math":
         ds = load_dataset("hendrycks/competition_math", split=split)
         for i, ex in enumerate(ds):
@@ -115,6 +167,7 @@ def iter_prompts(benchmark: str, split: str = "train", limit: Optional[int] = No
                 benchmark="mbpp",
                 text=_format_mbpp(ex["text"], test),
                 reference=ex.get("code"),
+                messages=_mbpp_messages(ex["text"], test),
             )
     elif bm == "humaneval":
         ds = load_dataset("openai_humaneval", split="test")

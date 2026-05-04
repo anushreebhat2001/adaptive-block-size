@@ -164,7 +164,10 @@ def main() -> None:
         if prompt.prompt_id < args.prompt_offset:
             continue
 
-        prompt_ids = runner.encode_prompt(prompt.text)
+        if prompt.messages is not None:
+            prompt_ids = runner.encode_messages(prompt.messages)
+        else:
+            prompt_ids = runner.encode_prompt(prompt.text)
 
         # Per-candidate rollouts.
         per_b_records: Dict[int, List[StepRecord]] = {}

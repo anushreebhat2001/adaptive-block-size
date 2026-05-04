@@ -70,6 +70,24 @@ class DiffusionRunner:
         ids = self.tokenizer(text, return_tensors="pt").input_ids.to(self.device)
         return ids[0]
 
+    def encode_messages(self, messages) -> torch.Tensor:
+        """Encode a multi-turn conversation history.
+
+        Each item in ``messages`` is a {"role", "content"} dict. The chat
+        template wraps each turn separately, so few-shot demonstrations
+        appear as real prior conversation turns rather than being bundled
+        into one user message (which chat-tuned models read through).
+        """
+        try:
+            text = self.tokenizer.apply_chat_template(
+                messages, add_generation_prompt=True, tokenize=False
+            )
+        except Exception:
+            # Render to a flat string as a last resort.
+            text = "\n\n".join(f"{m['role']}: {m['content']}" for m in messages)
+        ids = self.tokenizer(text, return_tensors="pt").input_ids.to(self.device)
+        return ids[0]
+
     def rollout(
         self,
         prompt_ids: torch.Tensor,

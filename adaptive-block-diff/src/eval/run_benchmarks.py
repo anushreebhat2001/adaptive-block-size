@@ -122,7 +122,10 @@ def main() -> None:
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
 
     for i, prompt in enumerate(iter_prompts(args.benchmark, split=args.split, limit=args.n_prompts)):
-        prompt_ids = runner.encode_prompt(prompt.text)
+        if prompt.messages is not None:
+            prompt_ids = runner.encode_messages(prompt.messages)
+        else:
+            prompt_ids = runner.encode_prompt(prompt.text)
         torch.cuda.synchronize() if args.device == "cuda" else None
         t0 = time.time()
         try:

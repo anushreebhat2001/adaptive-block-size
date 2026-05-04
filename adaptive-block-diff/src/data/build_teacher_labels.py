@@ -167,7 +167,10 @@ def main() -> None:
             max_length=args.max_new_tokens,
             default_block_size=args.default_block_size,
         )
-        prompt_ids = runner.encode_prompt(prompt.text)
+        if prompt.messages is not None:
+            prompt_ids = runner.encode_messages(prompt.messages)
+        else:
+            prompt_ids = runner.encode_prompt(prompt.text)
         try:
             _, records = runner.rollout(
                 prompt_ids=prompt_ids,
