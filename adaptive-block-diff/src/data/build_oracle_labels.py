@@ -65,6 +65,19 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--max_new_tokens", type=int, default=256)
     p.add_argument("--default_block_size", type=int, default=16)
     p.add_argument("--n_denoise_steps", type=int, default=32)
+    p.add_argument(
+        "--min_new_tokens",
+        type=int,
+        default=0,
+        help="Mask EOS-like tokens until this many tokens have been generated.",
+    )
+    p.add_argument(
+        "--model_id",
+        default=None,
+        help="Override HF model id. Default uses the runner's built-in id "
+             "(LLaDA-Instruct / Dream-Instruct). Pass GSAI-ML/LLaDA-8B for "
+             "the base model when chat-tuning bails out too early.",
+    )
     p.add_argument("--lam", type=float, default=0.05, help="length-efficiency penalty lambda")
     p.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     p.add_argument("--dtype", default="bf16", choices=["bf16", "fp16", "fp32"])
@@ -126,7 +139,9 @@ def main() -> None:
     _install_usr1_handler()
 
     dtype = {"bf16": torch.bfloat16, "fp16": torch.float16, "fp32": torch.float32}[args.dtype]
-    runner: DiffusionRunner = build_runner(args.model, device=args.device, dtype=dtype)
+    runner: DiffusionRunner = build_runner(
+        args.model, device=args.device, dtype=dtype, model_id=args.model_id
+    )
     runner.load()
     print(f"[oracle] loaded {args.model}; hidden_dim={runner.hidden_dim}", flush=True)
 
@@ -164,7 +179,7 @@ def main() -> None:
         if prompt.prompt_id < args.prompt_offset:
             continue
 
-        if prompt.messages is not None:
+        if prompt.messages is not None and runner.has_chat_template():
             prompt_ids = runner.encode_messages(prompt.messages)
         else:
             prompt_ids = runner.encode_prompt(prompt.text)
@@ -180,6 +195,7 @@ def main() -> None:
                     max_new_tokens=args.max_new_tokens,
                     n_denoise_steps=args.n_denoise_steps,
                     next_window=8,
+                    min_new_tokens=args.min_new_tokens,
                 )
                 per_b_records[B] = recs
             except Exception as e:

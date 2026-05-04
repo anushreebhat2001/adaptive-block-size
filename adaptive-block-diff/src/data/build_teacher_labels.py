@@ -86,6 +86,19 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--max_new_tokens", type=int, default=256)
     p.add_argument("--default_block_size", type=int, default=16)
     p.add_argument("--n_denoise_steps", type=int, default=32)
+    p.add_argument(
+        "--min_new_tokens",
+        type=int,
+        default=0,
+        help="Mask EOS-like tokens until this many tokens have been generated. "
+             "Needed for chat-tuned models that emit <|eot_id|> after one "
+             "block; without it we get only ~1 boundary per prompt.",
+    )
+    p.add_argument(
+        "--model_id",
+        default=None,
+        help="Override HF model id (e.g. GSAI-ML/LLaDA-8B for base instead of Instruct).",
+    )
     p.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     p.add_argument("--dtype", default="bf16", choices=["bf16", "fp16", "fp32"])
     p.add_argument("--threshold", type=float, default=0.9, help="AdaBlock confidence threshold")
@@ -127,7 +140,9 @@ def main() -> None:
     _install_usr1_handler()
 
     dtype = {"bf16": torch.bfloat16, "fp16": torch.float16, "fp32": torch.float32}[args.dtype]
-    runner: DiffusionRunner = build_runner(args.model, device=args.device, dtype=dtype)
+    runner: DiffusionRunner = build_runner(
+        args.model, device=args.device, dtype=dtype, model_id=args.model_id
+    )
     runner.load()
     print(f"[teacher] loaded {args.model}; hidden_dim={runner.hidden_dim}", flush=True)
 
@@ -167,9 +182,11 @@ def main() -> None:
             max_length=args.max_new_tokens,
             default_block_size=args.default_block_size,
         )
-        if prompt.messages is not None:
+        if prompt.messages is not None and runner.has_chat_template():
             prompt_ids = runner.encode_messages(prompt.messages)
         else:
+            # Base models (no chat template) get the plaintext few-shot
+            # rendering from prompt.text.
             prompt_ids = runner.encode_prompt(prompt.text)
         try:
             _, records = runner.rollout(
@@ -178,6 +195,7 @@ def main() -> None:
                 max_new_tokens=args.max_new_tokens,
                 n_denoise_steps=args.n_denoise_steps,
                 next_window=8,
+                min_new_tokens=args.min_new_tokens,
             )
         except Exception as e:
             print(f"[teacher] prompt {prompt.prompt_id} failed: {e}", flush=True)

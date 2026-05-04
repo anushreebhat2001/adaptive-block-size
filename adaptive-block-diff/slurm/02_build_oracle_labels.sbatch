@@ -15,31 +15,33 @@
 source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
 PAIRS=(
-  "llada gsm8k"
-  "llada math"
-  "llada mbpp"
-  "llada owt"
-  "dream gsm8k"
-  "dream math"
-  "dream mbpp"
-  "dream owt"
+  "llada GSAI-ML/LLaDA-8B gsm8k"
+  "llada GSAI-ML/LLaDA-8B math"
+  "llada GSAI-ML/LLaDA-8B mbpp"
+  "llada GSAI-ML/LLaDA-8B owt"
+  "dream Dream-org/Dream-v0-Instruct-7B gsm8k"
+  "dream Dream-org/Dream-v0-Instruct-7B math"
+  "dream Dream-org/Dream-v0-Instruct-7B mbpp"
+  "dream Dream-org/Dream-v0-Instruct-7B owt"
 )
 
-IFS=' ' read -r MODEL BENCHMARK <<< "${PAIRS[$SLURM_ARRAY_TASK_ID]}"
+IFS=' ' read -r MODEL MODEL_ID BENCHMARK <<< "${PAIRS[$SLURM_ARRAY_TASK_ID]}"
 
 # Oracle is K-rollout (K=4): ~4x cost of teacher. Reduce n_prompts to keep
 # the per-job runtime under 8h and rely on requeue if it overruns.
 run_in_singularity "
   python -u -m src.data.build_oracle_labels \
     --model ${MODEL} \
+    --model_id ${MODEL_ID} \
     --benchmark ${BENCHMARK} \
     --split train \
-    --n_prompts 3500 \
+    --n_prompts 1500 \
     --out_dir ${EAI_LABEL_DIR}/oracle \
     --shard_size 512 \
-    --max_new_tokens 256 \
+    --max_new_tokens 384 \
     --default_block_size 16 \
     --n_denoise_steps 32 \
+    --min_new_tokens 128 \
     --lam 0.05 \
     --dtype bf16
 "

@@ -45,6 +45,7 @@ def scheduled_rollout(
     next_window: int = 8,
     temperature: float = 0.0,
     initial_block_size: int = 16,
+    min_new_tokens: int = 0,
 ) -> Tuple[torch.Tensor, List[StepRecord], List[int]]:
     """Decode while letting `scheduler` pick the next block size at each
     boundary.
@@ -59,6 +60,7 @@ def scheduled_rollout(
     device = runner.device
     mask_id = runner.mask_token_id
     eos_id = runner.eos_token_id
+    eos_ids = getattr(runner, "eos_token_ids", set()) or {eos_id}
 
     seq = prompt_ids.unsqueeze(0).clone()
     records: List[StepRecord] = []
@@ -80,9 +82,14 @@ def scheduled_rollout(
         seq = torch.cat([seq, mask_block], dim=1)
         block_slice = slice(prefix_len, prefix_len + block_len)
 
+        force_no_eos = (produced + block_len) <= min_new_tokens
+
         for _step in range(n_denoise_steps):
             logits, hidden = forward_fn(seq)
-            block_logits = logits[0, block_slice]
+            block_logits = logits[0, block_slice].clone()
+            if force_no_eos and eos_ids:
+                for tid in eos_ids:
+                    block_logits[:, tid] = float("-inf")
             still_masked = (seq[0, block_slice] == mask_id)
             if still_masked.sum().item() == 0:
                 break
@@ -123,7 +130,11 @@ def scheduled_rollout(
         records.append(rec)
         block_sizes.append(block_len)
 
-        if (block_tokens_final == eos_id).any():
+        # Stop only once we're past the min-length window AND the block is
+        # dominated by EOS-like tokens. A single inline EOS doesn't end gen.
+        past_min_len = (produced + block_len) >= min_new_tokens
+        eos_count = sum(int((block_tokens_final == tid).sum().item()) for tid in eos_ids)
+        if past_min_len and eos_count > block_len // 2:
             break
 
         produced += block_len

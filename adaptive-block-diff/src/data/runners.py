@@ -22,11 +22,39 @@ to be preserved, which this sampler does.
 from __future__ import annotations
 
 import dataclasses
-from typing import Callable, List, Optional, Tuple
+from typing import Callable, List, Optional, Set, Tuple
 
 import torch
 import torch.nn.functional as F
 from transformers import AutoModel, AutoModelForCausalLM, AutoTokenizer
+
+
+def _collect_eos_token_ids(tokenizer) -> Set[int]:
+    """All token ids that should be treated as turn/sequence terminators.
+
+    Llama-3 family emits both ``<|eot_id|>`` (turn end) and ``<|end_of_text|>``;
+    Qwen family uses ``<|im_end|>`` and ``<|endoftext|>``. We mask all of them
+    when forcing ``min_new_tokens``, otherwise the model just substitutes the
+    other terminator and we still get one-block generations.
+    """
+    ids: Set[int] = set()
+    if getattr(tokenizer, "eos_token_id", None) is not None:
+        ids.add(int(tokenizer.eos_token_id))
+    candidates = (
+        "<|eot_id|>",
+        "<|end_of_text|>",
+        "<|endoftext|>",
+        "<|im_end|>",
+    )
+    unk = getattr(tokenizer, "unk_token_id", None)
+    for tok in candidates:
+        try:
+            tid = tokenizer.convert_tokens_to_ids(tok)
+        except Exception:
+            continue
+        if isinstance(tid, int) and tid >= 0 and tid != unk:
+            ids.add(tid)
+    return ids
 
 
 @dataclasses.dataclass
@@ -54,18 +82,22 @@ class DiffusionRunner:
         self.dtype = dtype
         self.tokenizer = None
         self.model = None
+        self.eos_token_ids: Set[int] = set()
 
     def load(self) -> None:
         raise NotImplementedError
 
     def encode_prompt(self, prompt: str) -> torch.Tensor:
-        msg = [{"role": "user", "content": prompt}]
-        try:
+        # If the tokenizer has a chat template (Instruct models), wrap as a
+        # user message so the model sees a proper turn. Base models have no
+        # template -- pass the prompt through verbatim so the few-shot
+        # plaintext format works as raw continuation.
+        if getattr(self.tokenizer, "chat_template", None) is not None:
+            msg = [{"role": "user", "content": prompt}]
             text = self.tokenizer.apply_chat_template(
                 msg, add_generation_prompt=True, tokenize=False
             )
-        except Exception:
-            # Tokenizer ships without a chat template; fall back to raw text.
+        else:
             text = prompt
         ids = self.tokenizer(text, return_tensors="pt").input_ids.to(self.device)
         return ids[0]
@@ -88,6 +120,12 @@ class DiffusionRunner:
         ids = self.tokenizer(text, return_tensors="pt").input_ids.to(self.device)
         return ids[0]
 
+    def has_chat_template(self) -> bool:
+        """True if the tokenizer ships a chat template (Instruct models do;
+        Base models don't). Callers use this to decide between the multi-turn
+        chat path and the plaintext few-shot path."""
+        return getattr(self.tokenizer, "chat_template", None) is not None
+
     def rollout(
         self,
         prompt_ids: torch.Tensor,
@@ -96,9 +134,17 @@ class DiffusionRunner:
         n_denoise_steps: int = 32,
         next_window: int = 8,
         temperature: float = 0.0,
+        min_new_tokens: int = 0,
     ) -> Tuple[torch.Tensor, List[StepRecord]]:
         """Run a semi-AR rollout. Returns the generated token ids and a list
-        of per-block records suitable for feature extraction."""
+        of per-block records suitable for feature extraction.
+
+        ``min_new_tokens``: until this many tokens have been committed past
+        the prompt, EOS-like tokens are masked out of the logits so the model
+        cannot terminate early. Needed because LLaDA-Instruct otherwise
+        emits ``<|eot_id|>`` after one block on most short-answer benchmarks,
+        leaving no boundaries for the scheduler to act on.
+        """
         raise NotImplementedError
 
 
@@ -117,6 +163,7 @@ def _semi_ar_sample(
     next_window: int,
     temperature: float,
     forward_fn: Callable[[torch.Tensor], Tuple[torch.Tensor, torch.Tensor]],
+    min_new_tokens: int = 0,
 ) -> Tuple[torch.Tensor, List[StepRecord]]:
     """Implements the LLaDA-style block-by-block masked diffusion sampler.
 
@@ -125,6 +172,8 @@ def _semi_ar_sample(
     device = runner.device
     mask_id = runner.mask_token_id
     eos_id = runner.eos_token_id
+    eos_ids: Set[int] = getattr(runner, "eos_token_ids", set()) or {eos_id}
+    prompt_len = prompt_ids.shape[0]
 
     seq = prompt_ids.unsqueeze(0).clone()                # [1, prompt_len]
     records: List[StepRecord] = []
@@ -141,10 +190,18 @@ def _semi_ar_sample(
         seq = torch.cat([seq, mask_block], dim=1)
         block_slice = slice(prefix_len, prefix_len + block_len)
 
+        # If this whole block sits within the min_new_tokens window, EOS-like
+        # tokens are forbidden inside it so the model can't terminate early.
+        block_end_offset = (prefix_len + block_len) - prompt_len
+        force_no_eos = block_end_offset <= min_new_tokens
+
         # Iterative low-confidence remasking within this block.
         for _step in range(n_denoise_steps):
             logits, hidden = forward_fn(seq)
-            block_logits = logits[0, block_slice]            # [block_len, V]
+            block_logits = logits[0, block_slice].clone()    # [block_len, V]
+            if force_no_eos and eos_ids:
+                for tid in eos_ids:
+                    block_logits[:, tid] = float("-inf")
             still_masked = (seq[0, block_slice] == mask_id)
             if still_masked.sum().item() == 0:
                 break
@@ -244,6 +301,7 @@ class LLaDARunner(DiffusionRunner):
         # LLaDA reference uses 126336 as mask id. Fall back to tokenizer if added.
         self.mask_token_id = getattr(self.model.config, "mask_token_id", 126336)
         self.eos_token_id = self.tokenizer.eos_token_id or 0
+        self.eos_token_ids = _collect_eos_token_ids(self.tokenizer)
 
     def _forward(self, input_ids: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         with torch.no_grad():
@@ -260,6 +318,7 @@ class LLaDARunner(DiffusionRunner):
         n_denoise_steps: int = 32,
         next_window: int = 8,
         temperature: float = 0.0,
+        min_new_tokens: int = 0,
     ) -> Tuple[torch.Tensor, List[StepRecord]]:
         return _semi_ar_sample(
             runner=self,
@@ -270,6 +329,7 @@ class LLaDARunner(DiffusionRunner):
             next_window=next_window,
             temperature=temperature,
             forward_fn=self._forward,
+            min_new_tokens=min_new_tokens,
         )
 
 
@@ -300,6 +360,7 @@ class DreamRunner(DiffusionRunner):
         # Dream uses Qwen tokenizer; mask is registered as a special token.
         self.mask_token_id = getattr(self.model.config, "mask_token_id", 151666)
         self.eos_token_id = self.tokenizer.eos_token_id or 0
+        self.eos_token_ids = _collect_eos_token_ids(self.tokenizer)
 
     def _forward(self, input_ids: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         with torch.no_grad():
@@ -316,6 +377,7 @@ class DreamRunner(DiffusionRunner):
         n_denoise_steps: int = 32,
         next_window: int = 8,
         temperature: float = 0.0,
+        min_new_tokens: int = 0,
     ) -> Tuple[torch.Tensor, List[StepRecord]]:
         return _semi_ar_sample(
             runner=self,
@@ -326,6 +388,7 @@ class DreamRunner(DiffusionRunner):
             next_window=next_window,
             temperature=temperature,
             forward_fn=self._forward,
+            min_new_tokens=min_new_tokens,
         )
 
 
@@ -334,9 +397,18 @@ class DreamRunner(DiffusionRunner):
 # --------------------------------------------------------------------------- #
 
 
-def build_runner(model: str, device: str = "cuda", dtype: torch.dtype = torch.bfloat16) -> DiffusionRunner:
+def build_runner(
+    model: str,
+    device: str = "cuda",
+    dtype: torch.dtype = torch.bfloat16,
+    model_id: Optional[str] = None,
+) -> DiffusionRunner:
     if model == "llada":
+        if model_id is not None:
+            return LLaDARunner(model_id=model_id, device=device, dtype=dtype)
         return LLaDARunner(device=device, dtype=dtype)
     if model == "dream":
+        if model_id is not None:
+            return DreamRunner(model_id=model_id, device=device, dtype=dtype)
         return DreamRunner(device=device, dtype=dtype)
     raise ValueError(f"unknown model: {model}")
