@@ -30,6 +30,10 @@ run_in_singularity() {
     /bin/bash -c "
       source /ext3/miniconda3/bin/activate ${EAI_CONDA_ENV}
       export HF_HOME=${EAI_HF_HOME}
+      # If you hit \"Stale file handle\" / FileLock errors on parallel
+      # array jobs, set HF_DATASETS_OFFLINE=1 in your sbatch (the cache
+      # must already be populated). Don't set it globally here -- it
+      # would break first-time dataset downloads.
       export PYTHONPATH=${EAI_REPO}:\${PYTHONPATH:-}
       cd ${EAI_REPO}
       ${cmd}
