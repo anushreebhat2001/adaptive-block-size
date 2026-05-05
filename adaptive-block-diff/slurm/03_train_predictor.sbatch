@@ -23,10 +23,12 @@ CONFIGS=(
 
 IFS=' ' read -r MODEL LABEL_SOURCE HIDDEN_DIM <<< "${CONFIGS[$SLURM_ARRAY_TASK_ID]}"
 
+mkdir -p "${EAI_CKPT_DIR}/base"
+
 run_in_singularity "
   python -u -m src.predictor.train \
-    --shard_glob '${EAI_LABEL_DIR}/${LABEL_SOURCE}/${MODEL}/*/*.pt' \
-    --out_ckpt   ${EAI_CKPT_DIR}/${MODEL}_${LABEL_SOURCE}.pt \
+    --shard_glob '${EAI_LABEL_DIR}/base/${LABEL_SOURCE}/${MODEL}/*/*.pt' \
+    --out_ckpt   ${EAI_CKPT_DIR}/base/${MODEL}_${LABEL_SOURCE}.pt \
     --label_source ${LABEL_SOURCE} \
     --model ${MODEL} \
     --hidden_dim ${HIDDEN_DIM} \

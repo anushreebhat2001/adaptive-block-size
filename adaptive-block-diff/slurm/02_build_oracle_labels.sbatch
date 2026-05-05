@@ -14,8 +14,13 @@
 
 source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
-# LLaDA-Instruct only. Dream pairs dropped (oracle labels collapsed to 2
-# classes on the Dream smoke).
+# LLaDA-Base only. Switched from Instruct after Instruct's full pipeline
+# showed identical accuracy across all schedulers (no deployment win).
+# Base smoke oracle labels: 4/4 classes, H=1.257 (vs Instruct 1.143),
+# max class 39.6%. Dream pairs excluded as before.
+#
+# Output goes to ${EAI_LABEL_DIR}/base/oracle/ so existing Instruct
+# labels at ${EAI_LABEL_DIR}/oracle/ remain available for paper baseline.
 PAIRS=(
   "llada gsm8k"
   "llada math"
@@ -36,15 +41,16 @@ IFS=' ' read -r MODEL BENCHMARK <<< "${PAIRS[$SLURM_ARRAY_TASK_ID]}"
 # Slight cost vs lam=0.05 on label balance (entropy 1.118 vs 1.130).
 run_in_singularity "
   python -u -m src.data.build_oracle_labels \
-    --model ${MODEL} \
+    --model ${MODEL} --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark ${BENCHMARK} \
     --split train \
     --n_prompts 1500 \
-    --out_dir ${EAI_LABEL_DIR}/oracle \
+    --out_dir ${EAI_LABEL_DIR}/base/oracle \
     --shard_size 512 \
     --max_new_tokens 384 \
     --default_block_size 16 \
     --n_denoise_steps 32 \
+    --min_new_tokens 128 \
     --lam 0.01 \
     --dtype bf16
 "

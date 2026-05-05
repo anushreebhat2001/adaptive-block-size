@@ -23,13 +23,15 @@
 
 source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
+mkdir -p "${EAI_RESULT_DIR}/base"
+
 run_in_singularity "
   python -u -m scripts.lambda_sweep \
-    --shard_glob '${EAI_LABEL_DIR}/oracle/llada/*/*.pt' \
+    --shard_glob '${EAI_LABEL_DIR}/base/oracle/llada/*/*.pt' \
     --hidden_dim 4096 \
     --lambdas 0.0,0.005,0.01,0.015,0.02,0.03,0.04,0.05,0.075,0.1,0.2,0.5,1.0 \
     --epochs 10 \
     --batch_size 256 \
     --val_frac 0.1 \
-    --out ${EAI_RESULT_DIR}/lambda_sweep_llada_oracle.json
+    --out ${EAI_RESULT_DIR}/base/lambda_sweep_llada_oracle.json
 "

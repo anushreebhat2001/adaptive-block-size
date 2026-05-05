@@ -16,10 +16,14 @@
 
 source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
-# LLaDA-Instruct on (gsm8k, math, mbpp, owt). Validated configuration:
-# 4-class oracle labels, gain_over_majority=+0.22 on the smoke. Dream-
-# Instruct is empirically worse (oracle labels collapse to 2 classes),
-# so we don't include Dream pairs.
+# LLaDA-Base on (gsm8k, math, mbpp, owt). Switched from Instruct to Base
+# after the Instruct teacher labels collapsed to 2 classes (B=4, B=32 only;
+# H=0.057). Base smoke recovered all 4 classes (H=1.036) because Base
+# generates real text + delimiters in the peek window. Dream pairs still
+# excluded (Dream-Instruct collapsed to 2 classes on the prior smoke).
+#
+# Output goes to ${EAI_LABEL_DIR}/base/teacher/ so existing Instruct
+# labels at ${EAI_LABEL_DIR}/teacher/ remain available for paper baseline.
 PAIRS=(
   "llada gsm8k"
   "llada math"
@@ -31,14 +35,15 @@ IFS=' ' read -r MODEL BENCHMARK <<< "${PAIRS[$SLURM_ARRAY_TASK_ID]}"
 
 run_in_singularity "
   python -u -m src.data.build_teacher_labels \
-    --model ${MODEL} \
+    --model ${MODEL} --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark ${BENCHMARK} \
     --split train \
     --n_prompts 5000 \
-    --out_dir ${EAI_LABEL_DIR}/teacher \
+    --out_dir ${EAI_LABEL_DIR}/base/teacher \
     --shard_size 512 \
     --max_new_tokens 384 \
     --default_block_size 16 \
     --n_denoise_steps 32 \
+    --min_new_tokens 128 \
     --dtype bf16
 "

@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import signal
 import sys
 import time
@@ -162,7 +163,16 @@ def main() -> None:
         for B in block_sizes:
             block_size_histogram[B] = block_size_histogram.get(B, 0) + 1
 
-        gen_text = runner.tokenizer.decode(generated_ids, skip_special_tokens=True)
+        # Decode keeping specials so we can truncate at the first stop marker.
+        # Base models without chat-template stops keep generating into hallucinated
+        # follow-up problems; without truncation, GSM8K's "last number" extractor
+        # grabs the answer from a continuation problem, not the asked one.
+        raw = runner.tokenizer.decode(generated_ids, skip_special_tokens=False)
+        for _stop in ("<|eot_id|>", "<|endoftext|>", "<|end_of_text|>"):
+            if _stop in raw:
+                raw = raw.split(_stop, 1)[0]
+                break
+        gen_text = re.sub(r"<\|[^|]*\|>", "", raw)
 
         if args.benchmark == "gsm8k":
             ok = scoring.gsm8k_correct(gen_text, prompt.reference)
