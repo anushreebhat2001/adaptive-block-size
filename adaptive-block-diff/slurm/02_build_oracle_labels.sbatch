@@ -30,32 +30,27 @@ PAIRS=(
 
 IFS=' ' read -r MODEL BENCHMARK <<< "${PAIRS[$SLURM_ARRAY_TASK_ID]}"
 
-# Oracle is K-rollout (K=4): ~4x cost of teacher. Rely on requeue
-# (--signal=B:USR1@120) if a benchmark overruns the 12h budget.
+# Oracle is K-rollout (K=4): ~4x cost of teacher. Reduce n_prompts to keep
+# the per-job runtime under 8h and rely on requeue if it overruns.
 #
-# lam=0.05 chosen from the Base lambda sweep on the smoke shards. At this
-# value the four classes hit 29/31/29/10% — the most uniform split in the
-# sweep, with the lowest ECE (0.036). Predictor val_acc on the smoke is
-# noise (val=16 examples), so we picked by class balance + calibration.
-# At full pipeline scale the data volume below should resolve the
-# predictor accuracy.
-#
-# n_prompts 2000 (up from 1500): 33% more oracle boundaries (~128k total
-# across 4 benchmarks at ~16 boundaries/prompt). Predictor on 4096-dim
-# features wants this much data to actually learn structure, not just
-# memorize majority class.
+# lam=0.01 was chosen from the lambda sweep (05_lambda_sweep): best
+# predictor accuracy across the sweep range.
+#   gain_over_majority = +0.201  (vs +0.164 at lam=0.05)
+#   ECE                = 0.013   (vs 0.020 at lam=0.05; 1.6x better calibrated)
+#   val_acc            = 0.761   (vs 0.736 at lam=0.05)
+# Slight cost vs lam=0.05 on label balance (entropy 1.118 vs 1.130).
 run_in_singularity "
   python -u -m src.data.build_oracle_labels \
     --model ${MODEL} --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark ${BENCHMARK} \
     --split train \
-    --n_prompts 2000 \
+    --n_prompts 1500 \
     --out_dir ${EAI_LABEL_DIR}/base/oracle \
     --shard_size 512 \
     --max_new_tokens 384 \
     --default_block_size 16 \
     --n_denoise_steps 32 \
     --min_new_tokens 128 \
-    --lam 0.05 \
+    --lam 0.01 \
     --dtype bf16
 "

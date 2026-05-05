@@ -33,16 +33,12 @@ PAIRS=(
 
 IFS=' ' read -r MODEL BENCHMARK <<< "${PAIRS[$SLURM_ARRAY_TASK_ID]}"
 
-# n_prompts 2000 matches 02_build_oracle_labels.sbatch so the teacher-
-# vs-oracle ablation is apples-to-apples on data volume. Without this,
-# any teacher-vs-oracle predictor accuracy gap could be partly explained
-# by data quantity rather than label quality.
 run_in_singularity "
   python -u -m src.data.build_teacher_labels \
     --model ${MODEL} --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark ${BENCHMARK} \
     --split train \
-    --n_prompts 2000 \
+    --n_prompts 5000 \
     --out_dir ${EAI_LABEL_DIR}/base/teacher \
     --shard_size 512 \
     --max_new_tokens 384 \

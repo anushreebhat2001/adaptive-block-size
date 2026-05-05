@@ -32,7 +32,7 @@ run_in_singularity "
     --label_source ${LABEL_SOURCE} \
     --model ${MODEL} \
     --hidden_dim ${HIDDEN_DIM} \
-    --epochs 32 \
+    --epochs 16 \
     --batch_size 512 \
     --lr 3e-4 \
     --weight_decay 1e-2 \
@@ -40,8 +40,3 @@ run_in_singularity "
     --class_weight_mode none \
     --label_smoothing 0.1
 "
-# epochs 32 (up from 16). train.py keeps the best-val-loss checkpoint so
-# late-epoch overfit doesn't poison the saved ckpt; we just get more
-# chances for the optimizer to find a good basin. 4096-dim input + 256
-# proj/MLP at this many epochs takes ~5 min/run on A100, so the cost is
-# trivial.
