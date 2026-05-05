@@ -16,6 +16,7 @@ load either source.
 from __future__ import annotations
 
 import argparse
+import glob
 import os
 import signal
 import sys
@@ -105,6 +106,11 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--split", default="train")
     p.add_argument("--n_prompts", type=int, default=12500)
     p.add_argument("--prompt_offset", type=int, default=0)
+    p.add_argument(
+        "--no_resume",
+        action="store_true",
+        help="Ignore existing shards in --out_dir and start over from prompt 0.",
+    )
     p.add_argument("--out_dir", required=True)
     p.add_argument("--shard_size", type=int, default=512)
     p.add_argument("--max_new_tokens", type=int, default=256)
@@ -190,14 +196,38 @@ def main() -> None:
     }
 
     buf = {"scalars": [], "hidden_pool": [], "labels": [], "prompt_ids": []}
-    shard_idx = 0
+
+    # Auto-resume: if shards already exist in out_dir, continue numbering and
+    # skip prompts that are already covered. Disable with --no_resume.
+    existing = sorted(glob.glob(os.path.join(out_dir, f"{args.shard_prefix}_*.pt")))
+    if existing and not args.no_resume:
+        last_prompt_id = -1
+        for p in existing:
+            try:
+                d = torch.load(p, map_location="cpu")
+                if "prompt_ids" in d and d["prompt_ids"].numel() > 0:
+                    last_prompt_id = max(last_prompt_id, int(d["prompt_ids"].max()))
+            except Exception as e:
+                print(f"[teacher] warning: could not read {p}: {e}", flush=True)
+        shard_idx = len(existing)
+        effective_offset = max(args.prompt_offset, last_prompt_id + 1)
+        print(
+            f"[teacher] resume: {len(existing)} shards on disk, "
+            f"last prompt_id={last_prompt_id}, continuing from prompt "
+            f"{effective_offset} with shard_idx={shard_idx}",
+            flush=True,
+        )
+    else:
+        shard_idx = 0
+        effective_offset = args.prompt_offset
+
     n_done = 0
     n_boundaries_seen = 0
     t0 = time.time()
 
     prompts = iter_prompts(args.benchmark, split=args.split, limit=args.prompt_offset + args.n_prompts)
     for prompt in prompts:
-        if prompt.prompt_id < args.prompt_offset:
+        if prompt.prompt_id < effective_offset:
             continue
 
         builder = StateBuilder(

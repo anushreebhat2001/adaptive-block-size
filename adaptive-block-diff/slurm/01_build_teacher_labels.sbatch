@@ -3,7 +3,7 @@
 #SBATCH --account=ece_gy9483-2026sp
 #SBATCH --partition=c12m85-a100-1
 #SBATCH --gres=gpu:1
-#SBATCH --time=08:00:00
+#SBATCH --time=24:00:00
 #SBATCH --requeue
 #SBATCH --signal=B:USR1@120
 #SBATCH --output=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.out
