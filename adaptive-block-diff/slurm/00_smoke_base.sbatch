@@ -3,7 +3,7 @@
 #SBATCH --account=ece_gy9483-2026sp
 #SBATCH --partition=c12m85-a100-1
 #SBATCH --gres=gpu:1
-#SBATCH --time=02:00:00
+#SBATCH --time=00:45:00
 #SBATCH --output=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%j.out
 #SBATCH --error=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%j.err
 
@@ -29,10 +29,10 @@ run_in_singularity "
   python -u -m src.data.build_teacher_labels \
     --model llada --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark gsm8k \
-    --split train --n_prompts 100 \
+    --split train --n_prompts 25 \
     --out_dir ${SMOKE_DIR}/labels \
     --shard_size 1000 \
-    --max_new_tokens 384 \
+    --max_new_tokens 256 \
     --n_denoise_steps 32 \
     --default_block_size 16 \
     --min_new_tokens 128 \
@@ -45,14 +45,15 @@ run_in_singularity "
     --out_ckpt   ${SMOKE_DIR}/ckpt/llada_teacher.pt \
     --label_source teacher --model llada \
     --hidden_dim 4096 \
-    --epochs 5 --batch_size 256 --val_frac 0.2
+    --epochs 5 --batch_size 256 --val_frac 0.2 \
+    --class_weight_mode none --label_smoothing 0.1
 
-  echo '[smoke-base] step 3/3: eval ours-teacher vs adablock on 50 GSM8K prompts'
+  echo '[smoke-base] step 3/3: eval ours-teacher vs adablock on 15 GSM8K prompts'
   python -u -m src.eval.run_benchmarks \
     --model llada --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark gsm8k \
-    --split test --n_prompts 50 \
-    --max_new_tokens 384 --n_denoise_steps 32 \
+    --split test --n_prompts 15 \
+    --max_new_tokens 256 --n_denoise_steps 32 \
     --min_new_tokens 128 \
     --scheduler ours-teacher \
     --predictor ${SMOKE_DIR}/ckpt/llada_teacher.pt \
@@ -63,8 +64,8 @@ run_in_singularity "
   python -u -m src.eval.run_benchmarks \
     --model llada --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark gsm8k \
-    --split test --n_prompts 50 \
-    --max_new_tokens 384 --n_denoise_steps 32 \
+    --split test --n_prompts 15 \
+    --max_new_tokens 256 --n_denoise_steps 32 \
     --min_new_tokens 128 \
     --scheduler adablock \
     --initial_block_size 16 \
@@ -74,7 +75,7 @@ run_in_singularity "
   echo '[smoke-base] done.'
   echo '  Pass criteria:'
   echo '    1. Debug-print decoded blocks show real text (not <|endoftext|> padding)'
-  echo '    2. boundaries-per-prompt >= 6 (buf count after 100 prompts >= 600)'
+  echo '    2. boundaries-per-prompt >= 6 (buf count after 25 prompts >= 150)'
   echo '    3. ours-teacher and adablock block_size_histograms differ visibly'
   echo '    4. Eval tokens_per_second differs between the two schedulers'
 "
