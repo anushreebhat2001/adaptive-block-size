@@ -33,7 +33,7 @@ run_in_singularity "
     --n_denoise_steps 32 \
     --default_block_size 16 \
     --min_new_tokens 128 \
-    --lam 0.01 \
+    --lam 0.05 \
     --dtype bf16
 
   echo '[oracle-smoke-base] step 2/3: train predictor on oracle labels (5 epochs)'
