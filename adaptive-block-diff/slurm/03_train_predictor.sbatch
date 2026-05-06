@@ -8,17 +8,21 @@
 #SBATCH --signal=B:USR1@120
 #SBATCH --output=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.out
 #SBATCH --error=/scratch/%u/Efficient-AI/adaptive-block-diff/slurm/logs/%x_%A_%a.err
-#SBATCH --array=0-1
+#SBATCH --array=0-3
 
-# Array index -> (model, label_source). LLaDA-only.
-# 0: llada teacher
-# 1: llada oracle
+# Array index -> (model, label_source, hidden_dim).
+# 0: llada teacher (LLaDA-Base, hidden 4096)
+# 1: llada oracle  (LLaDA-Base, hidden 4096)
+# 2: dream teacher (Dream-Base, hidden 3584)
+# 3: dream oracle  (Dream-Base, hidden 3584)
 
 source /scratch/$USER/Efficient-AI/adaptive-block-diff/slurm/_common.sh
 
 CONFIGS=(
   "llada teacher 4096"
   "llada oracle  4096"
+  "dream teacher 3584"
+  "dream oracle  3584"
 )
 
 IFS=' ' read -r MODEL LABEL_SOURCE HIDDEN_DIM <<< "${CONFIGS[$SLURM_ARRAY_TASK_ID]}"
