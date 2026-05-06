@@ -44,7 +44,7 @@ run_in_singularity "
     --model ${MODEL} --model_id GSAI-ML/LLaDA-8B-Base \
     --benchmark ${BENCHMARK} \
     --split train \
-    --n_prompts 1500 \
+    --n_prompts 500 \
     --out_dir ${EAI_LABEL_DIR}/base/oracle \
     --shard_size 512 \
     --max_new_tokens 384 \
