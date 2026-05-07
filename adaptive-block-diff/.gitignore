@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtualenv / conda
+.venv/
+venv/
+env/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+*-checkpoint.py
+*-checkpoint.sh
+*-checkpoint.sbatch
+*-checkpoint.txt
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Project-specific scratch artifacts (HPC outputs that shouldn't be checked in)
+# Keep slurm logs out of git -- they grow without bound and have stale state.
+slurm/logs/
+
+# Local experiment dumps the team passes around but doesn't need versioned.
+# Comment these out if you want to commit a comparison snapshot.
+# *_comp.txt
+# gamma_*.txt
+# noweightedclass_*.txt
+# weightedclass_*.txt
+
+# pytest / mypy / ruff caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
