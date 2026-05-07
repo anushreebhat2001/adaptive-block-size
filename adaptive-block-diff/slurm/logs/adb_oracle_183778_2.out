@@ -1,0 +1,54 @@
+[oracle] loaded llada; hidden_dim=4096
+[oracle] resume: 1 shards on disk, last prompt_id=21, continuing from prompt 22 with shard_idx=1
+[oracle] llada/mbpp prompts=10 buf=240 elapsed=1347s
+[oracle] llada/mbpp prompts=20 buf=480 elapsed=2685s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000001.pt (528 examples)
+[oracle] llada/mbpp prompts=30 buf=192 elapsed=4055s
+[oracle] llada/mbpp prompts=40 buf=432 elapsed=5417s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000002.pt (528 examples)
+[oracle] llada/mbpp prompts=50 buf=144 elapsed=6723s
+[oracle] llada/mbpp prompts=60 buf=384 elapsed=8038s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000003.pt (528 examples)
+[oracle] llada/mbpp prompts=70 buf=96 elapsed=9386s
+[oracle] llada/mbpp prompts=80 buf=336 elapsed=10777s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000004.pt (528 examples)
+[oracle] llada/mbpp prompts=90 buf=48 elapsed=12145s
+[oracle] llada/mbpp prompts=100 buf=288 elapsed=13493s
+[oracle] llada/mbpp prompts=110 buf=528 elapsed=14848s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000005.pt (528 examples)
+[oracle] llada/mbpp prompts=120 buf=240 elapsed=16169s
+[oracle] llada/mbpp prompts=130 buf=480 elapsed=17526s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000006.pt (528 examples)
+[oracle] llada/mbpp prompts=140 buf=192 elapsed=18880s
+[oracle] llada/mbpp prompts=150 buf=432 elapsed=20208s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000007.pt (528 examples)
+[oracle] llada/mbpp prompts=160 buf=144 elapsed=21578s
+[oracle] llada/mbpp prompts=170 buf=384 elapsed=22902s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000008.pt (528 examples)
+[oracle] llada/mbpp prompts=180 buf=96 elapsed=24225s
+[oracle] llada/mbpp prompts=190 buf=336 elapsed=25555s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000009.pt (528 examples)
+[oracle] llada/mbpp prompts=200 buf=48 elapsed=26903s
+[oracle] llada/mbpp prompts=210 buf=288 elapsed=28230s
+[oracle] llada/mbpp prompts=220 buf=528 elapsed=29578s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000010.pt (528 examples)
+[oracle] llada/mbpp prompts=230 buf=240 elapsed=30899s
+[oracle] llada/mbpp prompts=240 buf=480 elapsed=32273s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000011.pt (528 examples)
+[oracle] llada/mbpp prompts=250 buf=192 elapsed=33631s
+[oracle] llada/mbpp prompts=260 buf=432 elapsed=34941s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000012.pt (528 examples)
+[oracle] llada/mbpp prompts=270 buf=144 elapsed=36301s
+[oracle] llada/mbpp prompts=280 buf=384 elapsed=37660s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000013.pt (528 examples)
+[oracle] llada/mbpp prompts=290 buf=96 elapsed=38989s
+[oracle] llada/mbpp prompts=300 buf=336 elapsed=40336s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000014.pt (528 examples)
+[oracle] llada/mbpp prompts=310 buf=48 elapsed=41656s
+[oracle] llada/mbpp prompts=320 buf=288 elapsed=43016s
+[oracle] llada/mbpp prompts=330 buf=528 elapsed=44373s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000015.pt (528 examples)
+[oracle] llada/mbpp prompts=340 buf=240 elapsed=45677s
+[oracle] llada/mbpp prompts=350 buf=480 elapsed=46999s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/mbpp/oracle_000016.pt (528 examples)
+[oracle] done. total prompts=352

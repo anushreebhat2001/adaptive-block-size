@@ -1,0 +1,273 @@
+{
+  "model": "llada",
+  "benchmark": "gsm8k",
+  "scheduler": "ours-teacher",
+  "lambda": 0.05,
+  "threshold": 0.9,
+  "n_total": 15,
+  "n_correct": 10,
+  "accuracy": 0.6666666666666666,
+  "tokens_per_second": 16.210854374940133,
+  "total_decode_seconds": 236.87832307815552,
+  "block_size_histogram": {
+    "16": 30,
+    "32": 105
+  },
+  "results": [
+    {
+      "prompt_id": 0,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 16.557337522506714,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 1,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.101303577423096,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 2,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.75392484664917,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 3,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.190983295440674,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 4,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 16.58848762512207,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 5,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.388061046600342,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 6,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.307633876800537,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 7,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.916503190994263,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 8,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 16.563006162643433,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 9,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.824433326721191,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 10,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.810832977294922,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 11,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.833316326141357,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 12,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.869599103927612,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 13,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.79551649093628,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 14,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.377383708953857,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    }
+  ]
+}

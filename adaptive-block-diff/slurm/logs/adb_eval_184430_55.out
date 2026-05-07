@@ -1,0 +1,9 @@
+[eval] dream/mbpp/ours-oracle 25 acc=0.000 toks/s=17.6
+[eval] dream/mbpp/ours-oracle 50 acc=0.000 toks/s=17.7
+[eval] dream/mbpp/ours-oracle 75 acc=0.000 toks/s=17.8
+[eval] dream/mbpp/ours-oracle 100 acc=0.000 toks/s=17.7
+[eval] dream/mbpp/ours-oracle 125 acc=0.000 toks/s=17.7
+[eval] dream/mbpp/ours-oracle 150 acc=0.000 toks/s=17.7
+[eval] dream/mbpp/ours-oracle 175 acc=0.000 toks/s=17.7
+[eval] dream/mbpp/ours-oracle 200 acc=0.000 toks/s=17.7
+[eval] wrote /scratch/ug2084/Efficient-AI/results/base/dream_mbpp_ours-oracle_lam_15.json

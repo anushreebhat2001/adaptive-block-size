@@ -1,0 +1,304 @@
+{
+  "model": "llada",
+  "benchmark": "gsm8k",
+  "scheduler": "adablock",
+  "lambda": 0.05,
+  "threshold": 0.9,
+  "n_total": 15,
+  "n_correct": 9,
+  "accuracy": 0.6,
+  "tokens_per_second": 15.915407509171196,
+  "total_decode_seconds": 241.27563166618347,
+  "block_size_histogram": {
+    "16": 34,
+    "32": 95,
+    "8": 23,
+    "4": 8,
+    "12": 1,
+    "28": 1
+  },
+  "results": [
+    {
+      "prompt_id": 0,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 16.19481658935547,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16,
+        32,
+        32
+      ]
+    },
+    {
+      "prompt_id": 1,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 14.934560060501099,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        16,
+        32,
+        32,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "prompt_id": 2,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 16.465643882751465,
+      "block_sizes": [
+        16,
+        8,
+        8,
+        8,
+        8,
+        16,
+        32,
+        32,
+        32,
+        8,
+        16,
+        32,
+        32,
+        8
+      ]
+    },
+    {
+      "prompt_id": 3,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.57305645942688,
+      "block_sizes": [
+        16,
+        8,
+        16,
+        32,
+        32,
+        4,
+        16,
+        32,
+        32,
+        32,
+        32,
+        4
+      ]
+    },
+    {
+      "prompt_id": 4,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 17.296621322631836,
+      "block_sizes": [
+        16,
+        8,
+        8,
+        8,
+        16,
+        32,
+        32,
+        32,
+        4,
+        32,
+        32,
+        32,
+        4
+      ]
+    },
+    {
+      "prompt_id": 5,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.676599740982056,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        4,
+        32,
+        32,
+        32,
+        12
+      ]
+    },
+    {
+      "prompt_id": 6,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.347402334213257,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 7,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.724632978439331,
+      "block_sizes": [
+        16,
+        32,
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "prompt_id": 8,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 17.017316102981567,
+      "block_sizes": [
+        16,
+        8,
+        16,
+        32,
+        32,
+        32,
+        16,
+        32,
+        32,
+        32,
+        8
+      ]
+    },
+    {
+      "prompt_id": 9,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.862251043319702,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 10,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 16.05797028541565,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        4,
+        32,
+        32,
+        16,
+        28
+      ]
+    },
+    {
+      "prompt_id": 11,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 16.20821714401245,
+      "block_sizes": [
+        16,
+        8,
+        8,
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 12,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 15.929232120513916,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        16
+      ]
+    },
+    {
+      "prompt_id": 13,
+      "correct": false,
+      "n_new_tokens": 256,
+      "decode_seconds": 16.55993962287903,
+      "block_sizes": [
+        16,
+        32,
+        32,
+        16,
+        8,
+        8,
+        8,
+        8,
+        8,
+        16,
+        32,
+        32,
+        32,
+        8
+      ]
+    },
+    {
+      "prompt_id": 14,
+      "correct": true,
+      "n_new_tokens": 256,
+      "decode_seconds": 16.427371978759766,
+      "block_sizes": [
+        16,
+        8,
+        32,
+        32,
+        32,
+        32,
+        4,
+        32,
+        32,
+        8,
+        8,
+        16,
+        4
+      ]
+    }
+  ]
+}

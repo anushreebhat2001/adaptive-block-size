@@ -1,25 +1,0 @@
-Loading checkpoint shards:   0%|                                                                                                    | 0/6 [00:00<?, ?it/s]Loading checkpoint shards:  17%|███████████████▎                                                                            | 1/6 [00:00<00:01,  3.64it/s]Loading checkpoint shards:  33%|██████████████████████████████▋                                                             | 2/6 [00:00<00:00,  4.07it/s]Loading checkpoint shards:  50%|██████████████████████████████████████████████                                              | 3/6 [00:00<00:00,  3.39it/s]Loading checkpoint shards:  67%|█████████████████████████████████████████████████████████████▎                              | 4/6 [00:01<00:00,  3.13it/s]Loading checkpoint shards:  83%|████████████████████████████████████████████████████████████████████████████▋               | 5/6 [00:01<00:00,  3.38it/s]Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  3.73it/s]Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  3.57it/s]
-Traceback (most recent call last):
-  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/runpy.py", line 196, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/runpy.py", line 86, in _run_code
-    exec(code, run_globals)
-  File "/scratch/ab13091/Efficient-AI/adaptive-block-diff/src/eval/run_benchmarks.py", line 228, in <module>
-    main()
-  File "/scratch/ab13091/Efficient-AI/adaptive-block-diff/src/eval/run_benchmarks.py", line 137, in main
-    for i, prompt in enumerate(iter_prompts(args.benchmark, split=args.split, limit=args.n_prompts)):
-  File "/scratch/ab13091/Efficient-AI/adaptive-block-diff/src/data/benchmarks.py", line 210, in iter_prompts
-    ds = load_dataset("HuggingFaceH4/ifeval", split="train")
-  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/site-packages/datasets/load.py", line 1688, in load_dataset
-    builder_instance = load_dataset_builder(
-  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/site-packages/datasets/load.py", line 1353, in load_dataset_builder
-    builder_instance: DatasetBuilder = builder_cls(
-  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/site-packages/datasets/builder.py", line 389, in __init__
-    with FileLock(lock_path):
-  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/site-packages/filelock/_api.py", line 554, in __enter__
-    self.acquire()
-  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/site-packages/filelock/_api.py", line 502, in acquire
-    self._acquire()
-  File "/ext3/miniconda3/envs/bd3lm/lib/python3.10/site-packages/filelock/_unix.py", line 76, in _acquire
-    fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
-OSError: [Errno 116] Stale file handle

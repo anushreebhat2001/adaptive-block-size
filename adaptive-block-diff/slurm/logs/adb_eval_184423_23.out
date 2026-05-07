@@ -1,0 +1,5 @@
+[eval] llada/mbpp/fixed-16 25 acc=0.480 toks/s=13.2
+[eval] llada/mbpp/fixed-16 50 acc=0.500 toks/s=13.2
+[eval] llada/mbpp/fixed-16 75 acc=0.493 toks/s=13.2
+[eval] llada/mbpp/fixed-16 100 acc=0.480 toks/s=13.2
+[eval] llada/mbpp/fixed-16 125 acc=0.472 toks/s=13.2

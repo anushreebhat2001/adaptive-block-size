@@ -1,0 +1,9 @@
+[eval] llada/gsm8k/fixed-16 25 acc=0.640 toks/s=13.4
+[eval] llada/gsm8k/fixed-16 50 acc=0.760 toks/s=13.4
+[eval] llada/gsm8k/fixed-16 75 acc=0.800 toks/s=13.4
+[eval] llada/gsm8k/fixed-16 100 acc=0.760 toks/s=13.4
+[eval] llada/gsm8k/fixed-16 125 acc=0.776 toks/s=13.4
+[eval] llada/gsm8k/fixed-16 150 acc=0.773 toks/s=13.3
+[eval] llada/gsm8k/fixed-16 175 acc=0.766 toks/s=13.3
+[eval] llada/gsm8k/fixed-16 200 acc=0.770 toks/s=13.3
+[eval] wrote /scratch/ug2084/Efficient-AI/results/base/llada_gsm8k_fixed-16.json

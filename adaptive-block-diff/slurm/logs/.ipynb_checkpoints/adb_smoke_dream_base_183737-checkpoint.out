@@ -1,0 +1,3 @@
+[smoke-dream-base] step 1/3: build_teacher_labels (Dream-Base, GSM8K, debug first 30 boundaries)
+[teacher] loaded dream; hidden_dim=3584
+[teacher] delimiter token-id set size: 177

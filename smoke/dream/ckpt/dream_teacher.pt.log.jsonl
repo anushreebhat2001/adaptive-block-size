@@ -1,0 +1,5 @@
+{"step": 1, "epoch": 0, "val_loss": 1.1102478504180908, "val_acc": 0.75, "val_off1": 0.75, "val_majority_acc": 0.75, "val_label_dist": [24, 0, 0, 8], "val_pred_dist": [32, 0, 0, 0], "elapsed_s": 0.9944586753845215}
+{"step": 2, "epoch": 1, "val_loss": 0.9386880397796631, "val_acc": 0.75, "val_off1": 0.75, "val_majority_acc": 0.75, "val_label_dist": [24, 0, 0, 8], "val_pred_dist": [32, 0, 0, 0], "elapsed_s": 1.189884901046753}
+{"step": 3, "epoch": 2, "val_loss": 0.8506845235824585, "val_acc": 0.75, "val_off1": 0.75, "val_majority_acc": 0.75, "val_label_dist": [24, 0, 0, 8], "val_pred_dist": [32, 0, 0, 0], "elapsed_s": 1.5795621871948242}
+{"step": 4, "epoch": 3, "val_loss": 0.8122144341468811, "val_acc": 0.75, "val_off1": 0.75, "val_majority_acc": 0.75, "val_label_dist": [24, 0, 0, 8], "val_pred_dist": [32, 0, 0, 0], "elapsed_s": 1.8997294902801514}
+{"step": 5, "epoch": 4, "val_loss": 0.802082896232605, "val_acc": 0.75, "val_off1": 0.75, "val_majority_acc": 0.75, "val_label_dist": [24, 0, 0, 8], "val_pred_dist": [32, 0, 0, 0], "elapsed_s": 2.186483383178711}

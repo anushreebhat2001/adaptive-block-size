@@ -1,0 +1,7 @@
+[eval] dream/humaneval/ours-oracle 25 acc=0.000 toks/s=22.1
+[eval] dream/humaneval/ours-oracle 50 acc=0.000 toks/s=22.1
+[eval] dream/humaneval/ours-oracle 75 acc=0.000 toks/s=22.1
+[eval] dream/humaneval/ours-oracle 100 acc=0.000 toks/s=22.0
+[eval] dream/humaneval/ours-oracle 125 acc=0.000 toks/s=21.7
+[eval] dream/humaneval/ours-oracle 150 acc=0.007 toks/s=21.7
+[eval] wrote /scratch/ug2084/Efficient-AI/results/base/dream_humaneval_ours-oracle_lam_15.json

@@ -1,0 +1,7 @@
+[eval] llada/gsm8k/fixed-32 25 acc=0.720 toks/s=15.0
+[eval] llada/gsm8k/fixed-32 50 acc=0.720 toks/s=15.0
+[eval] llada/gsm8k/fixed-32 75 acc=0.760 toks/s=15.0
+[eval] llada/gsm8k/fixed-32 100 acc=0.740 toks/s=15.1
+[eval] llada/gsm8k/fixed-32 125 acc=0.760 toks/s=15.1
+[eval] llada/gsm8k/fixed-32 150 acc=0.747 toks/s=15.0
+[eval] llada/gsm8k/fixed-32 175 acc=0.743 toks/s=15.0

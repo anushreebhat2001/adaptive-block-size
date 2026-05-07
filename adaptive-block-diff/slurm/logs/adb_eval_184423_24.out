@@ -1,0 +1,2 @@
+[eval] llada/mbpp/fixed-32 25 acc=0.480 toks/s=14.1
+[eval] llada/mbpp/fixed-32 50 acc=0.460 toks/s=14.0

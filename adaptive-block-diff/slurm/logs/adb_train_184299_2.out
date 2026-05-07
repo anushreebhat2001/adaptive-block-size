@@ -1,0 +1,37 @@
+[train] loading shards from /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/*/*.pt
+[train] train=40272 val=4704 class_balance={0: 13479, 3: 26792, 1: 1}
+[train] class_weight_mode=inverse: weights=[0.7469582557678223, 10068.25, 10068.25, 1.1273794174194336]
+[train] epoch=0 step=79 val_loss=6.6787 top1_acc=0.0000 within1_acc=0.3225 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 4612, 92, 0]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher_base.pt (top1=0.0000)
+[train] epoch=1 step=158 val_loss=6.5844 top1_acc=0.0000 within1_acc=0.1310 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 3073, 1631, 0]
+[train] epoch=2 step=237 val_loss=6.4636 top1_acc=0.0000 within1_acc=0.6631 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 0, 4704, 0]
+[train] epoch=3 step=316 val_loss=6.5361 top1_acc=0.0000 within1_acc=0.7498 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 408, 4296, 0]
+[train] epoch=4 step=395 val_loss=6.6325 top1_acc=0.0000 within1_acc=0.3342 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 4685, 19, 0]
+[train] epoch=5 step=474 val_loss=6.4531 top1_acc=0.0000 within1_acc=0.0789 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 3232, 1472, 0]
+[train] epoch=6 step=553 val_loss=6.2937 top1_acc=0.0000 within1_acc=0.6601 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 14, 4690, 0]
+[train] epoch=7 step=632 val_loss=6.5461 top1_acc=0.0000 within1_acc=0.8827 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 1507, 3197, 0]
+[train] epoch=8 step=711 val_loss=6.3268 top1_acc=0.0000 within1_acc=0.7145 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 280, 4424, 0]
+[train] epoch=9 step=790 val_loss=6.4071 top1_acc=0.0000 within1_acc=0.6631 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 0, 4704, 0]
+[train] epoch=10 step=869 val_loss=6.3841 top1_acc=0.0000 within1_acc=0.6626 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 2, 4702, 0]
+[train] epoch=11 step=948 val_loss=6.4274 top1_acc=0.0000 within1_acc=0.5903 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 580, 4124, 0]
+[train] epoch=12 step=1027 val_loss=6.4425 top1_acc=0.0000 within1_acc=0.1996 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 3664, 1040, 0]
+[train] epoch=13 step=1106 val_loss=6.4202 top1_acc=0.0000 within1_acc=0.4258 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 4198, 506, 0]
+[train] epoch=14 step=1185 val_loss=6.4153 top1_acc=0.0000 within1_acc=0.3763 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 4075, 629, 0]
+[train] epoch=15 step=1264 val_loss=6.4150 top1_acc=0.0000 within1_acc=0.4685 majority=0.6631 gain_over_majority=-0.6631
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[0, 2035, 2669, 0]
+[train] done. best_val_top1=0.0000

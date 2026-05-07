@@ -1,0 +1,10 @@
+{"step": 1, "epoch": 0, "val_loss": 1.0155951976776123, "val_acc": 1.0, "val_off1": 1.0, "val_majority_acc": 1.0, "val_label_dist": [0, 0, 0, 4], "val_pred_dist": [0, 0, 0, 4], "elapsed_s": 1.0543689727783203}
+{"step": 2, "epoch": 1, "val_loss": 0.7902589440345764, "val_acc": 1.0, "val_off1": 1.0, "val_majority_acc": 1.0, "val_label_dist": [0, 0, 0, 4], "val_pred_dist": [0, 0, 0, 4], "elapsed_s": 1.2193739414215088}
+{"step": 3, "epoch": 2, "val_loss": 0.6705225706100464, "val_acc": 1.0, "val_off1": 1.0, "val_majority_acc": 1.0, "val_label_dist": [0, 0, 0, 4], "val_pred_dist": [0, 0, 0, 4], "elapsed_s": 1.6212031841278076}
+{"step": 4, "epoch": 3, "val_loss": 0.6155188679695129, "val_acc": 1.0, "val_off1": 1.0, "val_majority_acc": 1.0, "val_label_dist": [0, 0, 0, 4], "val_pred_dist": [0, 0, 0, 4], "elapsed_s": 1.977104902267456}
+{"step": 5, "epoch": 4, "val_loss": 0.6006430983543396, "val_acc": 1.0, "val_off1": 1.0, "val_majority_acc": 1.0, "val_label_dist": [0, 0, 0, 4], "val_pred_dist": [0, 0, 0, 4], "elapsed_s": 2.328193426132202}
+{"step": 1, "epoch": 0, "val_loss": 1.0155951976776123, "val_acc": 1.0, "val_off1": 1.0, "val_majority_acc": 1.0, "val_label_dist": [0, 0, 0, 4], "val_pred_dist": [0, 0, 0, 4], "elapsed_s": 1.3403294086456299}
+{"step": 2, "epoch": 1, "val_loss": 0.7902589440345764, "val_acc": 1.0, "val_off1": 1.0, "val_majority_acc": 1.0, "val_label_dist": [0, 0, 0, 4], "val_pred_dist": [0, 0, 0, 4], "elapsed_s": 1.6446099281311035}
+{"step": 3, "epoch": 2, "val_loss": 0.6705225706100464, "val_acc": 1.0, "val_off1": 1.0, "val_majority_acc": 1.0, "val_label_dist": [0, 0, 0, 4], "val_pred_dist": [0, 0, 0, 4], "elapsed_s": 1.9095039367675781}
+{"step": 4, "epoch": 3, "val_loss": 0.6155188679695129, "val_acc": 1.0, "val_off1": 1.0, "val_majority_acc": 1.0, "val_label_dist": [0, 0, 0, 4], "val_pred_dist": [0, 0, 0, 4], "elapsed_s": 2.149945020675659}
+{"step": 5, "epoch": 4, "val_loss": 0.6006430983543396, "val_acc": 1.0, "val_off1": 1.0, "val_majority_acc": 1.0, "val_label_dist": [0, 0, 0, 4], "val_pred_dist": [0, 0, 0, 4], "elapsed_s": 2.3688318729400635}

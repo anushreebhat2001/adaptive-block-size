@@ -1,0 +1,209 @@
+ckpt_dir = /scratch/ug2084/Efficient-AI/ckpts/predictor/base
+
+discovered 15 config(s):
+  (dream  oracle   tag=-       )  rows=  82  mtime=2026-05-06 16:35  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_oracle.pt.log.jsonl
+  (dream  oracle   tag=lam5    )  rows=  41  mtime=2026-05-06 18:09  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_oracle_lam5.pt.log.jsonl
+  (dream  oracle   tag=lam_10  )  rows=  41  mtime=2026-05-06 19:05  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_oracle_lam_10.pt.log.jsonl
+  (dream  oracle   tag=lam_15  )  rows= 205  mtime=2026-05-06 22:09  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_oracle_lam_15.pt.log.jsonl
+  (dream  oracle   tag=lam_20  )  rows=  41  mtime=2026-05-06 19:10  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_oracle_lam_20.pt.log.jsonl
+  (dream  teacher  tag=-       )  rows=  82  mtime=2026-05-06 16:36  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher.pt.log.jsonl
+  (dream  teacher  tag=base    )  rows= 205  mtime=2026-05-06 22:09  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher_base.pt.log.jsonl
+  (dream  teacher  tag=lam5    )  rows=  41  mtime=2026-05-06 18:09  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher_lam5.pt.log.jsonl
+  (llada  oracle   tag=-       )  rows=  41  mtime=2026-05-06 16:36  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle.pt.log.jsonl
+  (llada  oracle   tag=lam5    )  rows=  41  mtime=2026-05-06 18:09  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam5.pt.log.jsonl
+  (llada  oracle   tag=lam_10  )  rows=  41  mtime=2026-05-06 19:10  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_10.pt.log.jsonl
+  (llada  oracle   tag=lam_15  )  rows= 205  mtime=2026-05-06 22:09  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt.log.jsonl
+  (llada  teacher  tag=-       )  rows=  41  mtime=2026-05-06 16:36  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher.pt.log.jsonl
+  (llada  teacher  tag=base    )  rows= 205  mtime=2026-05-06 22:09  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt.log.jsonl
+  (llada  teacher  tag=lam5    )  rows=  41  mtime=2026-05-06 18:09  <- /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_lam5.pt.log.jsonl
+
+=== dream / oracle ===
+  total epochs run : 32
+  saved ckpt (best val_loss) : epoch= 0  val_loss=1.0691  top1_acc=0.4953  within1_acc=0.8240  majority=0.3497  gain=+0.1456
+  best top1_acc epoch        : epoch= 1  val_loss=1.0734  top1_acc=0.5106  within1_acc=0.8316  majority=0.3497  gain=+0.1609
+  final epoch                : epoch=15  val_loss=1.1458  top1_acc=0.4917  within1_acc=0.8206  majority=0.3497  gain=+0.1420
+  val label_dist : [1015, 729, 1645, 1315]
+  saved-ckpt pred_dist : [1660, 598, 2231, 215]
+
+=== dream / oracle / lam5 ===
+  total epochs run : 16
+  saved ckpt (best val_loss) : epoch= 2  val_loss=0.8644  top1_acc=0.5295  within1_acc=0.9413  majority=0.4792  gain=+0.0504
+  best top1_acc epoch        : epoch= 1  val_loss=0.8693  top1_acc=0.5306  within1_acc=0.9458  majority=0.4792  gain=+0.0514
+  final epoch                : epoch=15  val_loss=0.8987  top1_acc=0.5145  within1_acc=0.9288  majority=0.4792  gain=+0.0353
+  val label_dist : [155, 391, 2254, 1904]
+  saved-ckpt pred_dist : [71, 579, 3395, 659]
+
+=== dream / oracle / lam_10 ===
+  total epochs run : 16
+  saved ckpt (best val_loss) : epoch= 2  val_loss=0.8454  top1_acc=0.5378  within1_acc=0.9558  majority=0.4864  gain=+0.0514
+  final epoch                : epoch=15  val_loss=0.8670  top1_acc=0.5238  within1_acc=0.9388  majority=0.4864  gain=+0.0374
+  val label_dist : [121, 345, 2288, 1950]
+  saved-ckpt pred_dist : [90, 447, 3685, 482]
+
+=== dream / oracle / lam_15 ===
+  total epochs run : 80
+  saved ckpt (best val_loss) : epoch= 2  val_loss=0.7930  top1_acc=0.5359  within1_acc=0.9600  majority=0.4896  gain=+0.0463
+  final epoch                : epoch=15  val_loss=0.8501  top1_acc=0.5247  within1_acc=0.9456  majority=0.4896  gain=+0.0351
+  val label_dist : [94, 322, 2303, 1985]
+  saved-ckpt pred_dist : [33, 487, 3560, 624]
+
+=== dream / oracle / lam_20 ===
+  total epochs run : 16
+  saved ckpt (best val_loss) : epoch= 2  val_loss=0.8229  top1_acc=0.5340  within1_acc=0.9636  majority=0.4915  gain=+0.0425
+  final epoch                : epoch=15  val_loss=0.8417  top1_acc=0.5255  within1_acc=0.9483  majority=0.4915  gain=+0.0340
+  val label_dist : [84, 308, 2312, 2000]
+  saved-ckpt pred_dist : [24, 385, 3860, 435]
+
+=== dream / teacher ===
+  total epochs run : 32
+  saved ckpt (best val_loss) : epoch=11  val_loss=0.1989  top1_acc=0.9454  within1_acc=0.9454  majority=0.6631  gain=+0.2823
+  best top1_acc epoch        : epoch=13  val_loss=0.2008  top1_acc=0.9471  within1_acc=0.9471  majority=0.6631  gain=+0.2840
+  final epoch                : epoch=15  val_loss=0.2039  top1_acc=0.9460  within1_acc=0.9460  majority=0.6631  gain=+0.2830
+  val label_dist : [1585, 0, 0, 3119]
+  saved-ckpt pred_dist : [1592, 0, 0, 3112]
+
+=== dream / teacher / base ===
+  total epochs run : 80
+  saved ckpt (best val_loss) : epoch= 0  val_loss=0.1487  top1_acc=0.9362  within1_acc=0.9362  majority=0.6631  gain=+0.2732
+  best top1_acc epoch        : epoch=13  val_loss=0.1889  top1_acc=0.9475  within1_acc=0.9475  majority=0.6631  gain=+0.2844
+  final epoch                : epoch=15  val_loss=0.1920  top1_acc=0.9462  within1_acc=0.9462  majority=0.6631  gain=+0.2832
+  val label_dist : [1585, 0, 0, 3119]
+  saved-ckpt pred_dist : [1527, 0, 0, 3177]
+
+=== dream / teacher / lam5 ===
+  total epochs run : 16
+  saved ckpt (best val_loss) : epoch=11  val_loss=0.1989  top1_acc=0.9452  within1_acc=0.9452  majority=0.6631  gain=+0.2821
+  best top1_acc epoch        : epoch=13  val_loss=0.2008  top1_acc=0.9471  within1_acc=0.9471  majority=0.6631  gain=+0.2840
+  final epoch                : epoch=15  val_loss=0.2039  top1_acc=0.9460  within1_acc=0.9460  majority=0.6631  gain=+0.2830
+  val label_dist : [1585, 0, 0, 3119]
+  saved-ckpt pred_dist : [1591, 0, 0, 3113]
+
+=== llada / oracle ===
+  total epochs run : 16
+  saved ckpt (best val_loss) : epoch= 9  val_loss=1.1851  top1_acc=0.4435  within1_acc=0.8382  majority=0.3431  gain=+0.1003
+  final epoch                : epoch=15  val_loss=1.1967  top1_acc=0.4422  within1_acc=0.8469  majority=0.3431  gain=+0.0991
+  val label_dist : [1614, 1549, 1203, 338]
+  saved-ckpt pred_dist : [2086, 1307, 1278, 33]
+
+=== llada / oracle / lam5 ===
+  total epochs run : 16
+  saved ckpt (best val_loss) : epoch=10  val_loss=1.1115  top1_acc=0.5000  within1_acc=0.9041  majority=0.4564  gain=+0.0436
+  best top1_acc epoch        : epoch= 5  val_loss=1.1165  top1_acc=0.5038  within1_acc=0.9139  majority=0.4564  gain=+0.0474
+  final epoch                : epoch=15  val_loss=1.1164  top1_acc=0.4989  within1_acc=0.8973  majority=0.4564  gain=+0.0425
+  val label_dist : [320, 1092, 2147, 1145]
+  saved-ckpt pred_dist : [30, 1371, 3061, 242]
+
+=== llada / oracle / lam_10 ===
+  total epochs run : 16
+  saved ckpt (best val_loss) : epoch=10  val_loss=1.0133  top1_acc=0.5261  within1_acc=0.9216  majority=0.4949  gain=+0.0313
+  best top1_acc epoch        : epoch= 9  val_loss=1.0210  top1_acc=0.5300  within1_acc=0.9422  majority=0.4949  gain=+0.0351
+  final epoch                : epoch=15  val_loss=1.0187  top1_acc=0.5257  within1_acc=0.9222  majority=0.4949  gain=+0.0308
+  val label_dist : [136, 786, 2328, 1454]
+  saved-ckpt pred_dist : [7, 466, 3541, 690]
+
+=== llada / oracle / lam_15 ===
+  total epochs run : 80
+  saved ckpt (best val_loss) : epoch= 7  val_loss=0.9333  top1_acc=0.5502  within1_acc=0.9507  majority=0.5104  gain=+0.0398
+  final epoch                : epoch=15  val_loss=0.9482  top1_acc=0.5472  within1_acc=0.9407  majority=0.5104  gain=+0.0368
+  val label_dist : [80, 589, 2401, 1634]
+  saved-ckpt pred_dist : [4, 327, 3844, 529]
+
+=== llada / teacher ===
+  total epochs run : 16
+  saved ckpt (best val_loss) : epoch=15  val_loss=0.3966  top1_acc=0.8459  within1_acc=0.9292  majority=0.7073  gain=+0.1386
+  best top1_acc epoch        : epoch=14  val_loss=0.3969  top1_acc=0.8459  within1_acc=0.9281  majority=0.7073  gain=+0.1386
+  final epoch                : epoch=15  val_loss=0.3966  top1_acc=0.8459  within1_acc=0.9292  majority=0.7073  gain=+0.1386
+  val label_dist : [486, 341, 550, 3327]
+  saved-ckpt pred_dist : [423, 223, 661, 3397]
+
+=== llada / teacher / base ===
+  total epochs run : 80
+  saved ckpt (best val_loss) : epoch=11  val_loss=0.3818  top1_acc=0.8389  within1_acc=0.9213  majority=0.7073  gain=+0.1316
+  best top1_acc epoch        : epoch=14  val_loss=0.3969  top1_acc=0.8459  within1_acc=0.9281  majority=0.7073  gain=+0.1386
+  final epoch                : epoch=15  val_loss=0.3865  top1_acc=0.8418  within1_acc=0.9271  majority=0.7073  gain=+0.1346
+  val label_dist : [486, 341, 550, 3327]
+  saved-ckpt pred_dist : [549, 180, 625, 3350]
+
+=== llada / teacher / lam5 ===
+  total epochs run : 16
+  saved ckpt (best val_loss) : epoch=15  val_loss=0.3966  top1_acc=0.8459  within1_acc=0.9292  majority=0.7073  gain=+0.1386
+  best top1_acc epoch        : epoch=14  val_loss=0.3969  top1_acc=0.8459  within1_acc=0.9281  majority=0.7073  gain=+0.1386
+  final epoch                : epoch=15  val_loss=0.3966  top1_acc=0.8459  within1_acc=0.9292  majority=0.7073  gain=+0.1386
+  val label_dist : [486, 341, 550, 3327]
+  saved-ckpt pred_dist : [423, 223, 661, 3397]
+
+========================================================================================================================
+CROSS-CONFIG SUMMARY (saved-checkpoint epoch = best val_loss)
+========================================================================================================================
+  model    source   tag        epoch   n_val  val_loss    top1  within1   major    gain  cmp_pred   cmp_lbl
+  ----------------------------------------------------------------------------------------------------------------------------------
+  dream    oracle   -              0    4704    1.0691  0.4953   0.8240  0.3497 +0.1456   0.13518   0.10391
+  dream    oracle   lam5           2    4704    0.8644  0.5295   0.9413  0.4792 +0.0504   0.06865   0.06122
+  dream    oracle   lam_10         2    4704    0.8454  0.5378   0.9558  0.4864 +0.0514   0.06882   0.05895
+  dream    oracle   lam_15         2    4704    0.7930  0.5359   0.9600  0.4896 +0.0463   0.06614   0.05734
+  dream    oracle   lam_20         2    4704    0.8229  0.5340   0.9636  0.4915 +0.0425   0.06568   0.05665
+  dream    teacher  -             11    4704    0.1989  0.9454   0.9454  0.6631 +0.2823   0.10528   0.10496
+  dream    teacher  base           0    4704    0.1487  0.9362   0.9362  0.6631 +0.2732   0.10226   0.10496
+  dream    teacher  lam5          11    4704    0.1989  0.9452   0.9452  0.6631 +0.2821   0.10524   0.10496
+  llada    oracle   -              9    4704    1.1851  0.4435   0.8382  0.3431 +0.1003   0.16279   0.14517
+  llada    oracle   lam5          10    4704    1.1115  0.5000   0.9041  0.4564 +0.0436   0.08030   0.08216
+  llada    oracle   lam_10        10    4704    1.0133  0.5261   0.9216  0.4949 +0.0313   0.06439   0.06870
+  llada    oracle   lam_15         7    4704    0.9333  0.5502   0.9507  0.5104 +0.0398   0.06349   0.06266
+  llada    teacher  -             15    4704    0.3966  0.8459   0.9292  0.7073 +0.1386   0.05976   0.06430
+  llada    teacher  base          11    4704    0.3818  0.8389   0.9213  0.7073 +0.1316   0.06452   0.06430
+  llada    teacher  lam5          15    4704    0.3966  0.8459   0.9292  0.7073 +0.1386   0.05976   0.06430
+
+========================================================================================================================
+FINDINGS
+========================================================================================================================
+
+[1] Oracle vs Teacher per (model, tag)
+  dream / tag=-         : oracle gain=+0.146  vs  teacher gain=+0.282  (Δgain=-0.137, Δtop1=-0.450, Δwithin1=-0.121)
+            -> TEACHER WINS — unexpected; check label distributions
+            note: teacher's majority (0.66) is much higher than oracle's (0.35); teacher's high top1 mostly reflects label imbalance, not learning
+  dream / tag=lam5      : oracle gain=+0.050  vs  teacher gain=+0.282  (Δgain=-0.232, Δtop1=-0.416, Δwithin1=-0.004)
+            -> TEACHER WINS — unexpected; check label distributions
+  llada / tag=-         : oracle gain=+0.100  vs  teacher gain=+0.139  (Δgain=-0.038, Δtop1=-0.402, Δwithin1=-0.091)
+            -> TIE — within noise
+            note: teacher's majority (0.71) is much higher than oracle's (0.34); teacher's high top1 mostly reflects label imbalance, not learning
+  llada / tag=lam5      : oracle gain=+0.044  vs  teacher gain=+0.139  (Δgain=-0.095, Δtop1=-0.346, Δwithin1=-0.025)
+            -> TEACHER WINS — unexpected; check label distributions
+            note: teacher's majority (0.71) is much higher than oracle's (0.46); teacher's high top1 mostly reflects label imbalance, not learning
+
+[2] LLaDA vs Dream per (source, tag)
+  oracle / tag=-        : llada gain=+0.100  vs  dream gain=+0.146  (Δgain=+0.045, Δtop1=+0.052)
+            -> SIMILAR (Δgain=+0.045)
+  oracle / tag=lam5     : llada gain=+0.044  vs  dream gain=+0.050  (Δgain=+0.007, Δtop1=+0.030)
+            -> GENERALIZES
+  oracle / tag=lam_10   : llada gain=+0.031  vs  dream gain=+0.051  (Δgain=+0.020, Δtop1=+0.012)
+            -> SIMILAR (Δgain=+0.020)
+  oracle / tag=lam_15   : llada gain=+0.040  vs  dream gain=+0.046  (Δgain=+0.007, Δtop1=-0.014)
+            -> GENERALIZES
+  teacher / tag=-       : llada gain=+0.139  vs  dream gain=+0.282  (Δgain=+0.144, Δtop1=+0.099)
+            -> DREAM STRONGER by 0.144
+  teacher / tag=base    : llada gain=+0.132  vs  dream gain=+0.273  (Δgain=+0.142, Δtop1=+0.097)
+            -> DREAM STRONGER by 0.142
+  teacher / tag=lam5    : llada gain=+0.139  vs  dream gain=+0.282  (Δgain=+0.143, Δtop1=+0.099)
+            -> DREAM STRONGER by 0.143
+
+[3] Best deployable predictor per tag (oracle source, gain over majority)
+  tag=-          winner = dream oracle  (gain=+0.146, top1=0.495, within1=0.824)  -> dream_oracle.pt
+  tag=lam5       winner = dream oracle  (gain=+0.050, top1=0.530, within1=0.941)  -> dream_oracle_lam5.pt
+  tag=lam_10     winner = dream oracle  (gain=+0.051, top1=0.538, within1=0.956)  -> dream_oracle_lam_10.pt
+  tag=lam_15     winner = dream oracle  (gain=+0.046, top1=0.536, within1=0.960)  -> dream_oracle_lam_15.pt
+  tag=lam_20     winner = dream oracle  (gain=+0.043, top1=0.534, within1=0.964)  -> dream_oracle_lam_20.pt
+
+[3b] Deployment-best per model (best oracle vs best teacher, any tag)
+  dream   : best oracle (tag=lam_10)  top1=0.538  within1=0.956  vs  best teacher (tag=-)  top1=0.945  within1=0.945
+            -> TEACHER WINS on top1 (note teacher's higher majority) (Δtop1=-0.408, Δwithin1=+0.010)
+  llada   : best oracle (tag=lam_15)  top1=0.550  within1=0.951  vs  best teacher (tag=-)  top1=0.846  within1=0.929
+            -> TEACHER WINS on top1 (note teacher's higher majority) (Δtop1=-0.296, Δwithin1=+0.021)
+
+[3c] Deployment-best LLaDA oracle vs Dream oracle (any tag)
+  LLaDA  (tag=lam_15):  top1=0.550  within1=0.951  compute_pred=0.06349  (vs labels 0.06266)
+  Dream  (tag=lam_10):  top1=0.538  within1=0.956  compute_pred=0.06882  (vs labels 0.05895)
+
+[4] Sanity flags
+  dream / teacher: pred_dist uses only 2 classes meaningfully (>5% mass)
+  dream / teacher / base: pred_dist uses only 2 classes meaningfully (>5% mass)
+  dream / teacher / lam5: pred_dist uses only 2 classes meaningfully (>5% mass)

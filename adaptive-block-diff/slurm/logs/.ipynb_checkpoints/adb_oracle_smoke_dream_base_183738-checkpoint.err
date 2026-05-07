@@ -1,0 +1,47 @@
+A new version of the following files was downloaded from https://huggingface.co/Dream-org/Dream-v0-Base-7B:
+- tokenization_dream.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/Dream-org/Dream-v0-Base-7B:
+- configuration_dream.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/Dream-org/Dream-v0-Base-7B:
+- generation_utils.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/Dream-org/Dream-v0-Base-7B:
+- modeling_dream.py
+- generation_utils.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+Traceback (most recent call last):
+  File "/ext3/miniconda3/envs/blockdiff/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/ext3/miniconda3/envs/blockdiff/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/scratch/ug2084/Efficient-AI/adaptive-block-diff/src/data/build_oracle_labels.py", line 294, in <module>
+    main()
+  File "/scratch/ug2084/Efficient-AI/adaptive-block-diff/src/data/build_oracle_labels.py", line 151, in main
+    runner.load()
+  File "/scratch/ug2084/Efficient-AI/adaptive-block-diff/src/data/runners.py", line 359, in load
+    self.model = AutoModel.from_pretrained(
+  File "/home/ug2084/.local/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 559, in from_pretrained
+    return model_class.from_pretrained(
+  File "/scratch/ug2084/Efficient-AI/hf_cache/modules/transformers_modules/Dream-org/Dream-v0-Base-7B/6572adb5535263e4d1a337b56942ba48b6dee2a9/modeling_dream.py", line 565, in from_pretrained
+    _model = super().from_pretrained(
+  File "/home/ug2084/.local/lib/python3.10/site-packages/transformers/modeling_utils.py", line 3815, in from_pretrained
+    resolved_archive_file = cached_file(
+  File "/home/ug2084/.local/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
+    resolved_file = hf_hub_download(
+  File "/home/ug2084/.local/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/ug2084/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1014, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/home/ug2084/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1174, in _hf_hub_download_to_cache_dir
+    with WeakFileLock(lock_path):
+  File "/ext3/miniconda3/envs/blockdiff/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/home/ug2084/.local/lib/python3.10/site-packages/huggingface_hub/utils/_fixes.py", line 109, in WeakFileLock
+    lock.acquire(timeout=min(log_interval, timeout - elapsed_time) if timeout else log_interval)
+  File "/home/ug2084/.local/lib/python3.10/site-packages/filelock/_api.py", line 502, in acquire
+    self._acquire()
+  File "/home/ug2084/.local/lib/python3.10/site-packages/filelock/_unix.py", line 90, in _acquire
+    if os.fstat(fd).st_nlink == 0:
+OSError: [Errno 116] Stale file handle

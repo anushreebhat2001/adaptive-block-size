@@ -1,0 +1,9 @@
+[eval] llada/gsm8k/ours-oracle 25 acc=0.680 toks/s=13.6
+[eval] llada/gsm8k/ours-oracle 50 acc=0.740 toks/s=13.5
+[eval] llada/gsm8k/ours-oracle 75 acc=0.760 toks/s=13.5
+[eval] llada/gsm8k/ours-oracle 100 acc=0.730 toks/s=13.6
+[eval] llada/gsm8k/ours-oracle 125 acc=0.744 toks/s=13.5
+[eval] llada/gsm8k/ours-oracle 150 acc=0.740 toks/s=13.5
+[eval] llada/gsm8k/ours-oracle 175 acc=0.731 toks/s=13.5
+[eval] llada/gsm8k/ours-oracle 200 acc=0.740 toks/s=13.5
+[eval] wrote /scratch/ug2084/Efficient-AI/results/base/llada_gsm8k_ours-oracle_lam_15.json

@@ -1,0 +1,43 @@
+[train] loading shards from /scratch/ug2084/Efficient-AI/labels/lam_15/oracle/llada/*/*.pt
+[train] train=40272 val=4704 class_balance={3: 14120, 2: 20467, 1: 4993, 0: 692}
+[train] class_weight_mode=none: using uniform CE
+[train] epoch=0 step=79 val_loss=1.0012 top1_acc=0.5227 within1_acc=0.9790 majority=0.5104 gain_over_majority=+0.0123
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[0, 61, 4393, 250]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5227)
+[train] epoch=1 step=158 val_loss=0.9879 top1_acc=0.5298 within1_acc=0.9664 majority=0.5104 gain_over_majority=+0.0193
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[1, 203, 3979, 521]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5298)
+[train] epoch=2 step=237 val_loss=0.9741 top1_acc=0.5359 within1_acc=0.9541 majority=0.5104 gain_over_majority=+0.0255
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[0, 218, 3838, 648]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5359)
+[train] epoch=3 step=316 val_loss=0.9820 top1_acc=0.5368 within1_acc=0.9439 majority=0.5104 gain_over_majority=+0.0264
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[0, 226, 3622, 856]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5368)
+[train] epoch=4 step=395 val_loss=0.9626 top1_acc=0.5461 within1_acc=0.9613 majority=0.5104 gain_over_majority=+0.0357
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[0, 154, 4126, 424]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5461)
+[train] epoch=5 step=474 val_loss=0.9594 top1_acc=0.5468 within1_acc=0.9534 majority=0.5104 gain_over_majority=+0.0364
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[19, 181, 4009, 495]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5468)
+[train] epoch=6 step=553 val_loss=0.9542 top1_acc=0.5459 within1_acc=0.9513 majority=0.5104 gain_over_majority=+0.0355
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[3, 256, 3855, 590]
+[train] epoch=7 step=632 val_loss=0.9536 top1_acc=0.5468 within1_acc=0.9462 majority=0.5104 gain_over_majority=+0.0364
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[4, 343, 3802, 555]
+[train] epoch=8 step=711 val_loss=0.9533 top1_acc=0.5493 within1_acc=0.9530 majority=0.5104 gain_over_majority=+0.0389
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[9, 197, 3962, 536]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5493)
+[train] epoch=9 step=790 val_loss=0.9580 top1_acc=0.5468 within1_acc=0.9494 majority=0.5104 gain_over_majority=+0.0364
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[0, 239, 3928, 537]
+[train] epoch=10 step=869 val_loss=0.9510 top1_acc=0.5440 within1_acc=0.9390 majority=0.5104 gain_over_majority=+0.0336
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[3, 292, 3676, 733]
+[train] epoch=11 step=948 val_loss=0.9541 top1_acc=0.5457 within1_acc=0.9428 majority=0.5104 gain_over_majority=+0.0353
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[3, 288, 3800, 613]
+[train] epoch=12 step=1027 val_loss=0.9530 top1_acc=0.5455 within1_acc=0.9430 majority=0.5104 gain_over_majority=+0.0351
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[4, 344, 3749, 607]
+[train] epoch=13 step=1106 val_loss=0.9570 top1_acc=0.5446 within1_acc=0.9403 majority=0.5104 gain_over_majority=+0.0342
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[6, 400, 3669, 629]
+[train] epoch=14 step=1185 val_loss=0.9558 top1_acc=0.5453 within1_acc=0.9411 majority=0.5104 gain_over_majority=+0.0349
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[5, 360, 3671, 668]
+[train] epoch=15 step=1264 val_loss=0.9556 top1_acc=0.5457 within1_acc=0.9418 majority=0.5104 gain_over_majority=+0.0353
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[5, 357, 3685, 657]
+[train] done. best_val_top1=0.5493

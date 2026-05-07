@@ -1,0 +1,50 @@
+[train] loading shards from /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/*/*.pt
+[train] train=40272 val=4704 class_balance={0: 4071, 3: 28755, 2: 4774, 1: 2672}
+[train] class_weight_mode=none: using uniform CE
+[train] epoch=0 step=79 val_loss=0.8771 top1_acc=0.7096 within1_acc=0.8259 majority=0.7073 gain_over_majority=+0.0023
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[36, 0, 1, 4667]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=1 step=158 val_loss=0.7978 top1_acc=0.7277 within1_acc=0.8412 majority=0.7073 gain_over_majority=+0.0204
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[122, 0, 75, 4507]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=2 step=237 val_loss=0.7159 top1_acc=0.7460 within1_acc=0.8584 majority=0.7073 gain_over_majority=+0.0387
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[226, 30, 227, 4221]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=3 step=316 val_loss=0.7278 top1_acc=0.7457 within1_acc=0.8778 majority=0.7073 gain_over_majority=+0.0385
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[473, 140, 622, 3469]
+[train] epoch=4 step=395 val_loss=0.6582 top1_acc=0.7734 within1_acc=0.8952 majority=0.7073 gain_over_majority=+0.0661
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[428, 80, 856, 3340]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=5 step=474 val_loss=0.5566 top1_acc=0.7810 within1_acc=0.8884 majority=0.7073 gain_over_majority=+0.0738
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[393, 91, 327, 3893]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=6 step=553 val_loss=0.5421 top1_acc=0.7970 within1_acc=0.8948 majority=0.7073 gain_over_majority=+0.0897
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[458, 72, 638, 3536]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=7 step=632 val_loss=0.4963 top1_acc=0.8221 within1_acc=0.9139 majority=0.7073 gain_over_majority=+0.1148
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[496, 99, 809, 3300]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=8 step=711 val_loss=0.4944 top1_acc=0.8248 within1_acc=0.9192 majority=0.7073 gain_over_majority=+0.1176
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[422, 187, 802, 3293]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=9 step=790 val_loss=0.4195 top1_acc=0.8352 within1_acc=0.9203 majority=0.7073 gain_over_majority=+0.1280
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[396, 200, 698, 3410]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=10 step=869 val_loss=0.4256 top1_acc=0.8344 within1_acc=0.9186 majority=0.7073 gain_over_majority=+0.1271
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[533, 176, 660, 3335]
+[train] epoch=11 step=948 val_loss=0.4051 top1_acc=0.8380 within1_acc=0.9216 majority=0.7073 gain_over_majority=+0.1307
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[505, 159, 606, 3434]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=12 step=1027 val_loss=0.3997 top1_acc=0.8420 within1_acc=0.9250 majority=0.7073 gain_over_majority=+0.1348
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[448, 187, 640, 3429]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=13 step=1106 val_loss=0.3970 top1_acc=0.8438 within1_acc=0.9277 majority=0.7073 gain_over_majority=+0.1365
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[382, 203, 726, 3393]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=14 step=1185 val_loss=0.3969 top1_acc=0.8459 within1_acc=0.9281 majority=0.7073 gain_over_majority=+0.1386
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[441, 217, 649, 3397]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] epoch=15 step=1264 val_loss=0.3966 top1_acc=0.8459 within1_acc=0.9292 majority=0.7073 gain_over_majority=+0.1386
+[train]   val label_dist=[486, 341, 550, 3327] pred_dist=[423, 223, 661, 3397]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_teacher_base.pt
+[train] done. best_val_loss=0.3966

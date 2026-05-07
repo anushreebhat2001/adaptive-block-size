@@ -1,0 +1,72 @@
+[oracle] loaded llada; hidden_dim=4096
+[oracle] resume: 1 shards on disk, last prompt_id=21, continuing from prompt 22 with shard_idx=1
+[oracle] llada/math prompts=10 buf=240 elapsed=888s
+[oracle] llada/math prompts=20 buf=480 elapsed=1744s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000001.pt (528 examples)
+[oracle] llada/math prompts=30 buf=192 elapsed=2650s
+[oracle] llada/math prompts=40 buf=432 elapsed=3494s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000002.pt (528 examples)
+[oracle] llada/math prompts=50 buf=144 elapsed=4383s
+[oracle] llada/math prompts=60 buf=384 elapsed=5368s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000003.pt (528 examples)
+[oracle] llada/math prompts=70 buf=96 elapsed=6226s
+[oracle] llada/math prompts=80 buf=336 elapsed=7070s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000004.pt (528 examples)
+[oracle] llada/math prompts=90 buf=48 elapsed=7915s
+[oracle] llada/math prompts=100 buf=288 elapsed=8832s
+[oracle] llada/math prompts=110 buf=528 elapsed=9684s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000005.pt (528 examples)
+[oracle] llada/math prompts=120 buf=240 elapsed=10522s
+[oracle] llada/math prompts=130 buf=480 elapsed=11371s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000006.pt (528 examples)
+[oracle] llada/math prompts=140 buf=192 elapsed=12215s
+[oracle] llada/math prompts=150 buf=432 elapsed=13055s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000007.pt (528 examples)
+[oracle] llada/math prompts=160 buf=144 elapsed=13901s
+[oracle] llada/math prompts=170 buf=384 elapsed=14888s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000008.pt (528 examples)
+[oracle] llada/math prompts=180 buf=96 elapsed=15732s
+[oracle] llada/math prompts=190 buf=336 elapsed=16574s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000009.pt (528 examples)
+[oracle] llada/math prompts=200 buf=48 elapsed=17424s
+[oracle] llada/math prompts=210 buf=288 elapsed=18274s
+[oracle] llada/math prompts=220 buf=528 elapsed=19120s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000010.pt (528 examples)
+[oracle] llada/math prompts=230 buf=240 elapsed=19979s
+[oracle] llada/math prompts=240 buf=480 elapsed=20917s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000011.pt (528 examples)
+[oracle] llada/math prompts=250 buf=192 elapsed=21762s
+[oracle] llada/math prompts=260 buf=432 elapsed=22604s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000012.pt (528 examples)
+[oracle] llada/math prompts=270 buf=144 elapsed=23453s
+[oracle] llada/math prompts=280 buf=384 elapsed=24294s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000013.pt (528 examples)
+[oracle] llada/math prompts=290 buf=96 elapsed=25132s
+[oracle] llada/math prompts=300 buf=336 elapsed=25987s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000014.pt (528 examples)
+[oracle] llada/math prompts=310 buf=48 elapsed=26836s
+[oracle] llada/math prompts=320 buf=288 elapsed=27684s
+[oracle] llada/math prompts=330 buf=528 elapsed=28530s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000015.pt (528 examples)
+[oracle] llada/math prompts=340 buf=240 elapsed=29567s
+[oracle] llada/math prompts=350 buf=480 elapsed=30412s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000016.pt (528 examples)
+[oracle] llada/math prompts=360 buf=192 elapsed=31250s
+[oracle] llada/math prompts=370 buf=432 elapsed=32093s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000017.pt (528 examples)
+[oracle] llada/math prompts=380 buf=144 elapsed=33004s
+[oracle] llada/math prompts=390 buf=384 elapsed=33850s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000018.pt (528 examples)
+[oracle] llada/math prompts=400 buf=96 elapsed=34905s
+[oracle] llada/math prompts=410 buf=336 elapsed=35749s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000019.pt (528 examples)
+[oracle] llada/math prompts=420 buf=48 elapsed=36732s
+[oracle] llada/math prompts=430 buf=288 elapsed=37575s
+[oracle] llada/math prompts=440 buf=528 elapsed=38440s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000020.pt (528 examples)
+[oracle] llada/math prompts=450 buf=240 elapsed=39282s
+[oracle] llada/math prompts=460 buf=480 elapsed=40125s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000021.pt (528 examples)
+[oracle] llada/math prompts=470 buf=192 elapsed=41102s
+[oracle] wrote final shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/math/oracle_000022.pt (384 examples)
+[oracle] done. total prompts=478

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/ext3/miniconda3/envs/blockdiff/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/ext3/miniconda3/envs/blockdiff/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/scratch/ug2084/Efficient-AI/adaptive-block-diff/src/predictor/train.py", line 292, in <module>
+    main()
+  File "/scratch/ug2084/Efficient-AI/adaptive-block-diff/src/predictor/train.py", line 166, in main
+    train_ds = PredictorDataset(
+  File "/scratch/ug2084/Efficient-AI/adaptive-block-diff/src/predictor/dataset.py", line 57, in __init__
+    raise FileNotFoundError(f"no shards matched: {shard_glob}")
+FileNotFoundError: no shards matched: /scratch/ug2084/Efficient-AI/labels/lam_10/oracle/dream/*/*.pt

@@ -1,0 +1,10 @@
+{"step": 1, "epoch": 0, "val_loss": 1.354013204574585, "val_acc": 0.25, "val_off1": 0.625, "val_majority_acc": 0.375, "val_label_dist": [4, 6, 4, 2], "val_pred_dist": [16, 0, 0, 0], "elapsed_s": 1.0729115009307861}
+{"step": 2, "epoch": 1, "val_loss": 1.3546090126037598, "val_acc": 0.25, "val_off1": 0.625, "val_majority_acc": 0.375, "val_label_dist": [4, 6, 4, 2], "val_pred_dist": [16, 0, 0, 0], "elapsed_s": 1.2501521110534668}
+{"step": 3, "epoch": 2, "val_loss": 1.3557944297790527, "val_acc": 0.25, "val_off1": 0.6875, "val_majority_acc": 0.375, "val_label_dist": [4, 6, 4, 2], "val_pred_dist": [13, 3, 0, 0], "elapsed_s": 1.3759334087371826}
+{"step": 4, "epoch": 3, "val_loss": 1.3559561967849731, "val_acc": 0.25, "val_off1": 0.6875, "val_majority_acc": 0.375, "val_label_dist": [4, 6, 4, 2], "val_pred_dist": [13, 3, 0, 0], "elapsed_s": 1.5085368156433105}
+{"step": 5, "epoch": 4, "val_loss": 1.3558547496795654, "val_acc": 0.25, "val_off1": 0.6875, "val_majority_acc": 0.375, "val_label_dist": [4, 6, 4, 2], "val_pred_dist": [12, 4, 0, 0], "elapsed_s": 1.64113450050354}
+{"step": 1, "epoch": 0, "val_loss": 1.354013204574585, "val_acc": 0.25, "val_off1": 0.625, "val_majority_acc": 0.375, "val_label_dist": [4, 6, 4, 2], "val_pred_dist": [16, 0, 0, 0], "elapsed_s": 1.0668079853057861}
+{"step": 2, "epoch": 1, "val_loss": 1.3546090126037598, "val_acc": 0.25, "val_off1": 0.625, "val_majority_acc": 0.375, "val_label_dist": [4, 6, 4, 2], "val_pred_dist": [16, 0, 0, 0], "elapsed_s": 1.424572467803955}
+{"step": 3, "epoch": 2, "val_loss": 1.3557944297790527, "val_acc": 0.25, "val_off1": 0.6875, "val_majority_acc": 0.375, "val_label_dist": [4, 6, 4, 2], "val_pred_dist": [13, 3, 0, 0], "elapsed_s": 1.552941083908081}
+{"step": 4, "epoch": 3, "val_loss": 1.3559561967849731, "val_acc": 0.25, "val_off1": 0.6875, "val_majority_acc": 0.375, "val_label_dist": [4, 6, 4, 2], "val_pred_dist": [13, 3, 0, 0], "elapsed_s": 1.6878421306610107}
+{"step": 5, "epoch": 4, "val_loss": 1.3558547496795654, "val_acc": 0.25, "val_off1": 0.6875, "val_majority_acc": 0.375, "val_label_dist": [4, 6, 4, 2], "val_pred_dist": [12, 4, 0, 0], "elapsed_s": 1.8138315677642822}

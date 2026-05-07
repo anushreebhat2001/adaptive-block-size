@@ -1,0 +1,41 @@
+[train] loading shards from /scratch/ug2084/Efficient-AI/labels/lam_15/oracle/llada/*/*.pt
+[train] train=40272 val=4704 class_balance={3: 14120, 2: 20467, 1: 4993, 0: 692}
+[train] class_weight_mode=inverse: weights=[14.54913330078125, 2.016422986984253, 0.4919138252735138, 2.1390933990478516]
+[train] epoch=0 step=79 val_loss=1.8141 top1_acc=0.2917 within1_acc=0.7606 majority=0.5104 gain_over_majority=-0.2187
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[1087, 0, 0, 3617]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.2917)
+[train] epoch=1 step=158 val_loss=1.7994 top1_acc=0.2978 within1_acc=0.7830 majority=0.5104 gain_over_majority=-0.2126
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[1008, 0, 0, 3696]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.2978)
+[train] epoch=2 step=237 val_loss=1.7669 top1_acc=0.3278 within1_acc=0.8427 majority=0.5104 gain_over_majority=-0.1826
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[455, 2, 0, 4247]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.3278)
+[train] epoch=3 step=316 val_loss=1.8068 top1_acc=0.2870 within1_acc=0.7645 majority=0.5104 gain_over_majority=-0.2234
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[1154, 61, 0, 3489]
+[train] epoch=4 step=395 val_loss=1.7714 top1_acc=0.3138 within1_acc=0.8123 majority=0.5104 gain_over_majority=-0.1966
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[776, 78, 5, 3845]
+[train] epoch=5 step=474 val_loss=1.7861 top1_acc=0.2853 within1_acc=0.7640 majority=0.5104 gain_over_majority=-0.2251
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[1163, 94, 12, 3435]
+[train] epoch=6 step=553 val_loss=1.7292 top1_acc=0.3312 within1_acc=0.8461 majority=0.5104 gain_over_majority=-0.1792
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[546, 11, 25, 4122]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.3312)
+[train] epoch=7 step=632 val_loss=1.7446 top1_acc=0.3142 within1_acc=0.8148 majority=0.5104 gain_over_majority=-0.1962
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[779, 64, 14, 3847]
+[train] epoch=8 step=711 val_loss=1.7272 top1_acc=0.3329 within1_acc=0.8397 majority=0.5104 gain_over_majority=-0.1775
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[517, 134, 42, 4011]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.3329)
+[train] epoch=9 step=790 val_loss=1.7345 top1_acc=0.3246 within1_acc=0.8227 majority=0.5104 gain_over_majority=-0.1858
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[674, 129, 34, 3867]
+[train] epoch=10 step=869 val_loss=1.7278 top1_acc=0.3306 within1_acc=0.8348 majority=0.5104 gain_over_majority=-0.1798
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[535, 223, 20, 3926]
+[train] epoch=11 step=948 val_loss=1.7359 top1_acc=0.3276 within1_acc=0.8306 majority=0.5104 gain_over_majority=-0.1828
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[594, 203, 35, 3872]
+[train] epoch=12 step=1027 val_loss=1.7371 top1_acc=0.3308 within1_acc=0.8346 majority=0.5104 gain_over_majority=-0.1796
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[520, 292, 36, 3856]
+[train] epoch=13 step=1106 val_loss=1.7423 top1_acc=0.3265 within1_acc=0.8259 majority=0.5104 gain_over_majority=-0.1839
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[600, 315, 42, 3747]
+[train] epoch=14 step=1185 val_loss=1.7357 top1_acc=0.3321 within1_acc=0.8346 majority=0.5104 gain_over_majority=-0.1784
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[538, 277, 43, 3846]
+[train] epoch=15 step=1264 val_loss=1.7363 top1_acc=0.3312 within1_acc=0.8340 majority=0.5104 gain_over_majority=-0.1792
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[548, 278, 44, 3834]
+[train] done. best_val_top1=0.3329

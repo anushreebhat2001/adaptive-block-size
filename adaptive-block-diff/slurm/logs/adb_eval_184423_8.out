@@ -1,0 +1,9 @@
+[eval] llada/math/fixed-8 25 acc=0.200 toks/s=16.2
+[eval] llada/math/fixed-8 50 acc=0.240 toks/s=16.7
+[eval] llada/math/fixed-8 75 acc=0.240 toks/s=17.0
+[eval] llada/math/fixed-8 100 acc=0.300 toks/s=17.1
+[eval] llada/math/fixed-8 125 acc=0.312 toks/s=17.1
+[eval] llada/math/fixed-8 150 acc=0.307 toks/s=17.2
+[eval] llada/math/fixed-8 175 acc=0.297 toks/s=17.1
+[eval] llada/math/fixed-8 200 acc=0.295 toks/s=17.1
+[eval] wrote /scratch/ug2084/Efficient-AI/results/base/llada_math_fixed-8.json

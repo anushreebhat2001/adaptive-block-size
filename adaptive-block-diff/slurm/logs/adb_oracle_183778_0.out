@@ -1,0 +1,72 @@
+[oracle] loaded llada; hidden_dim=4096
+[oracle] resume: 1 shards on disk, last prompt_id=21, continuing from prompt 22 with shard_idx=1
+[oracle] llada/gsm8k prompts=10 buf=240 elapsed=1292s
+[oracle] llada/gsm8k prompts=20 buf=480 elapsed=2585s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000001.pt (528 examples)
+[oracle] llada/gsm8k prompts=30 buf=192 elapsed=3861s
+[oracle] llada/gsm8k prompts=40 buf=432 elapsed=5150s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000002.pt (528 examples)
+[oracle] llada/gsm8k prompts=50 buf=144 elapsed=6418s
+[oracle] llada/gsm8k prompts=60 buf=384 elapsed=7693s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000003.pt (528 examples)
+[oracle] llada/gsm8k prompts=70 buf=96 elapsed=8957s
+[oracle] llada/gsm8k prompts=80 buf=336 elapsed=10254s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000004.pt (528 examples)
+[oracle] llada/gsm8k prompts=90 buf=48 elapsed=11524s
+[oracle] llada/gsm8k prompts=100 buf=288 elapsed=12805s
+[oracle] llada/gsm8k prompts=110 buf=528 elapsed=14090s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000005.pt (528 examples)
+[oracle] llada/gsm8k prompts=120 buf=240 elapsed=15358s
+[oracle] llada/gsm8k prompts=130 buf=480 elapsed=16619s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000006.pt (528 examples)
+[oracle] llada/gsm8k prompts=140 buf=192 elapsed=17877s
+[oracle] llada/gsm8k prompts=150 buf=432 elapsed=19162s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000007.pt (528 examples)
+[oracle] llada/gsm8k prompts=160 buf=144 elapsed=20450s
+[oracle] llada/gsm8k prompts=170 buf=384 elapsed=21724s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000008.pt (528 examples)
+[oracle] llada/gsm8k prompts=180 buf=96 elapsed=23007s
+[oracle] llada/gsm8k prompts=190 buf=336 elapsed=24258s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000009.pt (528 examples)
+[oracle] llada/gsm8k prompts=200 buf=48 elapsed=25526s
+[oracle] llada/gsm8k prompts=210 buf=288 elapsed=26816s
+[oracle] llada/gsm8k prompts=220 buf=528 elapsed=28121s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000010.pt (528 examples)
+[oracle] llada/gsm8k prompts=230 buf=240 elapsed=29404s
+[oracle] llada/gsm8k prompts=240 buf=480 elapsed=30671s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000011.pt (528 examples)
+[oracle] llada/gsm8k prompts=250 buf=192 elapsed=31952s
+[oracle] llada/gsm8k prompts=260 buf=432 elapsed=33216s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000012.pt (528 examples)
+[oracle] llada/gsm8k prompts=270 buf=144 elapsed=34488s
+[oracle] llada/gsm8k prompts=280 buf=384 elapsed=35757s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000013.pt (528 examples)
+[oracle] llada/gsm8k prompts=290 buf=96 elapsed=37043s
+[oracle] llada/gsm8k prompts=300 buf=336 elapsed=38290s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000014.pt (528 examples)
+[oracle] llada/gsm8k prompts=310 buf=48 elapsed=39573s
+[oracle] llada/gsm8k prompts=320 buf=288 elapsed=40872s
+[oracle] llada/gsm8k prompts=330 buf=528 elapsed=42125s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000015.pt (528 examples)
+[oracle] llada/gsm8k prompts=340 buf=240 elapsed=43436s
+[oracle] llada/gsm8k prompts=350 buf=480 elapsed=44724s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000016.pt (528 examples)
+[oracle] llada/gsm8k prompts=360 buf=192 elapsed=45979s
+[oracle] llada/gsm8k prompts=370 buf=432 elapsed=47277s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000017.pt (528 examples)
+[oracle] llada/gsm8k prompts=380 buf=144 elapsed=48593s
+[oracle] llada/gsm8k prompts=390 buf=384 elapsed=49873s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000018.pt (528 examples)
+[oracle] llada/gsm8k prompts=400 buf=96 elapsed=51155s
+[oracle] llada/gsm8k prompts=410 buf=336 elapsed=52451s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000019.pt (528 examples)
+[oracle] llada/gsm8k prompts=420 buf=48 elapsed=53739s
+[oracle] llada/gsm8k prompts=430 buf=288 elapsed=55012s
+[oracle] llada/gsm8k prompts=440 buf=528 elapsed=56297s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000020.pt (528 examples)
+[oracle] llada/gsm8k prompts=450 buf=240 elapsed=57599s
+[oracle] llada/gsm8k prompts=460 buf=480 elapsed=58858s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000021.pt (528 examples)
+[oracle] llada/gsm8k prompts=470 buf=192 elapsed=60140s
+[oracle] wrote final shard /scratch/ug2084/Efficient-AI/labels/base/oracle/llada/gsm8k/oracle_000022.pt (384 examples)
+[oracle] done. total prompts=478

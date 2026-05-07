@@ -1,0 +1,56 @@
+[oracle] loaded dream; hidden_dim=3584
+[oracle] dream/mbpp prompts=10 buf=240 elapsed=989s
+[oracle] dream/mbpp prompts=20 buf=480 elapsed=2006s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000000.pt (528 examples)
+[oracle] dream/mbpp prompts=30 buf=192 elapsed=3014s
+[oracle] dream/mbpp prompts=40 buf=432 elapsed=4008s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000001.pt (528 examples)
+[oracle] dream/mbpp prompts=50 buf=144 elapsed=5013s
+[oracle] dream/mbpp prompts=60 buf=384 elapsed=6021s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000002.pt (528 examples)
+[oracle] dream/mbpp prompts=70 buf=96 elapsed=7014s
+[oracle] dream/mbpp prompts=80 buf=336 elapsed=7993s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000003.pt (528 examples)
+[oracle] dream/mbpp prompts=90 buf=48 elapsed=8986s
+[oracle] dream/mbpp prompts=100 buf=288 elapsed=10013s
+[oracle] dream/mbpp prompts=110 buf=528 elapsed=11026s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000004.pt (528 examples)
+[oracle] dream/mbpp prompts=120 buf=240 elapsed=12022s
+[oracle] dream/mbpp prompts=130 buf=480 elapsed=13040s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000005.pt (528 examples)
+[oracle] dream/mbpp prompts=140 buf=192 elapsed=14029s
+[oracle] dream/mbpp prompts=150 buf=432 elapsed=15036s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000006.pt (528 examples)
+[oracle] dream/mbpp prompts=160 buf=144 elapsed=16040s
+[oracle] dream/mbpp prompts=170 buf=384 elapsed=17031s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000007.pt (528 examples)
+[oracle] dream/mbpp prompts=180 buf=96 elapsed=18047s
+[oracle] dream/mbpp prompts=190 buf=336 elapsed=19030s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000008.pt (528 examples)
+[oracle] dream/mbpp prompts=200 buf=48 elapsed=20024s
+[oracle] dream/mbpp prompts=210 buf=288 elapsed=21009s
+[oracle] dream/mbpp prompts=220 buf=528 elapsed=22005s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000009.pt (528 examples)
+[oracle] dream/mbpp prompts=230 buf=240 elapsed=22996s
+[oracle] dream/mbpp prompts=240 buf=480 elapsed=23988s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000010.pt (528 examples)
+[oracle] dream/mbpp prompts=250 buf=192 elapsed=24980s
+[oracle] dream/mbpp prompts=260 buf=432 elapsed=25993s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000011.pt (528 examples)
+[oracle] dream/mbpp prompts=270 buf=144 elapsed=26998s
+[oracle] dream/mbpp prompts=280 buf=384 elapsed=27977s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000012.pt (528 examples)
+[oracle] dream/mbpp prompts=290 buf=96 elapsed=28986s
+[oracle] dream/mbpp prompts=300 buf=336 elapsed=29982s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000013.pt (528 examples)
+[oracle] dream/mbpp prompts=310 buf=48 elapsed=30975s
+[oracle] dream/mbpp prompts=320 buf=288 elapsed=31966s
+[oracle] dream/mbpp prompts=330 buf=528 elapsed=32953s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000014.pt (528 examples)
+[oracle] dream/mbpp prompts=340 buf=240 elapsed=33956s
+[oracle] dream/mbpp prompts=350 buf=480 elapsed=34958s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000015.pt (528 examples)
+[oracle] dream/mbpp prompts=360 buf=192 elapsed=35940s
+[oracle] dream/mbpp prompts=370 buf=432 elapsed=36918s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/mbpp/oracle_000016.pt (528 examples)
+[oracle] done. total prompts=374

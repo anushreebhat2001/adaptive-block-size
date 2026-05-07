@@ -1,0 +1,6 @@
+[eval] llada/gsm8k/ours-teacher 25 acc=0.560 toks/s=14.3
+[eval] llada/gsm8k/ours-teacher 50 acc=0.660 toks/s=14.3
+[eval] llada/gsm8k/ours-teacher 75 acc=0.720 toks/s=14.3
+[eval] llada/gsm8k/ours-teacher 100 acc=0.710 toks/s=14.4
+[eval] llada/gsm8k/ours-teacher 125 acc=0.736 toks/s=14.4
+[eval] llada/gsm8k/ours-teacher 150 acc=0.727 toks/s=14.4

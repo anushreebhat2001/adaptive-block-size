@@ -1,0 +1,2 @@
+[oracle-smoke-dream-base] step 1/3: build_oracle_labels (Dream-Base, 12 GSM8K prompts x K=4 rollouts)
+[oracle] loaded dream; hidden_dim=3584

@@ -1,0 +1,7 @@
+[eval] dream/gsm8k/ours-teacher 25 acc=0.000 toks/s=18.3
+[eval] dream/gsm8k/ours-teacher 50 acc=0.000 toks/s=17.8
+[eval] dream/gsm8k/ours-teacher 75 acc=0.000 toks/s=17.9
+[eval] dream/gsm8k/ours-teacher 100 acc=0.000 toks/s=18.0
+[eval] dream/gsm8k/ours-teacher 125 acc=0.000 toks/s=18.0
+[eval] dream/gsm8k/ours-teacher 150 acc=0.000 toks/s=17.9
+[eval] dream/gsm8k/ours-teacher 175 acc=0.000 toks/s=17.9

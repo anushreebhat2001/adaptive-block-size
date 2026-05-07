@@ -1,0 +1,6 @@
+[eval] dream/gsm8k/fixed-8 25 acc=0.000 toks/s=15.2
+[eval] dream/gsm8k/fixed-8 50 acc=0.000 toks/s=15.2
+[eval] dream/gsm8k/fixed-8 75 acc=0.000 toks/s=15.3
+[eval] dream/gsm8k/fixed-8 100 acc=0.000 toks/s=15.3
+[eval] dream/gsm8k/fixed-8 125 acc=0.000 toks/s=15.3
+[eval] dream/gsm8k/fixed-8 150 acc=0.000 toks/s=15.3

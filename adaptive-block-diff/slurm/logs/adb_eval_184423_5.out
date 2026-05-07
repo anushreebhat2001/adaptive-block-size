@@ -1,0 +1,9 @@
+[eval] llada/gsm8k/ours-teacher 25 acc=0.560 toks/s=14.6
+[eval] llada/gsm8k/ours-teacher 50 acc=0.660 toks/s=14.6
+[eval] llada/gsm8k/ours-teacher 75 acc=0.720 toks/s=14.6
+[eval] llada/gsm8k/ours-teacher 100 acc=0.710 toks/s=14.7
+[eval] llada/gsm8k/ours-teacher 125 acc=0.736 toks/s=14.6
+[eval] llada/gsm8k/ours-teacher 150 acc=0.727 toks/s=14.6
+[eval] llada/gsm8k/ours-teacher 175 acc=0.726 toks/s=14.6
+[eval] llada/gsm8k/ours-teacher 200 acc=0.740 toks/s=14.6
+[eval] wrote /scratch/ug2084/Efficient-AI/results/base/llada_gsm8k_ours-teacher.json

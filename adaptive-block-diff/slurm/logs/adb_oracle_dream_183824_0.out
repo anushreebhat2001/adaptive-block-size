@@ -1,0 +1,75 @@
+[oracle] loaded dream; hidden_dim=3584
+[oracle] dream/gsm8k prompts=10 buf=240 elapsed=992s
+[oracle] dream/gsm8k prompts=20 buf=480 elapsed=1984s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000000.pt (528 examples)
+[oracle] dream/gsm8k prompts=30 buf=192 elapsed=2980s
+[oracle] dream/gsm8k prompts=40 buf=432 elapsed=3974s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000001.pt (528 examples)
+[oracle] dream/gsm8k prompts=50 buf=144 elapsed=4952s
+[oracle] dream/gsm8k prompts=60 buf=384 elapsed=5935s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000002.pt (528 examples)
+[oracle] dream/gsm8k prompts=70 buf=96 elapsed=6919s
+[oracle] dream/gsm8k prompts=80 buf=336 elapsed=7892s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000003.pt (528 examples)
+[oracle] dream/gsm8k prompts=90 buf=48 elapsed=8868s
+[oracle] dream/gsm8k prompts=100 buf=288 elapsed=9857s
+[oracle] dream/gsm8k prompts=110 buf=528 elapsed=10839s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000004.pt (528 examples)
+[oracle] dream/gsm8k prompts=120 buf=240 elapsed=11822s
+[oracle] dream/gsm8k prompts=130 buf=480 elapsed=12800s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000005.pt (528 examples)
+[oracle] dream/gsm8k prompts=140 buf=192 elapsed=13785s
+[oracle] dream/gsm8k prompts=150 buf=432 elapsed=14757s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000006.pt (528 examples)
+[oracle] dream/gsm8k prompts=160 buf=144 elapsed=15723s
+[oracle] dream/gsm8k prompts=170 buf=384 elapsed=16710s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000007.pt (528 examples)
+[oracle] dream/gsm8k prompts=180 buf=96 elapsed=17690s
+[oracle] dream/gsm8k prompts=190 buf=336 elapsed=18668s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000008.pt (528 examples)
+[oracle] dream/gsm8k prompts=200 buf=48 elapsed=19642s
+[oracle] dream/gsm8k prompts=210 buf=288 elapsed=20609s
+[oracle] dream/gsm8k prompts=220 buf=528 elapsed=21587s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000009.pt (528 examples)
+[oracle] dream/gsm8k prompts=230 buf=240 elapsed=22565s
+[oracle] dream/gsm8k prompts=240 buf=480 elapsed=23568s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000010.pt (528 examples)
+[oracle] dream/gsm8k prompts=250 buf=192 elapsed=24549s
+[oracle] dream/gsm8k prompts=260 buf=432 elapsed=25526s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000011.pt (528 examples)
+[oracle] dream/gsm8k prompts=270 buf=144 elapsed=26502s
+[oracle] dream/gsm8k prompts=280 buf=384 elapsed=27478s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000012.pt (528 examples)
+[oracle] dream/gsm8k prompts=290 buf=96 elapsed=28455s
+[oracle] dream/gsm8k prompts=300 buf=336 elapsed=29429s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000013.pt (528 examples)
+[oracle] dream/gsm8k prompts=310 buf=48 elapsed=30413s
+[oracle] dream/gsm8k prompts=320 buf=288 elapsed=31383s
+[oracle] dream/gsm8k prompts=330 buf=528 elapsed=32356s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000014.pt (528 examples)
+[oracle] dream/gsm8k prompts=340 buf=240 elapsed=33353s
+[oracle] dream/gsm8k prompts=350 buf=480 elapsed=34321s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000015.pt (528 examples)
+[oracle] dream/gsm8k prompts=360 buf=192 elapsed=35312s
+[oracle] dream/gsm8k prompts=370 buf=432 elapsed=36298s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000016.pt (528 examples)
+[oracle] dream/gsm8k prompts=380 buf=144 elapsed=37271s
+[oracle] dream/gsm8k prompts=390 buf=384 elapsed=38253s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000017.pt (528 examples)
+[oracle] dream/gsm8k prompts=400 buf=96 elapsed=39250s
+[oracle] dream/gsm8k prompts=410 buf=336 elapsed=40234s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000018.pt (528 examples)
+[oracle] dream/gsm8k prompts=420 buf=48 elapsed=41208s
+[oracle] dream/gsm8k prompts=430 buf=288 elapsed=42191s
+[oracle] dream/gsm8k prompts=440 buf=528 elapsed=43180s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000019.pt (528 examples)
+[oracle] dream/gsm8k prompts=450 buf=240 elapsed=44157s
+[oracle] dream/gsm8k prompts=460 buf=480 elapsed=45134s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000020.pt (528 examples)
+[oracle] dream/gsm8k prompts=470 buf=192 elapsed=46126s
+[oracle] dream/gsm8k prompts=480 buf=432 elapsed=47101s
+[oracle] wrote shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000021.pt (528 examples)
+[oracle] dream/gsm8k prompts=490 buf=144 elapsed=48084s
+[oracle] dream/gsm8k prompts=500 buf=384 elapsed=49078s
+[oracle] wrote final shard /scratch/ug2084/Efficient-AI/labels/base/oracle/dream/gsm8k/oracle_000022.pt (384 examples)
+[oracle] done. total prompts=500

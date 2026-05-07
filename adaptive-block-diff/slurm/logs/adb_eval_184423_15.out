@@ -1,0 +1,7 @@
+[eval] llada/humaneval/fixed-8 25 acc=0.800 toks/s=16.3
+[eval] llada/humaneval/fixed-8 50 acc=0.840 toks/s=16.2
+[eval] llada/humaneval/fixed-8 75 acc=0.827 toks/s=16.2
+[eval] llada/humaneval/fixed-8 100 acc=0.850 toks/s=16.1
+[eval] llada/humaneval/fixed-8 125 acc=0.864 toks/s=15.9
+[eval] llada/humaneval/fixed-8 150 acc=0.860 toks/s=15.9
+[eval] wrote /scratch/ug2084/Efficient-AI/results/base/llada_humaneval_fixed-8.json

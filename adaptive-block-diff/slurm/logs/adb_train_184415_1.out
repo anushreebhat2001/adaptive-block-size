@@ -1,0 +1,42 @@
+[train] loading shards from /scratch/ug2084/Efficient-AI/labels/lam_15/oracle/llada/*/*.pt
+[train] train=40272 val=4704 class_balance={3: 14120, 2: 20467, 1: 4993, 0: 692}
+[train] class_weight_mode=none: using uniform CE
+[train] focal_gamma=2.0: using focal loss (Lin et al. 2017). label_smoothing ignored.
+[train] epoch=0 step=79 val_loss=1.0015 top1_acc=0.5187 within1_acc=0.9756 majority=0.5104 gain_over_majority=+0.0083
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[1, 110, 4215, 378]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5187)
+[train] epoch=1 step=158 val_loss=0.9951 top1_acc=0.5283 within1_acc=0.9630 majority=0.5104 gain_over_majority=+0.0179
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[1, 292, 3957, 454]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5283)
+[train] epoch=2 step=237 val_loss=0.9754 top1_acc=0.5347 within1_acc=0.9568 majority=0.5104 gain_over_majority=+0.0242
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[1, 165, 3954, 584]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5347)
+[train] epoch=3 step=316 val_loss=1.0000 top1_acc=0.5240 within1_acc=0.9405 majority=0.5104 gain_over_majority=+0.0136
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[6, 439, 3541, 718]
+[train] epoch=4 step=395 val_loss=0.9599 top1_acc=0.5427 within1_acc=0.9560 majority=0.5104 gain_over_majority=+0.0323
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[0, 149, 4077, 478]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5427)
+[train] epoch=5 step=474 val_loss=0.9515 top1_acc=0.5451 within1_acc=0.9575 majority=0.5104 gain_over_majority=+0.0347
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[17, 156, 4106, 425]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/llada_oracle_lam_15.pt (top1=0.5451)
+[train] epoch=6 step=553 val_loss=0.9508 top1_acc=0.5444 within1_acc=0.9594 majority=0.5104 gain_over_majority=+0.0340
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[4, 222, 3993, 485]
+[train] epoch=7 step=632 val_loss=0.9522 top1_acc=0.5425 within1_acc=0.9505 majority=0.5104 gain_over_majority=+0.0321
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[20, 347, 3766, 571]
+[train] epoch=8 step=711 val_loss=0.9557 top1_acc=0.5338 within1_acc=0.9418 majority=0.5104 gain_over_majority=+0.0234
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[17, 207, 3617, 863]
+[train] epoch=9 step=790 val_loss=0.9512 top1_acc=0.5406 within1_acc=0.9481 majority=0.5104 gain_over_majority=+0.0302
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[13, 278, 3819, 594]
+[train] epoch=10 step=869 val_loss=0.9520 top1_acc=0.5342 within1_acc=0.9303 majority=0.5104 gain_over_majority=+0.0238
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[4, 335, 3415, 950]
+[train] epoch=11 step=948 val_loss=0.9497 top1_acc=0.5410 within1_acc=0.9426 majority=0.5104 gain_over_majority=+0.0306
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[8, 344, 3706, 646]
+[train] epoch=12 step=1027 val_loss=0.9491 top1_acc=0.5391 within1_acc=0.9411 majority=0.5104 gain_over_majority=+0.0287
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[12, 347, 3713, 632]
+[train] epoch=13 step=1106 val_loss=0.9508 top1_acc=0.5385 within1_acc=0.9375 majority=0.5104 gain_over_majority=+0.0281
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[12, 416, 3627, 649]
+[train] epoch=14 step=1185 val_loss=0.9500 top1_acc=0.5378 within1_acc=0.9375 majority=0.5104 gain_over_majority=+0.0274
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[11, 381, 3617, 695]
+[train] epoch=15 step=1264 val_loss=0.9498 top1_acc=0.5406 within1_acc=0.9379 majority=0.5104 gain_over_majority=+0.0302
+[train]   val label_dist=[80, 589, 2401, 1634] pred_dist=[11, 381, 3638, 674]
+[train] done. best_val_top1=0.5451

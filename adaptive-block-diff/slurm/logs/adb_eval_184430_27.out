@@ -1,0 +1,9 @@
+[eval] llada/mbpp/ours-oracle 25 acc=0.480 toks/s=13.3
+[eval] llada/mbpp/ours-oracle 50 acc=0.480 toks/s=13.3
+[eval] llada/mbpp/ours-oracle 75 acc=0.493 toks/s=13.3
+[eval] llada/mbpp/ours-oracle 100 acc=0.490 toks/s=13.2
+[eval] llada/mbpp/ours-oracle 125 acc=0.480 toks/s=13.2
+[eval] llada/mbpp/ours-oracle 150 acc=0.467 toks/s=13.2
+[eval] llada/mbpp/ours-oracle 175 acc=0.480 toks/s=13.2
+[eval] llada/mbpp/ours-oracle 200 acc=0.470 toks/s=13.2
+[eval] wrote /scratch/ug2084/Efficient-AI/results/base/llada_mbpp_ours-oracle_lam_15.json

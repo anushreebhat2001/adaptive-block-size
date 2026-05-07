@@ -1,0 +1,9 @@
+[eval] llada/math/ours-oracle 25 acc=0.200 toks/s=18.3
+[eval] llada/math/ours-oracle 50 acc=0.260 toks/s=18.8
+[eval] llada/math/ours-oracle 75 acc=0.253 toks/s=19.2
+[eval] llada/math/ours-oracle 100 acc=0.280 toks/s=19.4
+[eval] llada/math/ours-oracle 125 acc=0.264 toks/s=19.4
+[eval] llada/math/ours-oracle 150 acc=0.260 toks/s=19.5
+[eval] llada/math/ours-oracle 175 acc=0.269 toks/s=19.4
+[eval] llada/math/ours-oracle 200 acc=0.275 toks/s=19.4
+[eval] wrote /scratch/ug2084/Efficient-AI/results/base/llada_math_ours-oracle_lam_15.json

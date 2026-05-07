@@ -1,0 +1,33 @@
+[oracle-smoke-base] step 1/3: build_oracle_labels (LLaDA-Base, 12 GSM8K prompts x K=4 rollouts)
+[oracle] loaded llada; hidden_dim=4096
+[oracle] llada/gsm8k prompts=10 buf=160 elapsed=784s
+[oracle] wrote final shard /scratch/ug2084/Efficient-AI/smoke/base/oracle/labels/llada/gsm8k/oracle_000000.pt (192 examples)
+[oracle] done. total prompts=12
+[oracle-smoke-base] step 2/3: train predictor on oracle labels (5 epochs)
+[train] loading shards from /scratch/ug2084/Efficient-AI/smoke/base/oracle/labels/llada/gsm8k/*.pt
+[train] train=176 val=16 class_balance={3: 12, 2: 45, 0: 70, 1: 49}
+[train] class_weight_mode=none: using uniform CE
+[train] epoch=0 step=1 val_loss=1.3540 val_acc=0.2500 val_off1=0.6250 majority=0.3750 gain_over_majority=-0.1250
+[train]   val label_dist=[4, 6, 4, 2] pred_dist=[16, 0, 0, 0]
+[train] saved new best to /scratch/ug2084/Efficient-AI/smoke/base/oracle/ckpt/llada_oracle.pt
+[train] epoch=1 step=2 val_loss=1.3546 val_acc=0.2500 val_off1=0.6250 majority=0.3750 gain_over_majority=-0.1250
+[train]   val label_dist=[4, 6, 4, 2] pred_dist=[16, 0, 0, 0]
+[train] epoch=2 step=3 val_loss=1.3558 val_acc=0.2500 val_off1=0.6875 majority=0.3750 gain_over_majority=-0.1250
+[train]   val label_dist=[4, 6, 4, 2] pred_dist=[13, 3, 0, 0]
+[train] epoch=3 step=4 val_loss=1.3560 val_acc=0.2500 val_off1=0.6875 majority=0.3750 gain_over_majority=-0.1250
+[train]   val label_dist=[4, 6, 4, 2] pred_dist=[13, 3, 0, 0]
+[train] epoch=4 step=5 val_loss=1.3559 val_acc=0.2500 val_off1=0.6875 majority=0.3750 gain_over_majority=-0.1250
+[train]   val label_dist=[4, 6, 4, 2] pred_dist=[12, 4, 0, 0]
+[train] done. best_val_loss=1.3540
+[oracle-smoke-base] step 3/3: eval ours-oracle vs adablock on 15 GSM8K prompts
+[eval] wrote /scratch/ug2084/Efficient-AI/smoke/base/oracle/results/ours_oracle.json
+[eval] wrote /scratch/ug2084/Efficient-AI/smoke/base/oracle/results/adablock.json
+[oracle-smoke-base] done.
+  GO criteria for redoing the full pipeline on Base:
+    1. Oracle label class_balance covers >=3 classes, no class >70%
+    2. Predictor val gain_over_majority > 0 (anything positive)
+    3. Eval ours-oracle tokens_per_second OR accuracy differs from adablock
+         by a margin big enough to publish (>=2 pts acc or >=2 t/s)
+  NO-GO criteria (stick with Instruct results, write paper as-is):
+    1. Oracle labels collapse to 1-2 classes
+    2. Eval still shows identical accuracy across schedulers

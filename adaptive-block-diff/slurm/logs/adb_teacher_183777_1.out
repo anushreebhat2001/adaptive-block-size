@@ -1,0 +1,31 @@
+[teacher] loaded llada; hidden_dim=4096
+[teacher] delimiter token-id set size: 76
+[teacher] resume: 8 shards on disk, last prompt_id=175, continuing from prompt 176 with shard_idx=8
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000008.pt (528 examples)
+[teacher] llada/math prompts=25 buf=72 elapsed=526s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000009.pt (528 examples)
+[teacher] llada/math prompts=50 buf=144 elapsed=1017s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000010.pt (528 examples)
+[teacher] llada/math prompts=75 buf=216 elapsed=1493s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000011.pt (528 examples)
+[teacher] llada/math prompts=100 buf=288 elapsed=1984s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000012.pt (528 examples)
+[teacher] llada/math prompts=125 buf=360 elapsed=2453s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000013.pt (528 examples)
+[teacher] llada/math prompts=150 buf=432 elapsed=2925s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000014.pt (528 examples)
+[teacher] llada/math prompts=175 buf=504 elapsed=3399s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000015.pt (528 examples)
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000016.pt (528 examples)
+[teacher] llada/math prompts=200 buf=48 elapsed=3912s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000017.pt (528 examples)
+[teacher] llada/math prompts=225 buf=120 elapsed=4400s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000018.pt (528 examples)
+[teacher] llada/math prompts=250 buf=192 elapsed=4919s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000019.pt (528 examples)
+[teacher] llada/math prompts=275 buf=264 elapsed=5421s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000020.pt (528 examples)
+[teacher] llada/math prompts=300 buf=336 elapsed=5896s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000021.pt (528 examples)
+[teacher] wrote final shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/math/teacher_000022.pt (384 examples)
+[teacher] done. total prompts=324

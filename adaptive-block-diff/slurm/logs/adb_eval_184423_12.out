@@ -1,0 +1,9 @@
+[eval] llada/math/ours-teacher 25 acc=0.200 toks/s=19.7
+[eval] llada/math/ours-teacher 50 acc=0.320 toks/s=20.1
+[eval] llada/math/ours-teacher 75 acc=0.293 toks/s=20.6
+[eval] llada/math/ours-teacher 100 acc=0.310 toks/s=20.8
+[eval] llada/math/ours-teacher 125 acc=0.304 toks/s=20.7
+[eval] llada/math/ours-teacher 150 acc=0.280 toks/s=20.8
+[eval] llada/math/ours-teacher 175 acc=0.274 toks/s=20.7
+[eval] llada/math/ours-teacher 200 acc=0.275 toks/s=20.7
+[eval] wrote /scratch/ug2084/Efficient-AI/results/base/llada_math_ours-teacher.json

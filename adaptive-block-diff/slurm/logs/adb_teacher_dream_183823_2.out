@@ -1,0 +1,34 @@
+[teacher] loaded dream; hidden_dim=3584
+[teacher] delimiter token-id set size: 177
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000000.pt (528 examples)
+[teacher] dream/mbpp prompts=25 buf=72 elapsed=546s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000001.pt (528 examples)
+[teacher] dream/mbpp prompts=50 buf=144 elapsed=1084s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000002.pt (528 examples)
+[teacher] dream/mbpp prompts=75 buf=216 elapsed=1620s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000003.pt (528 examples)
+[teacher] dream/mbpp prompts=100 buf=288 elapsed=2160s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000004.pt (528 examples)
+[teacher] dream/mbpp prompts=125 buf=360 elapsed=2702s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000005.pt (528 examples)
+[teacher] dream/mbpp prompts=150 buf=432 elapsed=3240s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000006.pt (528 examples)
+[teacher] dream/mbpp prompts=175 buf=504 elapsed=3776s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000007.pt (528 examples)
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000008.pt (528 examples)
+[teacher] dream/mbpp prompts=200 buf=48 elapsed=4313s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000009.pt (528 examples)
+[teacher] dream/mbpp prompts=225 buf=120 elapsed=4848s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000010.pt (528 examples)
+[teacher] dream/mbpp prompts=250 buf=192 elapsed=5383s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000011.pt (528 examples)
+[teacher] dream/mbpp prompts=275 buf=264 elapsed=5924s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000012.pt (528 examples)
+[teacher] dream/mbpp prompts=300 buf=336 elapsed=6463s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000013.pt (528 examples)
+[teacher] dream/mbpp prompts=325 buf=408 elapsed=6999s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000014.pt (528 examples)
+[teacher] dream/mbpp prompts=350 buf=480 elapsed=7538s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000015.pt (528 examples)
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/mbpp/teacher_000016.pt (528 examples)
+[teacher] done. total prompts=374

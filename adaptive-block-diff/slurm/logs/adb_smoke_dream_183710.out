@@ -1,0 +1,67 @@
+[smoke-dream] step 1/3: build_teacher_labels (Dream-Instruct, GSM8K, debug first 30 boundaries)
+[teacher] loaded dream; hidden_dim=3584
+[teacher] delimiter token-id set size: 177
+[teacher.debug] prompt=0 block=0 pos=0 delim_in_block=False delim_in_peek=False conf=0.710 chosen=B4 block='atal sold422222   clips22222'
+[teacher.debug] prompt=0 block=1 pos=16 delim_in_block=True delim_in_peek=True conf=0.695 chosen=B4 block='            clips..  clips'
+[teacher.debug] prompt=0 block=2 pos=32 delim_in_block=True delim_in_peek=False conf=0.633 chosen=B4 block=' clips clips clips clips clips clips     clips... clips clips'
+[teacher.debug] prompt=0 block=3 pos=48 delim_in_block=False delim_in_peek=False conf=0.886 chosen=B4 block=' clips clips clips clips clips clips clips clips clips clips cli'
+[teacher.debug] prompt=0 block=4 pos=64 delim_in_block=False delim_in_peek=False conf=0.742 chosen=B4 block=' clips clips clips clips clips clips clips clips clips clips cli'
+[teacher.debug] prompt=0 block=5 pos=80 delim_in_block=False delim_in_peek=False conf=0.692 chosen=B4 block=' clips clips clips clips clips clips clips clips clips clips cli'
+[teacher.debug] prompt=0 block=6 pos=96 delim_in_block=False delim_in_peek=False conf=0.695 chosen=B4 block=' clips clips clips clips clips clips clips clips clips clips cli'
+[teacher.debug] prompt=0 block=7 pos=112 delim_in_block=False delim_in_peek=False conf=0.748 chosen=B4 block=' clips clips clips clips clips clips clips clips clips clips cli'
+[teacher.debug] prompt=0 block=8 pos=128 delim_in_block=False delim_in_peek=False conf=0.812 chosen=B4 block=' clips clips clips clips clips clips clips clips clips clips cli'
+[teacher.debug] prompt=1 block=0 pos=0 delim_in_block=True delim_in_peek=True conf=0.747 chosen=B4 block='08...0..........'
+[teacher.debug] prompt=1 block=1 pos=16 delim_in_block=True delim_in_peek=True conf=0.706 chosen=B4 block='..0.........0...'
+[teacher.debug] prompt=1 block=2 pos=32 delim_in_block=True delim_in_peek=True conf=0.919 chosen=B4 block='.00000000...0...'
+[teacher.debug] prompt=1 block=3 pos=48 delim_in_block=True delim_in_peek=True conf=0.880 chosen=B4 block='.0000000000.....'
+[teacher.debug] prompt=1 block=4 pos=64 delim_in_block=True delim_in_peek=True conf=0.897 chosen=B4 block='00000000000.....'
+[teacher.debug] prompt=1 block=5 pos=80 delim_in_block=True delim_in_peek=True conf=0.876 chosen=B4 block='00000000000....0'
+[teacher.debug] prompt=1 block=6 pos=96 delim_in_block=False delim_in_peek=False conf=0.928 chosen=B32 block='0000000000000000'
+[teacher.debug] prompt=1 block=7 pos=112 delim_in_block=False delim_in_peek=False conf=0.925 chosen=B32 block='0000000000000000'
+[teacher.debug] prompt=2 block=0 pos=0 delim_in_block=True delim_in_peek=False conf=0.865 chosen=B4 block='ty00000000000..00'
+[teacher.debug] prompt=2 block=1 pos=16 delim_in_block=False delim_in_peek=False conf=0.868 chosen=B4 block='0000000000000000'
+[teacher.debug] prompt=2 block=2 pos=32 delim_in_block=False delim_in_peek=False conf=0.871 chosen=B4 block='0000000000000000'
+[teacher.debug] prompt=2 block=3 pos=48 delim_in_block=False delim_in_peek=False conf=0.837 chosen=B4 block='0000000000000000'
+[teacher.debug] prompt=2 block=4 pos=64 delim_in_block=False delim_in_peek=False conf=0.844 chosen=B4 block='0000000000000000'
+[teacher.debug] prompt=2 block=5 pos=80 delim_in_block=False delim_in_peek=False conf=0.784 chosen=B4 block='0000000000000000'
+[teacher.debug] prompt=2 block=6 pos=96 delim_in_block=False delim_in_peek=False conf=0.819 chosen=B4 block='0000000000000000'
+[teacher.debug] prompt=2 block=7 pos=112 delim_in_block=False delim_in_peek=False conf=0.801 chosen=B4 block='0000000000000000'
+[teacher.debug] prompt=2 block=8 pos=128 delim_in_block=False delim_in_peek=False conf=0.998 chosen=B32 block='0<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext'
+[teacher.debug] prompt=3 block=0 pos=0 delim_in_block=True delim_in_peek=True conf=0.532 chosen=B4 block='ie   pages...     pages..  '
+[teacher.debug] prompt=3 block=1 pos=16 delim_in_block=True delim_in_peek=True conf=0.662 chosen=B4 block='           pages...  '
+[teacher.debug] prompt=3 block=2 pos=32 delim_in_block=True delim_in_peek=True conf=0.763 chosen=B4 block='           pages...  '
+[teacher.debug] prompt=3 block=3 pos=48 delim_in_block=True delim_in_peek=True conf=0.760 chosen=B4 block='         pages.....  '
+[teacher] dream/gsm8k prompts=25 buf=202 elapsed=176s
+[teacher] wrote final shard /scratch/ug2084/Efficient-AI/smoke/dream/labels/dream/gsm8k/teacher_000000.pt (202 examples)
+[teacher] done. total prompts=25
+[smoke-dream] step 2/3: train predictor (5 epochs)
+[train] loading shards from /scratch/ug2084/Efficient-AI/smoke/dream/labels/dream/gsm8k/*.pt
+[train] train=170 val=32 class_balance={0: 131, 3: 38, 2: 1}
+[train] class_weight_mode=none: using uniform CE
+[train] epoch=0 step=1 val_loss=1.1102 val_acc=0.7500 val_off1=0.7500 majority=0.7500 gain_over_majority=+0.0000
+[train]   val label_dist=[24, 0, 0, 8] pred_dist=[32, 0, 0, 0]
+[train] saved new best to /scratch/ug2084/Efficient-AI/smoke/dream/ckpt/dream_teacher.pt
+[train] epoch=1 step=2 val_loss=0.9387 val_acc=0.7500 val_off1=0.7500 majority=0.7500 gain_over_majority=+0.0000
+[train]   val label_dist=[24, 0, 0, 8] pred_dist=[32, 0, 0, 0]
+[train] saved new best to /scratch/ug2084/Efficient-AI/smoke/dream/ckpt/dream_teacher.pt
+[train] epoch=2 step=3 val_loss=0.8507 val_acc=0.7500 val_off1=0.7500 majority=0.7500 gain_over_majority=+0.0000
+[train]   val label_dist=[24, 0, 0, 8] pred_dist=[32, 0, 0, 0]
+[train] saved new best to /scratch/ug2084/Efficient-AI/smoke/dream/ckpt/dream_teacher.pt
+[train] epoch=3 step=4 val_loss=0.8122 val_acc=0.7500 val_off1=0.7500 majority=0.7500 gain_over_majority=+0.0000
+[train]   val label_dist=[24, 0, 0, 8] pred_dist=[32, 0, 0, 0]
+[train] saved new best to /scratch/ug2084/Efficient-AI/smoke/dream/ckpt/dream_teacher.pt
+[train] epoch=4 step=5 val_loss=0.8021 val_acc=0.7500 val_off1=0.7500 majority=0.7500 gain_over_majority=+0.0000
+[train]   val label_dist=[24, 0, 0, 8] pred_dist=[32, 0, 0, 0]
+[train] saved new best to /scratch/ug2084/Efficient-AI/smoke/dream/ckpt/dream_teacher.pt
+[train] done. best_val_loss=0.8021
+[smoke-dream] step 3/3: eval ours-teacher vs adablock on 15 GSM8K prompts
+[eval] wrote /scratch/ug2084/Efficient-AI/smoke/dream/results/ours_teacher.json
+[eval] wrote /scratch/ug2084/Efficient-AI/smoke/dream/results/adablock.json
+[smoke-dream] done.
+  Pass criteria (compare to Base smoke results):
+    1. Debug-print decoded blocks show real reasoning (not <|endoftext|>)
+    2. Boundaries-per-prompt >= 6 (buf count after 25 prompts >= 150)
+    3. Teacher class distribution covers >= 3 classes, no class > 70%
+    4. Eval block_size_histogram differs between ours-teacher and adablock
+  If all pass: Dream is back in the paper for cross-architecture generalization.
+  If any fail: stick with LLaDA-only as before, note as limitation.

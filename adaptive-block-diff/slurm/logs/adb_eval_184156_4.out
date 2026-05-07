@@ -1,0 +1,6 @@
+[eval] llada/gsm8k/adablock 25 acc=0.640 toks/s=14.6
+[eval] llada/gsm8k/adablock 50 acc=0.700 toks/s=14.6
+[eval] llada/gsm8k/adablock 75 acc=0.760 toks/s=14.6
+[eval] llada/gsm8k/adablock 100 acc=0.740 toks/s=14.6
+[eval] llada/gsm8k/adablock 125 acc=0.760 toks/s=14.6
+[eval] llada/gsm8k/adablock 150 acc=0.767 toks/s=14.6

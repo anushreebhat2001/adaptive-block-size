@@ -1,0 +1,39 @@
+[train] loading shards from /scratch/ug2084/Efficient-AI/labels/lam_15/oracle/dream/*/*.pt
+[train] train=40272 val=4704 class_balance={3: 17430, 2: 19850, 0: 636, 1: 2356}
+[train] class_weight_mode=none: using uniform CE
+[train] focal_gamma=2.0: using focal loss (Lin et al. 2017). label_smoothing ignored.
+[train] epoch=0 step=79 val_loss=0.8037 top1_acc=0.5274 within1_acc=0.9530 majority=0.4896 gain_over_majority=+0.0378
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[0, 609, 3781, 314]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_oracle_lam_15.pt (top1=0.5274)
+[train] epoch=1 step=158 val_loss=0.7984 top1_acc=0.5308 within1_acc=0.9609 majority=0.4896 gain_over_majority=+0.0412
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[2, 460, 3023, 1219]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_oracle_lam_15.pt (top1=0.5308)
+[train] epoch=2 step=237 val_loss=0.8031 top1_acc=0.5308 within1_acc=0.9571 majority=0.4896 gain_over_majority=+0.0412
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[44, 532, 3696, 432]
+[train] epoch=3 step=316 val_loss=0.7976 top1_acc=0.5249 within1_acc=0.9454 majority=0.4896 gain_over_majority=+0.0353
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[28, 324, 3941, 411]
+[train] epoch=4 step=395 val_loss=0.8081 top1_acc=0.5274 within1_acc=0.9573 majority=0.4896 gain_over_majority=+0.0378
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[42, 483, 2812, 1367]
+[train] epoch=5 step=474 val_loss=0.8028 top1_acc=0.5253 within1_acc=0.9494 majority=0.4896 gain_over_majority=+0.0357
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[109, 173, 4089, 333]
+[train] epoch=6 step=553 val_loss=0.8208 top1_acc=0.5278 within1_acc=0.9566 majority=0.4896 gain_over_majority=+0.0383
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[24, 570, 3971, 139]
+[train] epoch=7 step=632 val_loss=0.8208 top1_acc=0.5283 within1_acc=0.9500 majority=0.4896 gain_over_majority=+0.0387
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[45, 400, 3831, 428]
+[train] epoch=8 step=711 val_loss=0.8141 top1_acc=0.5157 within1_acc=0.9411 majority=0.4896 gain_over_majority=+0.0261
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[94, 216, 3716, 678]
+[train] epoch=9 step=790 val_loss=0.8191 top1_acc=0.5202 within1_acc=0.9449 majority=0.4896 gain_over_majority=+0.0306
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[44, 453, 3140, 1067]
+[train] epoch=10 step=869 val_loss=0.8243 top1_acc=0.5151 within1_acc=0.9398 majority=0.4896 gain_over_majority=+0.0255
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[51, 264, 3027, 1362]
+[train] epoch=11 step=948 val_loss=0.8256 top1_acc=0.5230 within1_acc=0.9407 majority=0.4896 gain_over_majority=+0.0334
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[84, 241, 3909, 470]
+[train] epoch=12 step=1027 val_loss=0.8272 top1_acc=0.5072 within1_acc=0.9441 majority=0.4896 gain_over_majority=+0.0176
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[62, 299, 2230, 2113]
+[train] epoch=13 step=1106 val_loss=0.8289 top1_acc=0.5189 within1_acc=0.9413 majority=0.4896 gain_over_majority=+0.0293
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[72, 324, 3202, 1106]
+[train] epoch=14 step=1185 val_loss=0.8277 top1_acc=0.5200 within1_acc=0.9437 majority=0.4896 gain_over_majority=+0.0304
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[71, 297, 3512, 824]
+[train] epoch=15 step=1264 val_loss=0.8291 top1_acc=0.5210 within1_acc=0.9422 majority=0.4896 gain_over_majority=+0.0315
+[train]   val label_dist=[94, 322, 2303, 1985] pred_dist=[69, 310, 3472, 853]
+[train] done. best_val_top1=0.5308

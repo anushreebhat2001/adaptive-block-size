@@ -1,0 +1,26 @@
+[teacher] loaded llada; hidden_dim=4096
+[teacher] delimiter token-id set size: 76
+[teacher] resume: 5 shards on disk, last prompt_id=109, continuing from prompt 110 with shard_idx=5
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000005.pt (528 examples)
+[teacher] llada/mbpp prompts=25 buf=72 elapsed=736s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000006.pt (528 examples)
+[teacher] llada/mbpp prompts=50 buf=144 elapsed=1468s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000007.pt (528 examples)
+[teacher] llada/mbpp prompts=75 buf=216 elapsed=2200s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000008.pt (528 examples)
+[teacher] llada/mbpp prompts=100 buf=288 elapsed=2920s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000009.pt (528 examples)
+[teacher] llada/mbpp prompts=125 buf=360 elapsed=3645s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000010.pt (528 examples)
+[teacher] llada/mbpp prompts=150 buf=432 elapsed=4381s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000011.pt (528 examples)
+[teacher] llada/mbpp prompts=175 buf=504 elapsed=5110s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000012.pt (528 examples)
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000013.pt (528 examples)
+[teacher] llada/mbpp prompts=200 buf=48 elapsed=5847s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000014.pt (528 examples)
+[teacher] llada/mbpp prompts=225 buf=120 elapsed=6572s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000015.pt (528 examples)
+[teacher] llada/mbpp prompts=250 buf=192 elapsed=7308s
+[teacher] wrote shard /scratch/ug2084/Efficient-AI/labels/base/teacher/llada/mbpp/teacher_000016.pt (528 examples)
+[teacher] done. total prompts=264

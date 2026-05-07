@@ -1,0 +1,43 @@
+[train] loading shards from /scratch/ug2084/Efficient-AI/labels/base/teacher/dream/*/*.pt
+[train] train=40272 val=4704 class_balance={0: 13479, 3: 26792, 1: 1}
+[train] class_weight_mode=none: using uniform CE
+[train] epoch=0 step=79 val_loss=0.1487 top1_acc=0.9362 within1_acc=0.9362 majority=0.6631 gain_over_majority=+0.2732
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1527, 0, 0, 3177]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher_base.pt (top1=0.9362)
+[train] epoch=1 step=158 val_loss=0.1550 top1_acc=0.9384 within1_acc=0.9384 majority=0.6631 gain_over_majority=+0.2753
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1701, 0, 0, 3003]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher_base.pt (top1=0.9384)
+[train] epoch=2 step=237 val_loss=0.1490 top1_acc=0.9415 within1_acc=0.9415 majority=0.6631 gain_over_majority=+0.2785
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1540, 0, 0, 3164]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher_base.pt (top1=0.9415)
+[train] epoch=3 step=316 val_loss=0.1497 top1_acc=0.9422 within1_acc=0.9422 majority=0.6631 gain_over_majority=+0.2791
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1565, 0, 0, 3139]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher_base.pt (top1=0.9422)
+[train] epoch=4 step=395 val_loss=0.1586 top1_acc=0.9452 within1_acc=0.9452 majority=0.6631 gain_over_majority=+0.2821
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1595, 0, 0, 3109]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher_base.pt (top1=0.9452)
+[train] epoch=5 step=474 val_loss=0.1603 top1_acc=0.9405 within1_acc=0.9405 majority=0.6631 gain_over_majority=+0.2774
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1589, 0, 0, 3115]
+[train] epoch=6 step=553 val_loss=0.1569 top1_acc=0.9439 within1_acc=0.9439 majority=0.6631 gain_over_majority=+0.2808
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1613, 0, 0, 3091]
+[train] epoch=7 step=632 val_loss=0.1685 top1_acc=0.9458 within1_acc=0.9458 majority=0.6631 gain_over_majority=+0.2827
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1614, 0, 0, 3090]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher_base.pt (top1=0.9458)
+[train] epoch=8 step=711 val_loss=0.1808 top1_acc=0.9418 within1_acc=0.9418 majority=0.6631 gain_over_majority=+0.2787
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1673, 0, 0, 3031]
+[train] epoch=9 step=790 val_loss=0.1839 top1_acc=0.9401 within1_acc=0.9401 majority=0.6631 gain_over_majority=+0.2770
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1713, 0, 0, 2991]
+[train] epoch=10 step=869 val_loss=0.1858 top1_acc=0.9458 within1_acc=0.9458 majority=0.6631 gain_over_majority=+0.2827
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1676, 0, 0, 3028]
+[train] epoch=11 step=948 val_loss=0.1814 top1_acc=0.9441 within1_acc=0.9441 majority=0.6631 gain_over_majority=+0.2810
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1580, 0, 0, 3124]
+[train] epoch=12 step=1027 val_loss=0.1863 top1_acc=0.9458 within1_acc=0.9458 majority=0.6631 gain_over_majority=+0.2827
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1624, 0, 0, 3080]
+[train] epoch=13 step=1106 val_loss=0.1889 top1_acc=0.9475 within1_acc=0.9475 majority=0.6631 gain_over_majority=+0.2844
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1600, 0, 0, 3104]
+[train] saved new best to /scratch/ug2084/Efficient-AI/ckpts/predictor/base/dream_teacher_base.pt (top1=0.9475)
+[train] epoch=14 step=1185 val_loss=0.1925 top1_acc=0.9456 within1_acc=0.9456 majority=0.6631 gain_over_majority=+0.2825
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1627, 0, 0, 3077]
+[train] epoch=15 step=1264 val_loss=0.1920 top1_acc=0.9462 within1_acc=0.9462 majority=0.6631 gain_over_majority=+0.2832
+[train]   val label_dist=[1585, 0, 0, 3119] pred_dist=[1624, 0, 0, 3080]
+[train] done. best_val_top1=0.9475
