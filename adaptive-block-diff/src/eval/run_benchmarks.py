@@ -79,6 +79,13 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Override HF model id (e.g. GSAI-ML/LLaDA-8B for base).",
     )
+    p.add_argument(
+        "--raw_prompt",
+        action="store_true",
+        help="Send prompts as raw text (no chat-template wrap). The right "
+             "mode for base-model evaluation against paper-style few-shot "
+             "demonstrations.",
+    )
     return p.parse_args()
 
 
@@ -129,6 +136,8 @@ def main() -> None:
     results = []
     n_correct = 0
     n_total = 0
+    n_failed = 0
+    failed_prompt_ids: list = []
     total_new_tokens = 0
     total_decode_seconds = 0.0
     block_size_histogram = {}
@@ -136,7 +145,18 @@ def main() -> None:
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
 
     for i, prompt in enumerate(iter_prompts(args.benchmark, split=args.split, limit=args.n_prompts)):
-        if prompt.messages is not None and runner.has_chat_template():
+        # Per-prompt seed: deterministic samples for partial reruns. Without
+        # this, a SIGUSR1-driven requeue can produce different outputs on the
+        # same prompt and mess up the prompt-aligned comparison.
+        torch.manual_seed(int(prompt.prompt_id))
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed(int(prompt.prompt_id))
+
+        # Base-model paper-style eval: raw text, no chat template.
+        # Instruct-mode falls back to messages/chat_template if available.
+        if args.raw_prompt:
+            prompt_ids = runner.encode_prompt(prompt.text, raw=True)
+        elif prompt.messages is not None and runner.has_chat_template():
             prompt_ids = runner.encode_messages(prompt.messages)
         else:
             prompt_ids = runner.encode_prompt(prompt.text)
@@ -156,6 +176,8 @@ def main() -> None:
             )
         except Exception as e:
             print(f"[eval] prompt {prompt.prompt_id} failed: {e}", flush=True)
+            n_failed += 1
+            failed_prompt_ids.append(int(prompt.prompt_id))
             continue
         torch.cuda.synchronize() if args.device == "cuda" else None
         dt = time.time() - t0
@@ -173,6 +195,13 @@ def main() -> None:
                 raw = raw.split(_stop, 1)[0]
                 break
         gen_text = re.sub(r"<\|[^|]*\|>", "", raw)
+        # Benchmark-specific stop sequences (paper convention). Truncate at
+        # the first one that appears in the generated text. This is what
+        # prevents bleed into a hallucinated next-problem.
+        for _stop in (prompt.stop_sequences or []):
+            if _stop in gen_text:
+                gen_text = gen_text.split(_stop, 1)[0]
+                break
 
         if args.benchmark == "gsm8k":
             ok = scoring.gsm8k_correct(gen_text, prompt.reference)
@@ -221,6 +250,8 @@ def main() -> None:
         "threshold": args.threshold,
         "n_total": n_total,
         "n_correct": n_correct,
+        "n_failed": n_failed,
+        "failed_prompt_ids": failed_prompt_ids,
         "accuracy": n_correct / max(n_total, 1),
         "tokens_per_second": total_new_tokens / max(total_decode_seconds, 1e-9),
         "total_decode_seconds": total_decode_seconds,

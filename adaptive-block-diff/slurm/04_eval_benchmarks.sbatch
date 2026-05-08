@@ -100,15 +100,21 @@ else
   OUT="${EAI_RESULT_DIR}/base/${MODEL}_${BENCHMARK}_${SCHEDULER}.json"
 fi
 
+# Paper-style base-model eval:
+#   --raw_prompt       : send raw few-shot text, no chat-template wrap
+#   --min_new_tokens 0 : let the model stop naturally (paper does not force length)
+#   --max_new_tokens   : 512 — bumped from 384 so MATH chain-of-thought solutions
+#                        don't get clipped before the \boxed{} answer.
 run_in_singularity "
   python -u -m src.eval.run_benchmarks \
     --model ${MODEL} --model_id ${MODEL_ID} \
     --benchmark ${BENCHMARK} \
     --split test \
     --n_prompts 200 \
-    --max_new_tokens 384 \
+    --max_new_tokens 512 \
     --n_denoise_steps 32 \
-    --min_new_tokens 128 \
+    --min_new_tokens 0 \
+    --raw_prompt \
     --scheduler ${SCHEDULER} ${PRED_ARG} \
     --lam 0.05 \
     --threshold 0.9 \

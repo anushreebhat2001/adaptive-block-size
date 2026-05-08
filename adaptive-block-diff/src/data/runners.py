@@ -76,6 +76,12 @@ class DiffusionRunner:
     vocab_size: int = 0
     mask_token_id: int = 0
     eos_token_id: int = 0
+    # Read offset for predictions. Dream uses the AR shift inherited from
+    # Qwen2.5: logits[i] predicts position i+1 (prediction_shift = 1). LLaDA
+    # was trained from scratch with logits[i] predicting position i directly
+    # (prediction_shift = 0). Without this, Dream's outputs are off-by-one and
+    # produce 0% accuracy on every benchmark.
+    prediction_shift: int = 0
 
     def __init__(self, device: str = "cuda", dtype: torch.dtype = torch.bfloat16) -> None:
         self.device = device
@@ -87,12 +93,12 @@ class DiffusionRunner:
     def load(self) -> None:
         raise NotImplementedError
 
-    def encode_prompt(self, prompt: str) -> torch.Tensor:
-        # If the tokenizer has a chat template (Instruct models), wrap as a
-        # user message so the model sees a proper turn. Base models have no
-        # template -- pass the prompt through verbatim so the few-shot
-        # plaintext format works as raw continuation.
-        if getattr(self.tokenizer, "chat_template", None) is not None:
+    def encode_prompt(self, prompt: str, raw: bool = False) -> torch.Tensor:
+        # When raw=True, send the prompt as plain text (no chat-template wrap).
+        # This is the right mode for base models with paper-style few-shot
+        # demonstrations: the demos already contain the format, and wrapping in
+        # a chat template would put base models out of distribution.
+        if not raw and getattr(self.tokenizer, "chat_template", None) is not None:
             msg = [{"role": "user", "content": prompt}]
             text = self.tokenizer.apply_chat_template(
                 msg, add_generation_prompt=True, tokenize=False
@@ -174,6 +180,10 @@ def _semi_ar_sample(
     eos_id = runner.eos_token_id
     eos_ids: Set[int] = getattr(runner, "eos_token_ids", set()) or {eos_id}
     prompt_len = prompt_ids.shape[0]
+    # Dream's logits[i] predict position i+1; LLaDA's logits[i] predict
+    # position i. We read the prediction logits from a slice shifted by
+    # `pshift` (1 for Dream, 0 for LLaDA). See Dream paper §4.1.
+    pshift = int(getattr(runner, "prediction_shift", 0))
 
     seq = prompt_ids.unsqueeze(0).clone()                # [1, prompt_len]
     records: List[StepRecord] = []
@@ -189,6 +199,10 @@ def _semi_ar_sample(
         )
         seq = torch.cat([seq, mask_block], dim=1)
         block_slice = slice(prefix_len, prefix_len + block_len)
+        # Slice in the logits tensor that holds the predictions for the block.
+        # For LLaDA (pshift=0) this equals block_slice. For Dream (pshift=1)
+        # the predictions live one position to the left.
+        read_slice = slice(prefix_len - pshift, prefix_len + block_len - pshift)
 
         # If this whole block sits within the min_new_tokens window, EOS-like
         # tokens are forbidden inside it so the model can't terminate early.
@@ -198,7 +212,7 @@ def _semi_ar_sample(
         # Iterative low-confidence remasking within this block.
         for _step in range(n_denoise_steps):
             logits, hidden = forward_fn(seq)
-            block_logits = logits[0, block_slice].clone()    # [block_len, V]
+            block_logits = logits[0, read_slice].clone()    # [block_len, V]
             if force_no_eos and eos_ids:
                 for tid in eos_ids:
                     block_logits[:, tid] = float("-inf")
@@ -225,13 +239,17 @@ def _semi_ar_sample(
         # After block is finalized, capture features for this boundary.
         with torch.no_grad():
             logits, hidden = forward_fn(seq)
-        block_logits_final = logits[0, block_slice].detach().to(torch.float32).cpu()
+        block_logits_final = logits[0, read_slice].detach().to(torch.float32).cpu()
+        # Hidden state stays on the block positions: it's used as a learned
+        # feature for the predictor regardless of which position the model
+        # treats it as predicting.
         block_hidden_final = hidden[0, block_slice].detach().to(torch.float32).cpu()
         block_tokens_final = seq[0, block_slice].detach().cpu()
 
         # Predict argmax for the next-window positions (used for delim feature).
         if prefix_len + block_len < seq.shape[1]:
-            nw_logits = logits[0, prefix_len + block_len : prefix_len + block_len + next_window]
+            nw_start = prefix_len + block_len - pshift
+            nw_logits = logits[0, nw_start : nw_start + next_window]
             next_window_ids = nw_logits.argmax(dim=-1).detach().cpu()
         else:
             # No tokens past block yet: use a peek by appending W masks (cheap).
@@ -239,8 +257,9 @@ def _semi_ar_sample(
             seq_peek = torch.cat([seq, peek], dim=1)
             with torch.no_grad():
                 logits_peek, _ = forward_fn(seq_peek)
+            peek_read_start = seq.shape[1] - pshift
             next_window_ids = (
-                logits_peek[0, seq.shape[1] : seq.shape[1] + next_window]
+                logits_peek[0, peek_read_start : peek_read_start + next_window]
                 .argmax(dim=-1)
                 .detach()
                 .cpu()
@@ -340,6 +359,11 @@ class LLaDARunner(DiffusionRunner):
 
 class DreamRunner(DiffusionRunner):
     name = "dream"
+    # Dream is initialized from Qwen2.5 and preserves the AR shift: the
+    # hidden state at position i predicts the token at position i+1. See
+    # Dream paper §4.1 ("Shift Operation"). The sampler reads logits at
+    # position - 1 to recover the prediction for each masked position.
+    prediction_shift = 1
 
     def __init__(
         self,
