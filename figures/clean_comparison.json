@@ -1,0 +1,317 @@
+{
+  "dream/gsm8k": {
+    "n_common_prompts": 200,
+    "cells": {
+      "fixed-32": {
+        "n_total": 200,
+        "n_correct": 0,
+        "accuracy": 0.0,
+        "tokens_per_second": 19.113785944401236,
+        "decode_seconds": 4018.042277097702,
+        "block_size_histogram": {
+          "16": 400,
+          "32": 2200
+        }
+      },
+      "ours-oracle": {
+        "n_total": 200,
+        "n_correct": 0,
+        "accuracy": 0.0,
+        "tokens_per_second": 17.525421803729472,
+        "decode_seconds": 4382.205510377884,
+        "block_size_histogram": {
+          "16": 3572,
+          "32": 560,
+          "8": 216
+        }
+      }
+    }
+  },
+  "llada/gsm8k": {
+    "n_common_prompts": 200,
+    "cells": {
+      "adablock": {
+        "n_total": 200,
+        "n_correct": 152,
+        "accuracy": 0.76,
+        "tokens_per_second": 14.462221980358603,
+        "decode_seconds": 5310.387304544449,
+        "block_size_histogram": {
+          "16": 570,
+          "32": 1953,
+          "8": 369,
+          "4": 144,
+          "12": 27,
+          "24": 29,
+          "28": 17,
+          "20": 8
+        }
+      },
+      "fixed-16": {
+        "n_total": 200,
+        "n_correct": 154,
+        "accuracy": 0.77,
+        "tokens_per_second": 13.327042908494994,
+        "decode_seconds": 5762.718746185303,
+        "block_size_histogram": {
+          "16": 4800
+        }
+      },
+      "fixed-32": {
+        "n_total": 200,
+        "n_correct": 151,
+        "accuracy": 0.755,
+        "tokens_per_second": 14.574894344167712,
+        "decode_seconds": 5269.334939002991,
+        "block_size_histogram": {
+          "16": 400,
+          "32": 2200
+        }
+      },
+      "fixed-4": {
+        "n_total": 200,
+        "n_correct": 147,
+        "accuracy": 0.735,
+        "tokens_per_second": 9.48703396330931,
+        "decode_seconds": 8095.259308338165,
+        "block_size_histogram": {
+          "16": 200,
+          "4": 18400
+        }
+      },
+      "fixed-8": {
+        "n_total": 200,
+        "n_correct": 149,
+        "accuracy": 0.745,
+        "tokens_per_second": 11.981633706330994,
+        "decode_seconds": 6409.810371637344,
+        "block_size_histogram": {
+          "16": 200,
+          "8": 9200
+        }
+      },
+      "ours-oracle": {
+        "n_total": 200,
+        "n_correct": 148,
+        "accuracy": 0.74,
+        "tokens_per_second": 13.511005862727009,
+        "decode_seconds": 5684.254805326462,
+        "block_size_histogram": {
+          "16": 3538,
+          "32": 484,
+          "8": 455,
+          "24": 7,
+          "4": 128,
+          "12": 28,
+          "28": 1,
+          "20": 1
+        }
+      },
+      "ours-teacher": {
+        "n_total": 200,
+        "n_correct": 148,
+        "accuracy": 0.74,
+        "tokens_per_second": 14.62441868226872,
+        "decode_seconds": 5251.490788698196,
+        "block_size_histogram": {
+          "16": 584,
+          "32": 1969,
+          "4": 369,
+          "8": 139,
+          "12": 32,
+          "20": 18,
+          "28": 27,
+          "24": 15
+        }
+      }
+    }
+  },
+  "llada/humaneval": {
+    "n_common_prompts": 164,
+    "cells": {
+      "adablock": {
+        "n_total": 164,
+        "n_correct": 142,
+        "accuracy": 0.8658536585365854,
+        "tokens_per_second": 18.239423482972217,
+        "decode_seconds": 3452.740710735321,
+        "block_size_histogram": {
+          "16": 612,
+          "8": 2396,
+          "32": 1046,
+          "24": 20,
+          "4": 4,
+          "28": 1,
+          "20": 1
+        }
+      },
+      "fixed-16": {
+        "n_total": 164,
+        "n_correct": 146,
+        "accuracy": 0.8902439024390244,
+        "tokens_per_second": 18.11593878794725,
+        "decode_seconds": 3476.2758219242096,
+        "block_size_histogram": {
+          "16": 3936
+        }
+      },
+      "fixed-32": {
+        "n_total": 164,
+        "n_correct": 147,
+        "accuracy": 0.8963414634146342,
+        "tokens_per_second": 20.05222899879327,
+        "decode_seconds": 3140.598484277725,
+        "block_size_histogram": {
+          "16": 328,
+          "32": 1804
+        }
+      },
+      "fixed-4": {
+        "n_total": 164,
+        "n_correct": 138,
+        "accuracy": 0.8414634146341463,
+        "tokens_per_second": 12.695543949671826,
+        "decode_seconds": 4960.480641841888,
+        "block_size_histogram": {
+          "16": 164,
+          "4": 15088
+        }
+      },
+      "fixed-8": {
+        "n_total": 164,
+        "n_correct": 142,
+        "accuracy": 0.8658536585365854,
+        "tokens_per_second": 15.86835775960281,
+        "decode_seconds": 3968.6526453495026,
+        "block_size_histogram": {
+          "16": 164,
+          "8": 7544
+        }
+      },
+      "ours-oracle": {
+        "n_total": 164,
+        "n_correct": 146,
+        "accuracy": 0.8902439024390244,
+        "tokens_per_second": 18.085024705813836,
+        "decode_seconds": 3482.2180795669556,
+        "block_size_histogram": {
+          "16": 3821,
+          "32": 54,
+          "8": 14
+        }
+      },
+      "ours-teacher": {
+        "n_total": 164,
+        "n_correct": 151,
+        "accuracy": 0.9207317073170732,
+        "tokens_per_second": 19.609420275049796,
+        "decode_seconds": 3211.517684698105,
+        "block_size_histogram": {
+          "16": 500,
+          "32": 1671,
+          "8": 72,
+          "4": 96,
+          "12": 9,
+          "28": 7,
+          "24": 5,
+          "20": 6
+        }
+      }
+    }
+  },
+  "llada/math": {
+    "n_common_prompts": 200,
+    "cells": {
+      "adablock": {
+        "n_total": 200,
+        "n_correct": 52,
+        "accuracy": 0.26,
+        "tokens_per_second": 19.31773363994138,
+        "decode_seconds": 3975.621645450592,
+        "block_size_histogram": {
+          "16": 769,
+          "32": 1217,
+          "8": 3051,
+          "24": 30,
+          "4": 39,
+          "20": 3,
+          "12": 8,
+          "28": 4
+        }
+      },
+      "fixed-16": {
+        "n_total": 200,
+        "n_correct": 61,
+        "accuracy": 0.305,
+        "tokens_per_second": 19.678442445499552,
+        "decode_seconds": 3902.747903585434,
+        "block_size_histogram": {
+          "16": 4800
+        }
+      },
+      "fixed-32": {
+        "n_total": 200,
+        "n_correct": 53,
+        "accuracy": 0.265,
+        "tokens_per_second": 21.435314495845144,
+        "decode_seconds": 3582.8725543022156,
+        "block_size_histogram": {
+          "16": 400,
+          "32": 2200
+        }
+      },
+      "fixed-4": {
+        "n_total": 200,
+        "n_correct": 52,
+        "accuracy": 0.26,
+        "tokens_per_second": 13.615874489947329,
+        "decode_seconds": 5640.475024700165,
+        "block_size_histogram": {
+          "16": 200,
+          "4": 18400
+        }
+      },
+      "fixed-8": {
+        "n_total": 200,
+        "n_correct": 59,
+        "accuracy": 0.295,
+        "tokens_per_second": 17.087749197339487,
+        "decode_seconds": 4494.447988033295,
+        "block_size_histogram": {
+          "16": 200,
+          "8": 9200
+        }
+      },
+      "ours-oracle": {
+        "n_total": 200,
+        "n_correct": 55,
+        "accuracy": 0.275,
+        "tokens_per_second": 19.393396443556846,
+        "decode_seconds": 3960.1108667850494,
+        "block_size_histogram": {
+          "16": 4268,
+          "32": 262,
+          "8": 10,
+          "24": 2
+        }
+      },
+      "ours-teacher": {
+        "n_total": 200,
+        "n_correct": 55,
+        "accuracy": 0.275,
+        "tokens_per_second": 20.696821561142524,
+        "decode_seconds": 3710.7146995067596,
+        "block_size_histogram": {
+          "16": 608,
+          "4": 284,
+          "32": 2007,
+          "8": 68,
+          "24": 15,
+          "20": 13,
+          "28": 11,
+          "12": 20
+        }
+      }
+    }
+  }
+}

@@ -20,16 +20,23 @@ def _peek_next_window(
     seq: torch.Tensor,
     next_window: int,
     mask_id: int,
+    pshift: int = 0,
 ) -> torch.Tensor:
-    """Argmax over a peek window appended after the current sequence."""
+    """Argmax over a peek window appended after the current sequence.
+
+    `pshift` is the model's prediction shift (0 for LLaDA, 1 for Dream).
+    Dream's prediction for position i lives at logits[i-1], so the peek read
+    starts one position earlier.
+    """
     if next_window <= 0:
         return torch.empty(0, dtype=torch.long)
     peek = torch.full((1, next_window), mask_id, dtype=seq.dtype, device=seq.device)
     seq_peek = torch.cat([seq, peek], dim=1)
     with torch.no_grad():
         logits, _ = forward_fn(seq_peek)
+    start = seq.shape[1] - pshift
     return (
-        logits[0, seq.shape[1] : seq.shape[1] + next_window]
+        logits[0, start : start + next_window]
         .argmax(dim=-1)
         .detach()
         .cpu()
@@ -61,12 +68,24 @@ def scheduled_rollout(
     mask_id = runner.mask_token_id
     eos_id = runner.eos_token_id
     eos_ids = getattr(runner, "eos_token_ids", set()) or {eos_id}
+    # Dream uses the AR shift: logits[i] predicts token i+1. We read its
+    # predictions from a slice shifted by `pshift` positions. LLaDA leaves
+    # this at 0 (predictions live at the masked positions themselves).
+    pshift = int(getattr(runner, "prediction_shift", 0))
 
     seq = prompt_ids.unsqueeze(0).clone()
     records: List[StepRecord] = []
     block_sizes: List[int] = []
 
     scheduler.reset()
+    # Schedulers that don't need a warmup block (e.g. FixedScheduler) can
+    # override the rollout's --initial_block_size by exposing one. This makes
+    # `fixed-N` actually mean "every block is N" instead of "B=16 first, then
+    # N." adablock and the learned schedulers leave this unset and keep the
+    # CLI default.
+    sched_initial = getattr(scheduler, "initial_block_size", None)
+    if sched_initial is not None:
+        initial_block_size = int(sched_initial)
     block_size = initial_block_size
     produced = 0
     block_idx = 0
@@ -81,12 +100,16 @@ def scheduled_rollout(
         )
         seq = torch.cat([seq, mask_block], dim=1)
         block_slice = slice(prefix_len, prefix_len + block_len)
+        # Read slice for prediction logits: identical to block_slice for LLaDA;
+        # shifted left by one for Dream so we read its actual prediction for
+        # each masked position.
+        read_slice = slice(prefix_len - pshift, prefix_len + block_len - pshift)
 
         force_no_eos = (produced + block_len) <= min_new_tokens
 
         for _step in range(n_denoise_steps):
             logits, hidden = forward_fn(seq)
-            block_logits = logits[0, block_slice].clone()
+            block_logits = logits[0, read_slice].clone()
             if force_no_eos and eos_ids:
                 for tid in eos_ids:
                     block_logits[:, tid] = float("-inf")
@@ -112,12 +135,27 @@ def scheduled_rollout(
             new_block[top_pos] = cand[top_pos]
             seq[0, block_slice] = new_block
 
-        with torch.no_grad():
-            logits, hidden = forward_fn(seq)
-        block_logits_final = logits[0, block_slice].detach().to(torch.float32).cpu()
-        block_hidden_final = hidden[0, block_slice].detach().to(torch.float32).cpu()
+        # Block-tokens are already committed by the denoise loop and live on
+        # `seq`; copying them is free. Logits / hidden / next-window peek
+        # require additional forward passes and are only needed by schedulers
+        # that actually read SchedulerInput. Skip for FixedScheduler (and any
+        # future stateless scheduler) so its throughput measurement reflects
+        # only the work the policy needs.
         block_tokens_final = seq[0, block_slice].detach().cpu()
-        next_window_ids = _peek_next_window(forward_fn, seq, next_window, mask_id)
+        needs_state = getattr(scheduler, "needs_state", True)
+        if needs_state:
+            with torch.no_grad():
+                logits, hidden = forward_fn(seq)
+            # read_slice for logits (Dream shift); hidden stays at block_slice.
+            block_logits_final = logits[0, read_slice].detach().to(torch.float32).cpu()
+            block_hidden_final = hidden[0, block_slice].detach().to(torch.float32).cpu()
+            next_window_ids = _peek_next_window(
+                forward_fn, seq, next_window, mask_id, pshift=pshift
+            )
+        else:
+            block_logits_final = torch.empty(0, dtype=torch.float32)
+            block_hidden_final = torch.empty(0, dtype=torch.float32)
+            next_window_ids = torch.empty(0, dtype=torch.long)
 
         rec = StepRecord(
             block_index=block_idx,

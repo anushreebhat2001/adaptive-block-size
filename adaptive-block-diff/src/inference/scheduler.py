@@ -41,11 +41,22 @@ class SchedulerInput:
 
 
 class FixedScheduler:
+    # Flag read by scheduled_rollout: when False, the rollout can skip the
+    # post-denoise forward pass and the next-window peek, since this scheduler
+    # ignores its SchedulerInput entirely. Without this short-circuit, fixed-*
+    # pays for ~2 wasted forward passes per block (~6% of decode time) and its
+    # measured throughput is biased low relative to adablock and ours-*.
+    needs_state: bool = False
+
     def __init__(self, B: int) -> None:
         if B not in CANDIDATE_BLOCK_SIZES:
             raise ValueError(f"unsupported B={B}; must be in {CANDIDATE_BLOCK_SIZES}")
         self.B = B
         self.name = f"fixed-{B}"
+        # Override the rollout's --initial_block_size so the first block is
+        # also B. Without this, fixed-4 etc. emit one B=16 warmup block before
+        # switching, polluting the histogram and the throughput measurement.
+        self.initial_block_size = B
 
     def reset(self) -> None:
         pass
